@@ -1,4 +1,6 @@
-const titles = [
+import Title from "./../models/title";
+
+/* const titles = [
   {
     id: 0,
     title: "Tokyo Ghoul",
@@ -17,7 +19,7 @@ const titles = [
     releaseDate: 2018,
     author: "Gege Akutami",
   },
-];
+]; */
 
 exports.getAllTitles = (req, res) => {
   res.status(200).json({

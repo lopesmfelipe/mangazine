@@ -20,10 +20,4 @@ const titleSchema = new mongoose.Schema({
 
 const Title = mongoose.model("Title", titleSchema);
 
-const t = new Title({
-  name: "Dandadan",
-  author: "Kishimoto",
-  releaseDate: 2020
-});
-
 module.exports = Title;

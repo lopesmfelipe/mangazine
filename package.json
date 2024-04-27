@@ -1,17 +1,31 @@
 {
   "name": "mb-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "MB V1",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "start:prod": "set NODE_ENV=production && nodemon server.js"
   },
-  "author": "Felipe",
+  "author": "Felipe Magalhaes",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^8.3.2",
-    "nodemon": "^3.1.0"
+    "dotenv": "^16.4.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5"
   }
 }

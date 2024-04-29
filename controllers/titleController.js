@@ -1,14 +1,20 @@
 const Title = require('../models/titleModel');
 
 exports.createTitle = async (req, res) => {
-  const newTitle = await Title.create();
-
-  res.status(201).json({
-    status: 'Success',
-    data: {
-      title: newTitle,
-    },
-  });
+  try {
+    const newTitle = await Title.create(req.body);
+    res.status(201).json({
+      status: 'Success',
+      data: {
+        title: newTitle,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 /* exports.updateTitle = (req, res) => {

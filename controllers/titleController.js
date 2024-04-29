@@ -8,7 +8,7 @@ exports.createTitle = async (req, res) => {
     data: {
       title: newTitle,
     },
-  });
+  }); 
 };
 
 /* exports.updateTitle = (req, res) => {

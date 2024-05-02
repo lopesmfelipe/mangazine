@@ -12,7 +12,7 @@ const titleSchema = new mongoose.Schema({
   volumes: Number,
   publishedBy: String,
   genre: [String],
-  ratingsAvarage: {
+  ratingsAverage: {
     type: Number,
     default: 0
   },

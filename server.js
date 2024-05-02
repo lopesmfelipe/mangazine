@@ -19,7 +19,7 @@ if (!DB) {
 const start = async () => {
   try {
     await mongoose.connect(DB);
-    console.log('MongoDB connected successfully');
+    console.log('mangabook database connected successfully');
     app
       .listen(PORT, () => {
         console.log(`App running on PORT: ${PORT}`);

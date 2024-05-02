@@ -11,7 +11,15 @@ const titleSchema = new mongoose.Schema({
   releaseDate: Date,
   volumes: Number,
   publishedBy: String,
-  genre: [String]
+  genre: [String],
+  ratingsAvarage: {
+    type: Number,
+    default: 0
+  },
+  ratingsQuantity: {
+    type: Number,
+    default: 0
+  }
 });
 
 const Title = mongoose.model('Title', titleSchema);

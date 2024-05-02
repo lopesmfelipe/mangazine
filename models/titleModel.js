@@ -8,7 +8,10 @@ const titleSchema = new mongoose.Schema({
     unique: true,
   },
   author: String,
-  releaseDate: Number,
+  releaseDate: Date,
+  volumes: Number,
+  publishedBy: String,
+  genre: [String]
 });
 
 const Title = mongoose.model('Title', titleSchema);

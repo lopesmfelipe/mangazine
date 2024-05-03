@@ -1,6 +1,9 @@
 {
   "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "node"],
+  "globals": {
+    "mongoose": "readonly"
+  },
   "rules": {
     "prettier/prettier": "off",
     "spaced-comment": "off",

@@ -1,5 +1,23 @@
 const Title = require('../models/titleModel');
 
+exports.getAllTitles = async (req, res) => {
+  try {
+    const titles = await Title.find();
+    res.status(200).json({
+      status: 'success',
+      result: titles.length,
+      data: {
+        titles,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 exports.createTitle = async (req, res) => {
   try {
     const newTitle = await Title.create(req.body);
@@ -8,6 +26,29 @@ exports.createTitle = async (req, res) => {
       data: {
         title: newTitle,
       },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+exports.deleteTitle = async (req, res) => {
+  try {
+    const title = await Title.findOneAndDelete(req.params.id);
+
+    if (!title) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Title not found',
+      });
+    }
+
+    res.status(204).json({
+      status: 'success',
+      data: null,
     });
   } catch (err) {
     res.status(400).json({

@@ -1,14 +1,10 @@
-//import Grid from "./components/Grid"
-//import Header from "./components/Header";
-import Home from "./pages/Home";
+import Grid from "./components/Grid";
 
 function App() {
 
   return (
     <>
-      {/* <Grid />
-      <Header /> */}
-      <Home />
+      <Grid />
     </>
   );
 }

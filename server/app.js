@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const titleRouter = require('./routes/titleRoutes');
 const userRouter = require('./routes/userRoutes');
 const ratingRouter = require('./routes/ratingRoutes');
+const listRouter = require('./routes/listRoutes');
 
 const app = express();
 mongoose.set('strictQuery', false);
@@ -18,5 +19,6 @@ app.use(express.static(`${__dirname}/public`));
 app.use('/api/v1/titles', titleRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/rating', ratingRouter);
+app.use('/api/v1', listRouter);
 
 module.exports = app;

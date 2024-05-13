@@ -6,6 +6,8 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
+import "./styles.css"
+
 export const Auth = () => {
   return (
     <div className="sign-in-container">

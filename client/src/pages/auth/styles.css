@@ -1,0 +1,46 @@
+body {
+  background: rgba(127, 3, 36, 0.586) url("./../../assets/images/background.jpg");
+  background-size: cover;
+  background-blend-mode: darken;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-container {
+  margin-top: 300px;
+}
+ 
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #8b0000; /* Dark Red */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+/* Hover State */
+button:hover {
+  background-color: #b30000; /* Darker Red on Hover */
+}
+
+/* Active State */
+button:active {
+  background-color: #660000; /* Even Darker Red on Click */
+}
+
+/* Disabled State */
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

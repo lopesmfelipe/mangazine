@@ -6,10 +6,7 @@ dotenv.config({ path: './config.env' });
 const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD,
-);
+const DB = process.env.DATABASE;
 
 if (!DB) {
   console.error('MongoDB connection string not provided');

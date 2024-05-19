@@ -1,8 +1,42 @@
 const Title = require('../models/titleModel');
 
 exports.getAllTitles = async (req, res) => {
+
   try {
-    const titles = await Title.find();
+    // BUILD THE QUERY
+
+    // 1A) FILTERING
+    const queryObj = {...req.query};
+    const excludeFields = ['page', 'sort', 'limit', 'fields'];
+    excludeFields.forEach((el) => delete queryObj[el]);
+
+    // 1B) ADVANCED FILTERING
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+
+    let query = Title.find(JSON.parse(queryStr)); // temporary final query
+
+    // 2) SORTING
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      console.log(sortBy);
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('name');
+    }
+
+    // 3) FIELD LIMITING
+    if (req.query.fields) {
+      const fields = req.query.fields.split(',').join(' ');
+      console.log(fields)
+      query = query.select(fields);
+    } else {
+      query = query.select('-descriptioin')
+    }
+
+    // EXECUTE THE QUERY
+    const titles = await query;
+
     res.status(200).json({
       status: 'success',
       result: titles.length,

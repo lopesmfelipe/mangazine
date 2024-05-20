@@ -8,11 +8,12 @@ const titleSchema = new mongoose.Schema({
     unique: true,
   },
   author: String,
-  releaseYear: Number,
+  releaseYear: String,
   description: String,
-  volumes: Number,
+  chapters: String,
   publishedBy: String,
   genre: [String],
+  cover: String,
   ratingsAverage: {
     type: Number,
     default: 0

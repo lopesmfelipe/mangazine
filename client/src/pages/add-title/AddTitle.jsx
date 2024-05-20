@@ -7,18 +7,27 @@ const AddTitle = () => {
     author: "",
     releaseYear: "",
     description: "",
-    volumes: "",
+    chapters: "",
     publishedBy: "",
     genre: [],
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // For the genre field, split the input value by spaces
+    if (name === "genre") {
+      const genres = value.split(",");
+      setFormData({ ...formData, genre: genres });
+    } else {
+      // For other fields, update the formData state as usual
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("FormData to be sent: ", formData); // Log formData before sending
+
     try {
       const response = await fetch("http://localhost:2000/api/v1/titles", {
         method: "POST",
@@ -44,9 +53,9 @@ const AddTitle = () => {
       author: "",
       releaseYear: "",
       description: "",
-      volumes: "",
+      chapters: "",
       publishedBy: "",
-      genre: "",
+      genre: [],
     });
   };
 
@@ -78,13 +87,11 @@ const AddTitle = () => {
           <div>
             <label>Release Year:</label>
             <input
-              type="number"
+              type="text"
               name="releaseYear"
               value={formData.releaseYear}
               onChange={handleChange}
               placeholder="YYYY"
-              min="1200"
-              max="2100"
               required
             />
           </div>
@@ -98,10 +105,10 @@ const AddTitle = () => {
             />
           </div>
           <div>
-            <label>Volumes:</label>
+            <label>Chapters:</label>
             <input
               type="number"
-              name="volumes"
+              name="chapters"
               value={formData.volumes}
               onChange={handleChange}
               required
@@ -118,26 +125,21 @@ const AddTitle = () => {
           </div>
           <div>
             <label>Genre:</label>
-            <select
+            <input
+              type="text"
               name="genre"
               value={formData.genre}
               onChange={handleChange}
-              required
-            >
-              <option value="">Select Genre</option>
-              <option value="Fantasy">Fantasy</option>
-              <option value="Science Fiction">Science Fiction</option>
-              <option value="Romance">Romance</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Thriller">Thriller</option>
-              <option value="Horror">Horror</option>
-              <option value="Historical">Historical</option>
-              <option value="Action">Action</option>
-              <option value="Shounen">Shounen</option>
-              <option value="Seinen">Seinen</option>
-              <option value="Shoujo">Shoujo</option>
-              <option value="Other">Other</option>
-            </select>
+            />
+          </div>
+          <div>
+            <label>Cover:</label>
+            <input
+              type="text"
+              name="cover"
+              value={formData.cover}
+              onChange={handleChange}
+            />
           </div>
           <button type="submit">Submit</button>
         </form>

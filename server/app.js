@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const titleRouter = require('./routes/titleRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -9,6 +10,9 @@ const listRouter = require('./routes/listRoutes');
 
 const app = express();
 mongoose.set('strictQuery', false);
+
+// Middleware to enable CORS
+app.use(cors());
 
 // MIDDLEWARES
 app.use(morgan('dev'));

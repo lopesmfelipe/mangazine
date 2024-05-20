@@ -6,7 +6,6 @@ const listSchema = new mongoose.Schema({
   clerkUserId: String // Store Clerk user ID
 });
 
-
 const List = mongoose.model('List', listSchema);
 
 // Export the model

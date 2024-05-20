@@ -64,8 +64,9 @@ exports.createTitle = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: err,
+      message: err.message, // Sending only the error message
     });
+    console.log(err);
   }
 };
 

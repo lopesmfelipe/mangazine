@@ -1,5 +1,5 @@
-import "../styles/general.css";
-import "../styles/home.css";
+import "../../styles/general.css";
+import "./style.css";
 
 const Home = () => {
   return (

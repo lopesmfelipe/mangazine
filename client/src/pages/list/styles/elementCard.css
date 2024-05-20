@@ -1,4 +1,4 @@
-@import "./general.css";
+@import "../../../styles/general.css";
 
 .content-container {
   background-color: #1a1a1a;
@@ -109,28 +109,3 @@
   display: flex;
   gap:15px;
 } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

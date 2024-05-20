@@ -1,5 +1,4 @@
 import ElementCard from "./ElementCard";
-import "../styles/grid.css";
 
 import afterGodCover from "../assets/images/after-god.jpg";
 import akiraCover from "../assets/images/akira.jpg";
@@ -9,7 +8,6 @@ import dandadanCover from "../assets/images/dandadan.jpg";
 import hunterxhunterCover from "../assets/images/hunterxhunter.jpg";
 import tokyoGhoulCover from "../assets/images/tokyo-ghoul.jpg";
 import homunculusCover from "../assets/images/homunculus.jpg";
-
 
 const listData2 = [
   { title: "After God", cover: afterGodCover },
@@ -29,7 +27,7 @@ const Grid = () => {
         <ElementCard key={index} title={element.title} cover={element.cover} />
       ))}
     </main>
-  )
-}
+  );
+};
 
 export default Grid;

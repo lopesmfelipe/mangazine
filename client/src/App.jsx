@@ -1,7 +1,8 @@
-import Grid from "./components/Grid.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Auth } from "./pages/auth";
-import AddTitle from "./pages/addTitle/AddTitle.jsx";
+import AddTitle from "./pages/add-title/AddTitle.jsx";
+import List from "./pages/list/List.jsx";
+import Home from "./pages/home/Home.jsx";
 
 function App() {
   return (
@@ -9,9 +10,10 @@ function App() {
       <Router>
         <div className="app-container">
           <Routes>
-            <Route path="/" element={<Grid />} />
-            <Route path="/addtitle" element={<AddTitle />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/addtitle" element={<AddTitle />} />
           </Routes>
         </div>
       </Router>

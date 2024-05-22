@@ -9,7 +9,7 @@ const List = () => {
   useEffect(() => {
     // Fetch title data from the backend API
     axios
-      .get("http://localhost:2000/api/v1/titles")
+      .get("http://localhost:3001/api/v1/titles")
       .then((response) => {
         setTitles(response.data.data.titles);
       })

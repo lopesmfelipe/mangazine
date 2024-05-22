@@ -1,19 +1,23 @@
 @import "../../styles/general.css";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
+body {
+  max-width: 1200px;
+}
+
 header {
-  margin: 0;
   display: flex;
-  color: white;
+  justify-content: right;
   background-color: transparent;
   align-items: center;
+  color: white;
 }
 
 .menu {
   display: flex;
   background-color: transparent;
   position: relative;
-  left: 900px;
+  left: 250px;
 }
 
 .menu button {
@@ -58,11 +62,14 @@ main {
   font-family: "Bebas Neue";
   font-size: 17px;
   padding-left: 30px;
+  margin-top: 50px;
 }
 
 .searchbar {
-  widht: 500px;
+  color: black;
+  width: 500px;
   height: 40px;
   border-radius: 20px;
   border: 0;
+  background-color: white;
 }

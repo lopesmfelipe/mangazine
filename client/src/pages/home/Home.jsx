@@ -1,5 +1,5 @@
 import "../../styles/general.css";
-import "./style.css";
+import "./home.css";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       </header>
       <main>
         <div className="text-container">
-          <h1 className="title">MANGABOOK</h1>
+          <h1 className="home-title">MANGABOOK</h1>
           <h2>Mangas & Books All in One Place!</h2>
           <h3>Search, rate, list and share your favorite mangas and books </h3>
         </div>

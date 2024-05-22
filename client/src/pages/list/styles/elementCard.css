@@ -15,7 +15,7 @@
 }
 
 .content-container:hover {
-  border-color: var(--main-color);
+  border-color: rgb(219, 0, 80);
 }
 
 .cover-container {
@@ -91,21 +91,3 @@
   padding-bottom: 8px;
   background-color: #30353c;
 }
-
-/* header {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* main {
-  max-width: 1300px;
-  width: 99%;
-  margin: auto;
-  padding: 40px 0;
-  display: flex;
-  gap:15px;
-} */

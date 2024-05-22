@@ -1,10 +1,12 @@
 import "../styles/elementCard.css";
+import x from "./x.jpg";
+
 
 const ElementCard = ({ title, cover }) => {
   return (
     <div className="content-container">
       <div className="cover-container">
-        <img src={cover} alt={title} />
+        <img src={x} alt={title} />
       </div>
       <div className="element-info">
         <div className="rating">

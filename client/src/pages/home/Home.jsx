@@ -20,7 +20,7 @@ const Home = () => {
           <input type="text" placeholder="Search" className="searchbar" />
         </div>
       </main>
-    </section>
+    </>
   );
 };
 

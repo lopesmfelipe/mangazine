@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./styles.css";
+import "./addTitle.css";
+import Axios from "axios";
 
 const AddTitle = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,14 @@ const AddTitle = () => {
     chapters: "",
     publishedBy: "",
     genre: [],
+    cover: "",
   });
+
+  const [imageSelected, setImageSelected] = useState(null); // STATE TO STORE SELECTED IMAGE
+  const [isUploading, setIsUploading] = useState(false); // STATE TO TRACK IMAGE UPLOAD STATUS
+
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+  const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,9 +32,42 @@ const AddTitle = () => {
     }
   };
 
+  const uploadImage = async () => {
+    if (!imageSelected) {
+      alert("Please select an image before submitting.");
+      setIsUploading(false);
+      return null;
+    }
+
+    const imageData = new FormData();
+    imageData.append("file", imageSelected);
+    imageData.append("upload_preset", uploadPreset);
+
+    try {
+      const response = await Axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        imageData
+      );
+      const imageUrl = response.data.secure_url; //
+      return imageUrl;
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      return null;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("FormData to be sent: ", formData); // Log formData before sending
+    setIsUploading(true); // SET TO TRUE BEFORE IMAGE UPLOAD STARTS
+
+    const imageUrl = await uploadImage();
+    if (imageUrl) {
+      formData.cover = imageUrl;
+    } else {
+      alert("Image upload failed. Please try again.");
+      setIsUploading(false);
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:2000/api/v1/titles", {
@@ -36,6 +77,7 @@ const AddTitle = () => {
         },
         body: JSON.stringify(formData),
       });
+
       if (response.ok) {
         console.log("Title added successfully");
       } else {
@@ -47,7 +89,6 @@ const AddTitle = () => {
 
     console.log("FormData sent: ", formData);
 
-    // Reset form fields after submission
     setFormData({
       name: "",
       author: "",
@@ -56,6 +97,7 @@ const AddTitle = () => {
       chapters: "",
       publishedBy: "",
       genre: [],
+      cover: "",
     });
   };
 
@@ -109,7 +151,7 @@ const AddTitle = () => {
             <input
               type="number"
               name="chapters"
-              value={formData.volumes}
+              value={formData.chapters}
               onChange={handleChange}
               required
             />
@@ -132,16 +174,21 @@ const AddTitle = () => {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="uploadImage">
             <label>Cover:</label>
-            <input
-              type="text"
-              name="cover"
-              value={formData.cover}
-              onChange={handleChange}
-            />
+            <div>
+              <input
+                type="file"
+                accept="image/png, image/jpg, image/jpeg"
+                onChange={(event) => {
+                  setImageSelected(event.target.files[0]);
+                }}
+              />
+            </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isUploading}>
+            {isUploading ? "Uploading..." : "Submit"}
+          </button>
         </form>
       </div>
     </div>

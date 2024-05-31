@@ -5,7 +5,7 @@ const ElementCard = ({ title, cover }) => {
   return (
     <div className="content-container">
       <div className="cover-container">
-        <img src="https://res.cloudinary.com/dgwbspp28/image/upload/v1717125779/xgbigcoceopmeli8ywdc.jpg" alt={title} />
+        <img src={cover} alt={title} />
       </div>
       <div className="element-info">
         <div className="rating">

@@ -48,3 +48,15 @@
 .form-container button[type="submit"]:hover {
   background-color: #45a049;
 }
+
+.uploadImage {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.uploadImage button {
+  background-color: rgb(19, 190, 225);
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+}

@@ -11,11 +11,13 @@ function App() {
       <Router>
         <div className="app-container">
           <Routes>
-            <Route path="/image" element={<UploadImage />} />
-            {/* <Route path="/auth" element={<Auth />} />
+           {/*
+           <Route path="/image" element={<UploadImage />} />
+           */} 
+            <Route path="/auth" element={<Auth />} />
             <Route path="/home" element={<Home />} />
             <Route path="/list" element={<List />} />
-            <Route path="/addtitle" element={<AddTitle />} /> */}
+            <Route path="/addtitle" element={<AddTitle />} />
           </Routes>
         </div>
       </Router>

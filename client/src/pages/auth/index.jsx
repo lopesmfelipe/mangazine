@@ -6,7 +6,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-import "./styles.css"
+import "./auth.css"
 
 export const Auth = () => {
   return (

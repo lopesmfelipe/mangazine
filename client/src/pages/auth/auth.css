@@ -1,20 +1,10 @@
-body {
-  background: rgba(127, 3, 36, 0.586) url("./../../assets/images/background.jpg");
-  background-size: cover;
-  background-blend-mode: darken;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@import url(../../styles/general.css);
 
 .sign-in-container {
   margin-top: 300px;
 }
- 
 
-button {
+.sign-in-container button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -30,17 +20,17 @@ button {
 }
 
 /* Hover State */
-button:hover {
+.sign-in-container button:hover {
   background-color: #b30000; /* Darker Red on Hover */
 }
 
 /* Active State */
-button:active {
+.sign-in-container button:active {
   background-color: #660000; /* Even Darker Red on Click */
 }
 
 /* Disabled State */
-button[disabled] {
+.sign-in-container button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
 }

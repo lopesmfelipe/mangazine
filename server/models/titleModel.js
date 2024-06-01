@@ -14,6 +14,9 @@ const titleSchema = new mongoose.Schema({
   publishedBy: String,
   genre: [String],
   cover: String,
+  status: String,
+  type: String,
+  alternateName: String,
   ratingsAverage: {
     type: Number,
     default: 0

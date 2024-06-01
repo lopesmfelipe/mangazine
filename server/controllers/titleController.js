@@ -52,6 +52,13 @@ exports.getAllTitles = async (req, res) => {
   }
 };
 
+// GET TITLE BY ID
+exports.getTitleById = async (req, res) => {
+  try {
+    
+  }
+}
+
 exports.createTitle = async (req, res) => {
   try {
     const newTitle = await Title.create(req.body);

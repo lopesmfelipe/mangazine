@@ -1,11 +1,11 @@
 import "../styles/elementCard.css";
 
 
-const ElementCard = ({ title, cover }) => {
+const ElementCard = ({ element }) => {
   return (
     <div className="content-container">
       <div className="cover-container">
-        <img src={cover} alt={title} />
+        <img src={element.cover} alt={element.name} />
       </div>
       <div className="element-info">
         <div className="rating">
@@ -16,9 +16,9 @@ const ElementCard = ({ title, cover }) => {
           <p>8</p>
         </div>
         <div className="title-author-date">
-          <p className="title">{title}</p>
-          <p className="author">sumi Eno</p>
-          <p className="date">2001</p>
+          <p className="title">{element.name}</p>
+          <p className="author">{element.author}</p>
+          <p className="date">{element.releaseYear}</p>
         </div>
         <div className="button-container">
           <button>Details</button>

@@ -7,7 +7,7 @@ const List = () => {
   const [titles, setTitles] = useState([]);
 
   useEffect(() => {
-    // Fetch title data from the backend API
+    // FETCH THE TITLE DATA FROM THE API
     axios
       .get("http://localhost:2000/api/v1/titles")
       .then((response) => {
@@ -20,8 +20,8 @@ const List = () => {
 
   return (
     <main className="content-grid">
-      {titles.map((title, index) => (
-        <ElementCard key={index} title={title.name} cover={title.cover} />
+      {titles.map((element, index) => (
+        <ElementCard key={index} element={element} />
       ))}
     </main>
   );

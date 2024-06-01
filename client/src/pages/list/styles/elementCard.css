@@ -91,3 +91,15 @@
   padding-bottom: 8px;
   background-color: #30353c;
 }
+
+.button-container button:hover {
+  border: solid 0.5px rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

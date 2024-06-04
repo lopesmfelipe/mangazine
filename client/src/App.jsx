@@ -3,7 +3,7 @@ import { Auth } from "./pages/auth";
 import AddTitle from "./pages/add-title/AddTitle.jsx";
 import List from "./pages/list/List.jsx";
 import Home from "./pages/home/Home.jsx";
-import Details from "./pages/details/details.jsx";
+import Details from "./pages/details/Details.jsx";
 
 function App() {
   return (

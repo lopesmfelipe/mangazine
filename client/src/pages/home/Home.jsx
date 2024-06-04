@@ -1,7 +1,14 @@
+import { Axios } from "axios";
 import "../../styles/general.css";
 import "./home.css";
 
 const Home = () => {
+  const [searchedName, setSearchedName] = useState(null);
+
+  const findTitle = async () => {
+    const response = await Axios.get(`localhost:2000/api/v1/titles/search/${searchedName}`)
+  }
+
   return (
     <>
       <header>
@@ -17,7 +24,9 @@ const Home = () => {
           <h3>Search, rate, list and share your favorite mangas and books </h3>
         </div>
         <div className="searchbar-container">
-          <input type="text" placeholder="Search" className="searchbar" />
+          <input type="text" placeholder="Search" onChange={(event) => {
+            setSearchedName(event.target.value)
+          }} className="searchbar" />
         </div>
       </main>
     </>

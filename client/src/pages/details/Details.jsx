@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./details.css";
 
 const Details = () => {
   const { searchedName } = useParams();
@@ -34,17 +35,36 @@ const Details = () => {
   if (titleData) {
     return (
       <div className="container">
-        <img src="" alt="" className="cover" />
-        <div>
-          <h1>Title: {searchedName} </h1>
-          <h2>author {titleData.author}</h2>
-          <h2>Released: </h2>
-          <p>description</p>
-          <p>Chapters</p>
-          <p>Status</p>
-          <p>Type:</p>
-          <p>Genre(s):</p>
-          <p>Published by:</p>
+        <img src={titleData.cover} alt="" className="cover" />
+        <div className="information">
+          <h1>{titleData.name} </h1>
+          <h3>Author: {titleData.author}</h3>
+          <h3>Released: {titleData.releaseYear} </h3>
+          <p className="description">{titleData.description}</p>
+          <div className="tiny-information">
+            <div className="minibox">
+              <p className="field">Chapters</p>
+              <p>{titleData.chapters}</p>
+            </div>
+            <div className="minibox">
+              <p className="field">Status</p>
+              <p>{titleData.status}</p>
+            </div>
+            <div className="minibox">
+              <p className="field">Type</p>
+              <p>{titleData.type}</p>
+            </div>
+            <div className="minibox">
+              <p className="field">Genre</p>
+              {titleData.genre.map((genre, index) => (
+                <p key={index}>{genre}</p>
+              ))}
+            </div>
+            <div className="minibox">
+              <p className="field">PublishedBy</p>
+              <p>{titleData.publishedBy}</p>
+            </div>
+          </div>
         </div>
       </div>
     );

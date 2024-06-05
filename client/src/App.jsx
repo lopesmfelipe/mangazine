@@ -7,19 +7,17 @@ import Details from "./pages/details/Details.jsx";
 
 function App() {
   return (
-    <>
-      <Router>
-        <div className="app-container">
-          <Routes>
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/add-title" element={<AddTitle />} />
-            <Route path="/details" element={<Details /> } />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/add-title" element={<AddTitle />} />
+          <Route path="/details/:searchedName" element={<Details />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

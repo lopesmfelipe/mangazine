@@ -38,8 +38,7 @@ const Details = () => {
         <img src={titleData.cover} alt="" className="cover" />
         <div className="information">
           <h1>{titleData.name} </h1>
-          <h3>Author: {titleData.author}</h3>
-          <h3>Released: {titleData.releaseYear} </h3>
+
           <p className="description">{titleData.description}</p>
           <div className="tiny-information">
             <div className="minibox">
@@ -55,10 +54,12 @@ const Details = () => {
               <p>{titleData.type}</p>
             </div>
             <div className="minibox">
-              <p className="field">Genre</p>
-              {titleData.genre.map((genre, index) => (
-                <p key={index}>{genre}</p>
-              ))}
+              <div className="genres">
+                <p className="field">Genre:</p>
+                {titleData.genre.map((genre, index) => (
+                  <p key={index}>{genre}</p>
+                ))}
+              </div>
             </div>
             <div className="minibox">
               <p className="field">PublishedBy</p>

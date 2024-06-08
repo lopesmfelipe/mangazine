@@ -5,9 +5,10 @@
 }
 
 body {
-  background: rgba(127, 3, 36, 0.586) url("../assets/images/background.jpg");
+  /* background: rgba(127, 3, 36, 0.586) url("../assets/images/background.jpg");
   background-size: cover;
-  background-blend-mode: darken;
+  background-blend-mode: darken;*/
+  background-color: rgb(27, 27, 28);
   margin: 0;
   padding: 0;
   display: flex;

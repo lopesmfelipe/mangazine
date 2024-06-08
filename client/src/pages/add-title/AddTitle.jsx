@@ -12,6 +12,10 @@ const AddTitle = () => {
     publishedBy: "",
     genre: [],
     cover: "",
+    otherCovers: [],
+    type: "",
+    status: "",
+    alternateName: ""
   });
 
   const [imageSelected, setImageSelected] = useState(null); // STATE TO STORE SELECTED IMAGE
@@ -98,6 +102,10 @@ const AddTitle = () => {
       publishedBy: "",
       genre: [],
       cover: "",
+      otherCovers: [],
+      type: "",
+      status: "",
+      alternateName: ""
     });
   };
 
@@ -170,6 +178,33 @@ const AddTitle = () => {
             <input
               type="text"
               name="genre"
+              value={formData.genre}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Type:</label>
+            <input
+              type="text"
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Status:</label>
+            <input
+              type="text"
+              name="status"
+              value={formData.genre}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Alternate Name:</label>
+            <input
+              type="text"
+              name="alternate-name"
               value={formData.genre}
               onChange={handleChange}
             />

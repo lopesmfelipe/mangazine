@@ -14,6 +14,7 @@ const titleSchema = new mongoose.Schema({
   publishedBy: String,
   genre: [String],
   cover: String,
+  otherCovers: [String],
   status: String,
   type: String,
   alternateName: String,

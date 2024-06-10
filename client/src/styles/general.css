@@ -1,7 +1,6 @@
 :root {
   --transition-speed: 600ms;
   --main-color: rgb(219, 0, 80);
-  font-family: sans-serif;
 }
 
 body {

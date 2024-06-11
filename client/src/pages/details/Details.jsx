@@ -2,6 +2,8 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./details.css";
+import AdditionalInformation from "./components/additional-information/AdditionalInformation";
+import Rating from "./components/rating/Rating";
 
 const Details = () => {
   const { searchedName } = useParams();
@@ -40,8 +42,16 @@ const Details = () => {
           <img src={titleData.cover} alt="" />
         </div>
         <div className="information1">
-          <h1>{titleData.name} </h1>
-          <p className="description">{titleData.description}</p>
+          <div className="top-container">
+            <div>
+              <h1>{titleData.name} </h1>
+            </div>
+            <Rating name="overall rating" />
+            <Rating name="your rating" />
+          </div>
+          <div className="description-container">
+            <p>{titleData.description}</p>
+          </div>
           <div className="minibox">
             <h3 className="field">Author</h3>
             <h3> {titleData.author} </h3>
@@ -52,32 +62,7 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div className="information2">
-        <div className="minibox">
-          <div className="genres">
-            {titleData.genre.map((genre, index) => (
-              <p key={index}>{genre}</p>
-            ))}
-          </div>
-        </div>
-        <div className="minibox">
-          <p className="field">Chapters</p>
-          <p>{titleData.chapters}</p>
-        </div>
-        <div className="minibox">
-          <p className="field">Status</p>
-          <p>{titleData.status}</p>
-        </div>
-        <div className="minibox">
-          <p className="field">Type</p>
-          <p>{titleData.type}</p>
-        </div>
-
-        <div className="minibox">
-          <p className="field">Published by</p>
-          <p>{titleData.publishedBy}</p>
-        </div>
-      </div>
+      <AdditionalInformation titleData={titleData} />
     </>
   );
 };

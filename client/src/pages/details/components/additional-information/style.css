@@ -1,0 +1,43 @@
+.information2 {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+.minibox {
+  margin-bottom: 10px;
+  border-bottom: solid 1px;
+  padding: 10px 10px;
+  align-items: center;
+  border-color: var(--main-color);
+}
+
+.genres {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.genres p {
+  font-size: 15px;
+  border: solid 1px;
+  border-radius: 18px;
+  padding: 6px 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.field {
+  color: var(--main-color);
+}
+
+.minibox {
+  margin: 0;
+}
+
+.minibox p {
+  display: inline-block;
+  font-size: 15px;
+  margin-right: 10px;
+}

@@ -1,6 +1,5 @@
 import "../styles/elementCard.css";
 
-
 const ElementCard = ({ element }) => {
   return (
     <div className="content-container">

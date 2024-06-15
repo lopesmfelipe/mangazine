@@ -6,7 +6,8 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-import "./auth.css"
+import "./auth.css";
+import { Navigate } from "react-router-dom";
 
 export const Auth = () => {
   return (
@@ -17,7 +18,11 @@ export const Auth = () => {
       </SignedOut>
 
       <SignedIn>
-        <UserButton />
+        <div className="test">
+          <UserButton />
+
+        </div>
+        <Navigate to="/home" />
       </SignedIn>
     </div>
   );

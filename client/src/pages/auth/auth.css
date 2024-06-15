@@ -34,3 +34,7 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.test {
+  background-color: white;
+}

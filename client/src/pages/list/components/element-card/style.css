@@ -1,4 +1,4 @@
-@import "../../../styles/general.css";
+@import "../../../../styles/general.css";
 
 .content-container {
   background-color: #1a1a1a;
@@ -31,23 +31,34 @@
   display: inline-block;
 }
 
-.element-info {
-  background-color: #1a1a1a;
+.info-rating-container {
+  display: flex;
+}
+
+.info {
   vertical-align: bottom;
   text-align: left;
   height: 16px;
   margin: 3px;
   margin-top: 8px;
+  background-color: blue;
 }
 
 .rating {
+  width: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: brown;
+}
+
+.icon {
+  color: #FFD43B ;
+  height: 20px;
 }
 
 .rating p {
   font-size: 16px;
-  margin-left: 5px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -75,12 +86,13 @@
 }
 
 .button-container {
+  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.button-container button {
+button {
   border: 0;
   border-radius: 4px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -92,7 +104,7 @@
   background-color: #30353c;
 }
 
-.button-container button:hover {
+button:hover {
   border: solid 0.5px rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 4px;

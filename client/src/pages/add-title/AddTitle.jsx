@@ -88,7 +88,7 @@ const AddTitle = () => {
         console.error("Failed to add title:", response.statusText);
       }
     } catch (error) {
-      console.log("Error adding title: ", error.message);
+      console.error("Error adding title: ", error.message);
     }
 
     console.log("FormData sent: ", formData);

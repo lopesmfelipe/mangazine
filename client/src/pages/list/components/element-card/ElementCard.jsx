@@ -1,4 +1,4 @@
-import "../styles/elementCard.css";
+import "./style.css";
 
 const ElementCard = ({ element }) => {
   return (
@@ -6,14 +6,11 @@ const ElementCard = ({ element }) => {
       <div className="cover-container">
         <img src={element.cover} alt={element.name} />
       </div>
-      <div className="element-info">
-        <div className="rating">
-          <i
-            className="fa-solid fa-star fa-2xs"
-            style={{ color: "#FFD43B" }}
-          ></i>
-          <p>8</p>
-        </div>
+      <div className="rating">
+        <i className="fa-solid fa-star fa-2xs icon"></i>
+        <p className="rating">8</p>
+      </div>
+      <div className="info">
         <div className="title-author-date">
           <p className="title">{element.name}</p>
           <p className="author">{element.author}</p>

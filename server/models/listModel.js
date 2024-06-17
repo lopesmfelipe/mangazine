@@ -3,13 +3,12 @@ const mongoose = require('mongoose');
 const listSchema = new mongoose.Schema({
   name: String,
   titles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Title' }], // Array of strings representing titles
-  clerkUserId: String, // Store Clerk user ID
+  userId: String, // Store Clerk user ID
 });
 
 const List = mongoose.model('List', listSchema);
 
 module.exports = List;
-
 
 /*
 const List = require('./models/list');

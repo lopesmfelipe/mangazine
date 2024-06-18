@@ -1,14 +1,12 @@
-@import "../../../../styles/general.css";
-
 .content-container {
   background-color: #1a1a1a;
   width: 170px;
-  height: 400px;
+  height: 410px;
   border: 3px solid transparent;
   text-align: center;
   padding-bottom: 30px;
   margin-bottom: 15px;
-  border-radius: 2.45px;
+  border-radius: 5px;
   transition: border-color 0.5s ease;
   margin-left: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Horizontal offset, Vertical offset, Blur radius, Color */
@@ -23,6 +21,7 @@
   width: 100%;
   text-align: center;
   display: inline-block;
+  margin-bottom: 0;
 }
 
 .cover-container img {
@@ -31,68 +30,82 @@
   display: inline-block;
 }
 
-.info-rating-container {
-  display: flex;
+.title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 7px;
+  margin-bottom: 20px;
+  max-width: ;
+}
+
+.title p {
+  margin: 0;
+  max-width: 95%;
+  word-wrap: break-word;
 }
 
 .info {
-  vertical-align: bottom;
+  display: flex;
+  flex-direction: column;
   text-align: left;
-  height: 16px;
-  margin: 3px;
-  margin-top: 8px;
-  background-color: blue;
+}
+
+.author-date {
+
+  padding-left: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 35px;
+}
+
+.author-date p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .rating {
-  width: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.test {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: brown;
+  height: 20px;
+  padding-right: 10px;
+  margin-left: 9px;  
+  background-color: #1a1a1a;
 }
 
-.icon {
-  color: #FFD43B ;
-  height: 20px;
+.rating i {
+  color: #ffd43b;
+  font-size: 14.2px;
+  padding-right: 5px;
+  margin: 0;
 }
 
 .rating p {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.title-author-date {
-  margin-top: 10px;
-  padding-left: 9px;
-}
-
-.title {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin-bottom: 20px;
-}
-.author {
-  font-size: 14px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  margin-bottom: 3px;
-}
-
-.date {
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 10px;
+  color: rgb(199, 199, 199);
+  margin: 0;
 }
 
 .button-container {
-  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 button {
+  color: white;
   border: 0;
   border-radius: 4px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",

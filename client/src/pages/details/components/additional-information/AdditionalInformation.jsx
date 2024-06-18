@@ -1,4 +1,4 @@
-import "./style.css";
+import "./additionalInformation.css";
 
 const AdditionalInformation = ({ titleData }) => {
   return (

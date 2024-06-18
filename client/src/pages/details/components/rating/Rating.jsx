@@ -1,4 +1,4 @@
-import "./style.css";
+import "./rating.css";
 
 const Rating = ({ name }) => {
   if (name === "overall rating") {

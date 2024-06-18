@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+body {
+  color: white;
+}
+
 .container {
   display: flex;
   margin-left: 100px;
@@ -61,3 +65,4 @@ h1 {
 .top-container {
   display: flex;
 }
+

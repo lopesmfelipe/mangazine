@@ -43,7 +43,7 @@ const Details = () => {
         </div>
         <div className="information1">
           <div className="top-container">
-            <div>
+            <div> 
               <h1>{titleData.name} </h1>
             </div>
             <Rating name="overall rating" />

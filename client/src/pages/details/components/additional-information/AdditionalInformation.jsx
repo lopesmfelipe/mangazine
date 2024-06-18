@@ -10,20 +10,20 @@ const AdditionalInformation = ({ titleData }) => {
       </div>
       <div className="minibox">
         <p className="field">Chapters</p>
-        <p>{titleData.chapters}</p>
+        <p className="data">{titleData.chapters}</p>
       </div>
       <div className="minibox">
         <p className="field">Status</p>
-        <p>{titleData.status}</p>
+        <p className="data">{titleData.status}</p>
       </div>
       <div className="minibox">
         <p className="field">Type</p>
-        <p>{titleData.type}</p>
+        <p className="data">{titleData.type}</p>
       </div>
 
       <div className="minibox">
         <p className="field">Published by</p>
-        <p>{titleData.publishedBy}</p>
+        <p className="data">{titleData.publishedBy}</p>
       </div>
     </div>
   );

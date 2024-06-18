@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./elementCard.css";
 
 const ElementCard = ({ element }) => {
+  const navigate = useNavigate();
+
+  const navigateToDetails = (name) => {
+    navigate(`/details/${name}`);
+  };
+
   return (
     <div className="content-container">
       <div className="cover-container">
@@ -19,20 +26,18 @@ const ElementCard = ({ element }) => {
 
         <div className="rating">
           <div className="test">
-          <div>
-            <i className="fa-solid fa-star fa-2xs"></i>
-          </div>
-          <div>
-            <p>8.0</p>
-          </div>
-
-
+            <div>
+              <i className="fa-solid fa-star fa-2xs"></i>
+            </div>
+            <div>
+              <p>8.0</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="button-container">
-        <button>Details</button>
+        <button onClick={() => navigateToDetails(element.name)}>Details</button>
       </div>
     </div>
   );

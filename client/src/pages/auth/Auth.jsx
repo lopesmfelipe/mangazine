@@ -20,7 +20,6 @@ export const Auth = () => {
       <SignedIn>
         <div className="test">
           <UserButton />
-
         </div>
         <Navigate to="/home" />
       </SignedIn>

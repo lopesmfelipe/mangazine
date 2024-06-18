@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../styles/general.css";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 import { SignedIn, UserButton } from "@clerk/clerk-react";

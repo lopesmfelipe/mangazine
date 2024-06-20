@@ -23,6 +23,6 @@ app.use(express.static(`${__dirname}/public`));
 app.use('/api/v1/titles', titleRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/rating', ratingRouter);
-app.use('/api/v1', listRouter);
+app.use('/api/v1/lists', listRouter);
 
 module.exports = app;

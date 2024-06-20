@@ -21,16 +21,25 @@ exports.getAllLists = async (req, res) => {
   }
 };
 
+exports.getListById = async (req, res) => {
+  try {
+    const list = await List.findById(req.params.id);
+    res.status(200).json({
+      status: 'sucess'
+    })
+  }
+}
+
 // CREATE LIST
 exports.createList = async (req, res) => {
   try {
     const {name, titles} = req.body;
-    const clerkUserId = req.user.id;
+    const userId = req.body.userId;
 
     const newList = await List.create({
       name,
       titles,
-      clerkUserId
+      userId
     });
     res.status(201).json({
       status: 'success',
@@ -41,8 +50,8 @@ exports.createList = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: err.messa,
+      message: err.message,
     });
-    console.log(err);
+    console.log('Error creating list', err);
   }
 };

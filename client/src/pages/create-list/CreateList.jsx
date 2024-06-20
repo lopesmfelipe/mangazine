@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 
 const CreateList = () => {
@@ -11,14 +11,23 @@ const CreateList = () => {
 
   const [isUploading, setIsUploading] = useState(false);
 
+  useEffect(() => {
+    if (user) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        userId: user.id,
+      }));
+    }
+  }, [user]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === "titles") {
       const titles = value.split(",");
-      setFormData({ ...formData, titles: titles });
+      setFormData((prevFormData) => ({ ...prevFormData, titles: titles }));
     } else {
-      setFormData({ ...formData, [name]: value });
+      setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     }
   };
 
@@ -26,8 +35,11 @@ const CreateList = () => {
     e.preventDefault();
     setIsUploading(true);
 
+    console.log("FormData being sent: ", formData);
+
+
     try {
-      const response = await fetch("sldkfsadf", {
+      const response = await fetch("http://localhost:2000/api/v1/lists/create-list", {  
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,9 +59,12 @@ const CreateList = () => {
     console.log("FormData sent: ", formData);
 
     setFormData({
+      userId: user.id,
       name: "",
       titles: [],
     });
+
+    setIsUploading(false);
   };
 
   return (

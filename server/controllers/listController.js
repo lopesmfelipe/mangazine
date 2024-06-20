@@ -5,7 +5,7 @@ exports.getAllLists = async (req, res) => {
     const userId = req.params.userId;
 
     const lists = await List.find({ clerkUserId: userId });
-
+    
     res.status(200).json({
       status: 'success',
       result: lists.length,

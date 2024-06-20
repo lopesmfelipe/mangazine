@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 
 const CreateList = () => {
+  const { user } = useUser();
   const [formData, setFormData] = useState({
     userId: user?.id ?? "",
     name: "",
@@ -9,8 +10,6 @@ const CreateList = () => {
   });
 
   const [isUploading, setIsUploading] = useState(false);
-
-  const { user } = useUser();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

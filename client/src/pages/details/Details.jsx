@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./details.css";
 import AdditionalInformation from "./components/additional-information/AdditionalInformation";
 import Rating from "./components/rating/Rating";
+import AddToReadlist from "./components/add-to-readlist/AddToReadlist";
 
 const Details = () => {
   const { searchedName } = useParams();
@@ -52,6 +53,7 @@ const Details = () => {
           <div className="description-container">
             <p>{titleData.description}</p>
           </div>
+          <div>
           <div className="minibox">
             <h3 className="field">Author</h3>
             <h3> {titleData.author} </h3>
@@ -59,6 +61,9 @@ const Details = () => {
           <div className="minibox">
             <h3 className="field">Released </h3>
             <h3>{titleData.releaseYear}</h3>
+          </div>
+        <AddToReadlist />
+
           </div>
         </div>
       </div>

@@ -10,14 +10,14 @@ import List from "./pages/list/List.jsx";
 import Home from "./pages/home/Home.jsx";
 import Details from "./pages/details/Details.jsx";
 import CreateList from "./pages/create-list/CreateList.jsx";
-import AddToReadlist from "./pages/details/components/add-to-readlist/AddToReadlist.jsx";
+import ButtonReadlist from "./pages/details/components/button-readlist/ButtonReadlist.jsx";
 
 function App() {
   return (
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/button" element={<AddToReadlist />} />
+          <Route path="/button" element={<ButtonReadlist />} />
 
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />

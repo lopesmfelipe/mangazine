@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-body {
-  color: white;
-}
+
 
 .container {
   display: flex;
   margin-left: 100px;
   margin-top: 40px;
   font-family: "Raleway", sans-serif;
+  color: white;
 }
 
 .cover {
@@ -51,6 +50,15 @@ h1 {
   line-height: 1.5 
 }
 
+.author-released-button {
+  display: flex;
+}
+
+.addition-button {
+  margin-left: 350px;
+  margin-top: 10px;
+}
+
 .information1 h3 {
   font-family: "Raleway", sans-serif;
   font-size: 16px;
@@ -66,3 +74,6 @@ h1 {
   display: flex;
 }
 
+.field {
+  color: rgb(229, 0, 69);
+}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdditionalInformation from "./components/additional-information/AdditionalInformation";
 import Rating from "./components/rating/Rating";
-import AddToReadlist from "./components/add-to-readlist/AddToReadlist";
+import ButtonReadlist from "./components/button-readlist/ButtonReadlist";
 
 const Details = () => {
   const { searchedName } = useParams();
@@ -53,17 +53,20 @@ const Details = () => {
           <div className={classes["description-container"]}>
             <p>{titleData.description}</p>
           </div>
-          <div>
-          <div className={classes.minibox}>
-            <h3 className={classes.field}>Author</h3>
-            <h3> {titleData.author} </h3>
-          </div>
-          <div className={classes.minibox}>
-            <h3 className={classes.field}>Released </h3>
-            <h3>{titleData.releaseYear}</h3>
-          </div>
-        <AddToReadlist />
-
+          <div className={classes["author-released-button"]}>
+            <div>
+              <div className={classes.minibox}>
+                <h3 className={classes.field}>Author</h3>
+                <h3> {titleData.author} </h3>
+              </div>
+              <div className={classes.minibox}>
+                <h3 className={classes.field}>Released </h3>
+                <h3>{titleData.releaseYear}</h3>
+              </div>
+            </div>
+            <div className={classes["addition-button"]}>
+              <ButtonReadlist />
+            </div>
           </div>
         </div>
       </div>

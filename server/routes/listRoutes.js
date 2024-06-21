@@ -4,7 +4,7 @@ const listController = require('../controllers/listController');
 const router = express.Router();
 
 router.route('/user/:userId/lists').get(listController.getAllLists);
-
+router.route('/search/:id').get(listController.getListById);
 router.route('/create-list').post(listController.createList);
 
 

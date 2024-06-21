@@ -5,7 +5,7 @@ exports.getAllLists = async (req, res) => {
     const userId = req.params.userId;
 
     const lists = await List.find({ clerkUserId: userId });
-    
+
     res.status(200).json({
       status: 'success',
       result: lists.length,
@@ -23,23 +23,31 @@ exports.getAllLists = async (req, res) => {
 
 exports.getListById = async (req, res) => {
   try {
-    const list = await List.findById(req.params.id);
+    const list = await List.findById(req.params.id).populate('titles');
     res.status(200).json({
-      status: 'sucess'
-    })
+      status: 'sucess',
+      data: {
+        list,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Unable to find the list',
+    });
   }
-}
+};
 
 // CREATE LIST
 exports.createList = async (req, res) => {
   try {
-    const {name, titles} = req.body;
+    const { name, titles } = req.body;
     const userId = req.body.userId;
 
     const newList = await List.create({
       name,
       titles,
-      userId
+      userId,
     });
     res.status(201).json({
       status: 'success',

@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/list/:searchedList" element={<List />} />
           <Route path="/create-List" element={<CreateList />} />
           <Route path="/add-title" element={<AddTitle />} />
           <Route path="/details/:searchedName" element={<Details />} />

@@ -1,29 +1,29 @@
-import "./additionalInformation.css";
+import classes from "./additionalInformation.module.css";
 
 const AdditionalInformation = ({ titleData }) => {
   return (
-    <div className="information2">
-      <div className="genres">
+    <div className={classes.information2}>
+      <div className={classes.genres}>
         {titleData?.genre?.map((genre, index) => (
           <p key={index}>{genre}</p>
         ))}
       </div>
-      <div className="minibox">
-        <p className="field">Chapters</p>
-        <p className="data">{titleData.chapters}</p>
+      <div className={classes.minibox}>
+        <p className={classes.field}>Chapters</p>
+        <p className={classes.data}>{titleData.chapters}</p>
       </div>
-      <div className="minibox">
-        <p className="field">Status</p>
-        <p className="data">{titleData.status}</p>
+      <div className={classes.minibox}>
+        <p className={classes.field}>Status</p>
+        <p className={classes.data}>{titleData.status}</p>
       </div>
-      <div className="minibox">
-        <p className="field">Type</p>
-        <p className="data">{titleData.type}</p>
+      <div className={classes.minibox}>
+        <p className={classes.field}>Type</p>
+        <p className={classes.data}>{titleData.type}</p>
       </div>
 
-      <div className="minibox">
-        <p className="field">Published by</p>
-        <p className="data">{titleData.publishedBy}</p>
+      <div className={classes.minibox}>
+        <p className={classes.field}>Published by</p>
+        <p className={classes.data}>{titleData.publishedBy}</p>
       </div>
     </div>
   );

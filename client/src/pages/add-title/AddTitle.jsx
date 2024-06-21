@@ -1,5 +1,5 @@
+import classes from "./addTitle.module.css";
 import { useState } from "react";
-import "./addTitle.css";
 import Axios from "axios";
 
 const AddTitle = () => {
@@ -112,7 +112,7 @@ const AddTitle = () => {
   return (
     <div>
       <h2>Add New Title</h2>
-      <div className="form-container">
+      <div className={classes["form-container"]}>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -209,7 +209,7 @@ const AddTitle = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="uploadImage">
+          <div className={classes.uploadImage}>
             <label>Cover:</label>
             <div>
               <input

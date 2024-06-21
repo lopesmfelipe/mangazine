@@ -1,7 +1,7 @@
+import classes from "./list.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "./components/element-card/ElementCard";
-import "./list.css";
 import { useParams } from "react-router-dom";
 
 const List = () => {
@@ -27,7 +27,7 @@ const List = () => {
   }
 
   return (
-    <main className="content-grid">
+    <main className={classes["content-grid"]}>
       {titles.map((element, index) => (
         <ElementCard key={index} element={element} />
       ))}

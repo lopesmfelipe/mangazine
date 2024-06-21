@@ -1,7 +1,7 @@
+import classes from "./details.module.css";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./details.css";
 import AdditionalInformation from "./components/additional-information/AdditionalInformation";
 import Rating from "./components/rating/Rating";
 import AddToReadlist from "./components/add-to-readlist/AddToReadlist";
@@ -38,28 +38,28 @@ const Details = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="cover">
+      <div className={classes.container}>
+        <div className={classes.cover}>
           <img src={titleData.cover} alt="" />
         </div>
-        <div className="information1">
-          <div className="top-container">
+        <div className={classes.information1}>
+          <div className={classes["top-container"]}>
             <div>
               <h1>{titleData.name} </h1>
             </div>
             <Rating name="overall rating" />
             <Rating name="your rating" />
           </div>
-          <div className="description-container">
+          <div className={classes["description-container"]}>
             <p>{titleData.description}</p>
           </div>
           <div>
-          <div className="minibox">
-            <h3 className="field">Author</h3>
+          <div className={classes.minibox}>
+            <h3 className={classes.field}>Author</h3>
             <h3> {titleData.author} </h3>
           </div>
-          <div className="minibox">
-            <h3 className="field">Released </h3>
+          <div className={classes.minibox}>
+            <h3 className={classes.field}>Released </h3>
             <h3>{titleData.releaseYear}</h3>
           </div>
         <AddToReadlist />

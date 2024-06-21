@@ -10,6 +10,9 @@ import {
 import { Navigate } from "react-router-dom";
 
 export const Auth = () => {
+
+  
+
   return (
     <div className={classes["sign-in-container"]}>
       <SignedOut>

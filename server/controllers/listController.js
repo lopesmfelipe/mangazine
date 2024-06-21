@@ -41,8 +41,7 @@ exports.getListById = async (req, res) => {
 // CREATE LIST
 exports.createList = async (req, res) => {
   try {
-    const { name, titles } = req.body;
-    const userId = req.body.userId;
+    const { name, titles, userId } = req.body;
 
     const newList = await List.create({
       name,

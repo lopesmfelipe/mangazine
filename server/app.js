@@ -21,7 +21,7 @@ app.use(express.static(`${__dirname}/public`));
 
 // ROUTES
 app.use('/api/v1/titles', titleRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1/user', userRouter);
 app.use('/api/v1/rating', ratingRouter);
 app.use('/api/v1/lists', listRouter);
 

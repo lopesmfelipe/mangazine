@@ -10,10 +10,10 @@ exports.getAllUsers = (req, res) => {
 // CREATE USER
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, userId } = req.body;
+    const { userName, email, userId } = req.body;
 
     const newUser = await User.create({
-      name,
+      userName,
       email,
       userId,
     });

@@ -12,7 +12,7 @@ const CreateList = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    if (user) { 'a'
+    if (user) {
       setFormData((prevFormData) => ({
         ...prevFormData,
         userId: user.id,
@@ -37,15 +37,17 @@ const CreateList = () => {
 
     console.log("FormData being sent: ", formData);
 
-
     try {
-      const response = await fetch("http://localhost:2000/api/v1/lists/create-list", {  
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://localhost:2000/api/v1/lists/create-list",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         console.log("List created successfully");

@@ -7,10 +7,6 @@ router.route('/').get(userController.getAllUsers);
 
 router.route('/signup').post(userController.createUser);
 
-router
-  .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+router.route('/exists/:id').get(userController.checkUserExists);
 
 module.exports = router;

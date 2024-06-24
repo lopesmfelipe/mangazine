@@ -32,21 +32,15 @@ exports.createUser = async (req, res) => {
   }
 };
 
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
+// CHECK IF A USER EXISTS
+exports.checkUserExists = async (req, res) => {
+  try {
+    const user = await User.findOne({ userId: req.params.id });
+    if (user) {
+      return res.status(200).json({ exists: true });
+    }
+    return res.status(200).json({ exists: false });
+  } catch (err) {
+    return res.status(500).json({ error: err });
+  }
 };

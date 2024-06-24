@@ -12,7 +12,7 @@ const CreateList = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    if (user) {
+    if (user) { 'a'
       setFormData((prevFormData) => ({
         ...prevFormData,
         userId: user.id,

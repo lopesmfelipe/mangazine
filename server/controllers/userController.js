@@ -44,3 +44,35 @@ exports.checkUserExists = async (req, res) => {
     return res.status(500).json({ error: err });
   }
 };
+
+// UPDATE THE THE USER'S READLIST
+exports.updateReadlist = async (req, res, next) => {
+  try {
+    // Check if request body exist
+    if (!req.body) {
+      return res
+        .status(400)
+        .json({ status: 'fail', message: 'No data provided' });
+    }
+
+    // Find and update the user
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    // Check if user was found
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: 'fail', message: 'User not found' });
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: user,
+    });
+  } catch (err) {
+    return res.status(500).json({ status: 'error', message: err });
+  }
+};

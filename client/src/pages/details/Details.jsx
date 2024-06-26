@@ -9,6 +9,7 @@ import ButtonReadlist from "./components/button-readlist/ButtonReadlist";
 const Details = () => {
   const { searchedName } = useParams();
   const [titleData, setTitleData] = useState(null);
+  
 
   useEffect(() => {
     const fetchTitleData = async () => {
@@ -18,7 +19,7 @@ const Details = () => {
         );
         setTitleData(response.data.data.titles[0]);
       } catch (err) {
-        console.error("ERROR ", err);
+        console.error("ERROR", err);
       }
     };
     console.log(searchedName);
@@ -65,7 +66,7 @@ const Details = () => {
               </div>
             </div>
             <div className={classes["addition-button"]}>
-              <ButtonReadlist />
+              <ButtonReadlist id={} />
             </div>
           </div>
         </div>

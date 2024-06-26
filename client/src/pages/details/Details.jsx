@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import AdditionalInformation from "./components/additional-information/AdditionalInformation";
 import Rating from "./components/rating/Rating";
 import ButtonReadlist from "./components/button-readlist/ButtonReadlist";
+import { useUser } from "@clerk/clerk-react";
 
 const Details = () => {
+  const { user } = useUser();
   const { searchedName } = useParams();
   const [titleData, setTitleData] = useState(null);
-  
 
   useEffect(() => {
     const fetchTitleData = async () => {
@@ -24,14 +25,10 @@ const Details = () => {
     };
     console.log(searchedName);
     console.log(titleData);
+    console.log(user._id);
 
     fetchTitleData();
   }, [searchedName]);
-
-  useEffect(() => {
-    console.log(searchedName, "heloo");
-    console.log(titleData, "THIS IS THE DATA");
-  }, [titleData]);
 
   if (!titleData) {
     return <div> Loading...</div>;
@@ -66,7 +63,7 @@ const Details = () => {
               </div>
             </div>
             <div className={classes["addition-button"]}>
-              <ButtonReadlist id={} />
+              <ButtonReadlist titleId={titleData._id} userId={user.id} />
             </div>
           </div>
         </div>

@@ -1,15 +1,28 @@
-import { Axios } from "axios";
+import Axios from "axios";
 import classess from "./buttonReadlist.module.css";
 
-const ButtonReadlist = (id) => {
+const ButtonReadlist = ({ titleId, userId }) => {
+  const handleAddToReadlist = async () => {
+    try {
+      const response = await Axios.patch(
+        `http://localhost:2000/api/v1/user/update-readlist/${userId}`,
+        {
+          titleId: titleId,
+        }
+      );
 
-  const handleAddToReadlist = (id) => {
-    const response = await Axios.patch(`localhost:2000/api/v1/user/update-readlist/${id}`);
-  }
+      console.log("UPDATING READLIST", response);
+    } catch (err) {
+      console.log("ERROR", err);
+    }
+  };
 
   return (
     <div className={classess.container}>
-      <button onClick={handleAddToReadlist} className={classess["add-to-readlist-1"]}>
+      <button
+        onClick={handleAddToReadlist}
+        className={classess["add-to-readlist-1"]}
+      >
         <div>
           <i className="fa-solid fa-plus"></i>
           Add to Readlist

@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const List = require('../models/listModel');
 
 exports.getAllUsers = (req, res) => {
   res.status(500).json({
@@ -48,30 +49,29 @@ exports.checkUserExists = async (req, res) => {
 // UPDATE THE THE USER'S READLIST
 exports.updateReadlist = async (req, res, next) => {
   try {
-    // Check if request body exist
-    if (!req.body) {
-      return res
-        .status(400)
-        .json({ status: 'fail', message: 'No data provided' });
-    }
+    const { titleId } = req.body;
+    const { id } = req.params.id;
 
-    // Find and update the user
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const user = await User.findOne({ userId: id });
 
-    // Check if user was found
     if (!user) {
-      return res
-        .status(404)
-        .json({ status: 'fail', message: 'User not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json({
-      status: 'success',
-      data: user,
-    });
+    const readList = await List.findById(user.readList);
+
+    if (!readList) {
+      return res.status(404).json({ message: 'Readlist not found' });
+    }
+
+    if (!readList.titles.include(titleId)) {
+      readList.titles.push(titleId);
+      await readList.save();
+    }
+
+    res
+      .status(200)
+      .json({ message: 'Read list updated successfully', readList });
   } catch (err) {
     return res.status(500).json({ status: 'error', message: err });
   }

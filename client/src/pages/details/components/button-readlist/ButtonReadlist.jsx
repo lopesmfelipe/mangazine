@@ -15,9 +15,13 @@ const ButtonReadlist = ({ titleId }) => {
         }
       );
 
-      console.log("UPDATING READLIST", response);
+      if (response.status === 200) {
+        console.log("READLIST UPDATED SUCCESSFULLY", response);
+      } else {
+        console.log("FAIL TO UPDATE READLIST", response);
+      }
     } catch (err) {
-      console.log("ERROR UPDATING READLIST", err);
+      console.log("ERROR TRYING TO SEND THE REQUEST ", err);
     }
   };
 

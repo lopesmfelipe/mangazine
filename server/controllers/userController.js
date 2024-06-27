@@ -1,5 +1,4 @@
 const User = require('../models/userModel');
-const List = require('../models/listModel');
 
 exports.getAllUsers = (req, res) => {
   res.status(500).json({
@@ -48,31 +47,27 @@ exports.checkUserExists = async (req, res) => {
 
 // UPDATE THE THE USER'S READLIST
 exports.updateReadlist = async (req, res, next) => {
+  console.log(req.body);
   try {
-    const { titleId } = req.body;
-    const { id } = req.params.id;
+    const { titleId, userId } = req.body;
 
-    const user = await User.findOne({ userId: id });
+    const user = await User.findOne({ userId: userId });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const readList = await List.findById(user.readList);
-
-    if (!readList) {
-      return res.status(404).json({ message: 'Readlist not found' });
+    if (!user.readList.includes(titleId)) {
+      user.readList.push(titleId);
+      await user.save();
     }
 
-    if (!readList.titles.include(titleId)) {
-      readList.titles.push(titleId);
-      await readList.save();
-    }
-
-    res
-      .status(200)
-      .json({ message: 'Read list updated successfully', readList });
+    res.status(200).json({
+      message: 'Readlist updated successfully',
+      readList: user.readList,
+    });
   } catch (err) {
-    return res.status(500).json({ status: 'error', message: err });
+    console.error('ERROR', err);
+    return res.status(500).json({ status: 'Server error', message: err });
   }
 };

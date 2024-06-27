@@ -1,19 +1,23 @@
+import { useUser } from "@clerk/clerk-react";
 import Axios from "axios";
 import classess from "./buttonReadlist.module.css";
 
-const ButtonReadlist = ({ titleId, userId }) => {
+const ButtonReadlist = ({ titleId }) => {
+  const { user } = useUser();
+
   const handleAddToReadlist = async () => {
     try {
       const response = await Axios.patch(
-        `http://localhost:2000/api/v1/user/update-readlist/${userId}`,
+        `http://localhost:2000/api/v1/user/update-readlist`,
         {
           titleId: titleId,
+          userId: user.id,
         }
       );
 
       console.log("UPDATING READLIST", response);
     } catch (err) {
-      console.log("ERROR", err);
+      console.log("ERROR UPDATING READLIST", err);
     }
   };
 

@@ -2,9 +2,9 @@ const List = require('../models/listModel');
 
 exports.getAllLists = async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const { userId } = req.body;
 
-    const lists = await List.find({ clerkUserId: userId });
+    const lists = await List.find({ userId: userId });
 
     res.status(200).json({
       status: 'success',

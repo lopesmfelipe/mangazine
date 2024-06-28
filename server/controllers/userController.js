@@ -1,11 +1,10 @@
 const User = require('../models/userModel');
 
-exports.getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
+exports.getLists = (req, res) => {
+  
+  
+}
+
 
 // CREATE USER
 exports.createUser = async (req, res) => {
@@ -68,6 +67,7 @@ exports.updateReadlist = async (req, res, next) => {
     });
   } catch (err) {
     console.error('ERROR', err);
+
     return res.status(500).json({ status: 'Server error', message: err });
   }
 };

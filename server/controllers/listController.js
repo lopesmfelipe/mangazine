@@ -1,6 +1,6 @@
 const List = require('../models/listModel');
 
-exports.getAllLists = async (req, res) => {
+/* exports.getAllLists = async (req, res) => {
   try {
     const { userId } = req.body;
 
@@ -19,7 +19,7 @@ exports.getAllLists = async (req, res) => {
       message: err,
     });
   }
-};
+}; */
 
 exports.getListById = async (req, res) => {
   try {

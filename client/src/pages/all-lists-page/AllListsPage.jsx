@@ -8,7 +8,7 @@ const AllListsPage = ({ userId }) => {
   useEffect(() => {
     const fetchLists = async () => {
       try {
-        const response = await axios.get("http://localhost:200");
+        const response = await axios.get("http://localhost:2000");
         setLists(response.data.data.lists);
       } catch (err) {
         console.error("Error fetching lists: ", err);

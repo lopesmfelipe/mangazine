@@ -1,10 +1,33 @@
 const User = require('../models/userModel');
 
-exports.getLists = (req, res) => {
-  
-  
-}
+exports.getLists = async (req, res) => {
+  try {
+    // Retrieve the userId from the request
+    const { userId } = req.body;
 
+    // Find the user by userId and populate the lists field
+    const user = await User.findOne({ userId }).populate('lists');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Extract the lists from the user object
+    const lists = user.lists;
+
+    // Return the lists
+    return res.status(200).json({
+      status: 'success',
+      result: lists.length,
+      data: {
+        lists,
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
 
 // CREATE USER
 exports.createUser = async (req, res) => {

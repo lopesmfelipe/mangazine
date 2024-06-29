@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 exports.getLists = async (req, res) => {
   try {
     // Retrieve the userId from the request
-    const { userId } = req.body;
+    const { userId } = req.query;
 
     // Find the user by userId and populate the lists field
     const user = await User.findOne({ userId }).populate('lists');

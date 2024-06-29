@@ -7,13 +7,13 @@ const Home = () => {
   const { user } = useUser();
   let navigate = useNavigate();
   const [searchedName, setSearchedName] = useState("");
-  console.log("COMPONENT RENDERED")
-  
+  console.log("COMPONENT RENDERED");
+
   useEffect(() => {
-    console.log("COMPONENT RENDERED")
+    console.log("COMPONENT RENDERED");
     if (user) {
       const checkAndCreateUser = async () => {
-        try { 
+        try {
           const checkUserResponse = await fetch(
             `http://localhost:2000/api/v1/user/exists/${user.id}`
           );
@@ -54,7 +54,6 @@ const Home = () => {
       checkAndCreateUser();
     }
   }, [user]);
-
 
   const handlekeyPress = (event) => {
     if (event.key === "Enter") {

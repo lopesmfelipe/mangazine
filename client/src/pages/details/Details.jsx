@@ -1,4 +1,4 @@
-  import classes from "./details.module.css";
+  import classes from "./style.module.css";
   import Axios from "axios";
   import { useEffect, useState } from "react";
   import { useParams } from "react-router-dom";

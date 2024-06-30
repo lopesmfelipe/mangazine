@@ -1,4 +1,4 @@
-import classes from "./allListsPage.module.css";
+import classes from "./style.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

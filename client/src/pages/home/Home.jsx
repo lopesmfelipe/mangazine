@@ -1,4 +1,4 @@
-import classes from "./home.module.css";
+import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";

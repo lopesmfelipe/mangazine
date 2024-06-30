@@ -1,4 +1,4 @@
-import classes from "./elementCard.module.css";
+import classes from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 
 const ElementCard = ({ element }) => {

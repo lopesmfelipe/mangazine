@@ -1,27 +1,7 @@
 const User = require('../models/userModel');
 const List = require('../models/listModel');
 
-/* exports.getAllLists = async (req, res) => {
-  try {
-    const { userId } = req.body;
-
-    const lists = await List.find({ userId: userId });
-
-    res.status(200).json({
-      status: 'success',
-      result: lists.length,
-      data: {
-        lists,
-      },
-    });
-  } catch (err) {
-    res.staus(400).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-}; */
-
+// GET LIST BY ID
 exports.getListById = async (req, res) => {
   try {
     const list = await List.findById(req.params.id).populate('titles');

@@ -1,4 +1,4 @@
-import classes from "./listContentPage.module.css";
+import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "./components/element-card/ElementCard";

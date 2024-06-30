@@ -1,4 +1,4 @@
-import classes from "./auth.module.css";
+import classes from "./style.module.css";
 import {
   SignedIn,
   SignedOut,

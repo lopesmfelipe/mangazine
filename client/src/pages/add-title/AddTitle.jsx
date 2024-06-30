@@ -1,4 +1,4 @@
-import classes from "./addTitle.module.css";
+import classes from "./style.module.css";
 import { useState } from "react";
 import Axios from "axios";
 

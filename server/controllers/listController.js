@@ -1,3 +1,4 @@
+const User = require('../models/userModel');
 const List = require('../models/listModel');
 
 /* exports.getAllLists = async (req, res) => {
@@ -48,6 +49,13 @@ exports.createList = async (req, res) => {
       titles,
       userId,
     });
+
+    await User.findOneAndUpdate(
+      { userId },
+      { $push: { lists: newList._id } },
+      { new: true, useFindAndModify: false },
+    );
+
     res.status(201).json({
       status: 'success',
       data: {

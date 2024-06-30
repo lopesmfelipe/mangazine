@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 exports.getLists = async (req, res) => {
   try {
     // Retrieve the userId from the request
-    const { userId } = req.query;
+    const userId = req.params.id;
 
     // Find the user by userId and populate the lists field
     const user = await User.findOne({ userId }).populate('lists');
@@ -13,15 +13,15 @@ exports.getLists = async (req, res) => {
     }
 
     // Extract the lists from the user object
-    const lists = user.lists;
+    const { lists } = user;
+
+    console.log("Fetched lists: ", lists);
 
     // Return the lists
     return res.status(200).json({
       status: 'success',
       result: lists.length,
-      data: {
-        lists,
-      },
+      data: { lists },
     });
   } catch (err) {
     console.error(err);

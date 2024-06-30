@@ -7,23 +7,21 @@ import { useUser } from "@clerk/clerk-react";
 const AllListsPage = () => {
   const { user } = useUser();
   const [lists, setLists] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLists = async () => {
       if (!user || !user.id) {
+        setLoading(false);
         return;
       }
-      
+
       try {
         const response = await axios.get(
-          "http://localhost:2000/api/v1/user/lists",
-          {
-            params: {
-              userId: user.id,
-            },
-          }
+          `http://localhost:2000/api/v1/user/lists/${user.id}`
         );
         setLists(response.data.data.lists);
+        console.log(lists);
       } catch (err) {
         console.error("Error fetching lists: ", err);
       }
@@ -32,20 +30,22 @@ const AllListsPage = () => {
     fetchLists();
   }, [user]);
 
-  if (!user || !user.id) {
-    return <div className={classes.container}>Loading...</div>
+  if (loading) {
+    return <div className={classes.container}>Loading...</div>;
   }
 
   return (
     <div className={classes.container}>
       <h1>Your Lists</h1>
-      <ul>
+      <div>
         {lists.map((list) => (
-          <li key={list._id}>
-            hellow
-          </li>
+          <>
+            <div key={list._id}>{list.name}</div>
+            <div>hello, those are the lists: {list.name}</div>
+          </>
         ))}
-      </ul>
+      </div>
+      <div>hello, those are the lists:</div>
     </div>
   );
 };

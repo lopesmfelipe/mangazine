@@ -11,6 +11,6 @@ router.route('/exists/:id').get(userController.checkUserExists);
 
 router.route('/update-readlist').patch(userController.updateReadlist);
 
-router.route('/lists').get(userController.getLists);
+router.route('/lists/:id').get(userController.getLists);
 
 module.exports = router;

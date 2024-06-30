@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
-const listSchema = new mongoose.Schema({
-  name: String,
-  titles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Title' }], // Array of strings representing titles
-  userId: String, // Store Clerk user ID
-});
+const listSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    titles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Title' }], // Array of strings representing titles
+    userId: { type: String, required: true }, // Store Clerk user ID
+  },
+  { timestamps: true },
+);
 
 const List = mongoose.model('List', listSchema);
 

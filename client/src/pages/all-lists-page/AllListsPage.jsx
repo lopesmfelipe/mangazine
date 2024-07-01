@@ -35,17 +35,21 @@ const AllListsPage = () => {
   }
 
   return (
-    <div className={classes.page}>
-      <h1>Your Lists</h1>
-      <div className={classes.container}>
-        {lists.map((list) => (
-          <>
-            <div key={list._id}>
-              <h3 className={classes.listName}>{list.name}</h3>
-            </div>
-            <div>{list.titles.length} titles </div>
-          </>
-        ))}
+    <div className={classes.cont}>
+      <div className={classes.header}>
+        <h1>Your Lists</h1>
+      </div>
+      <div className={classes.page}>
+         <div className={classes.container}>
+          {lists.map((list) => (
+            <>
+              <div key={list._id}>
+                <h3 className={classes.listName}>{list.name}</h3>
+              </div>
+              <div>{list.titles.length} titles </div>
+            </>
+          ))}
+        </div> 
       </div>
     </div>
   );

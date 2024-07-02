@@ -62,15 +62,13 @@ const Home = () => {
   };
 
   return (
-    <>
-      <header>
+    <div className={classes.homeBody}>
         <div className={classes.menu}>
           <button>Readlist</button>
           <SignedIn>
             <UserButton />
           </SignedIn>
         </div>
-      </header>
       <main>
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>
@@ -85,7 +83,7 @@ const Home = () => {
           />
         </div>
       </main>
-    </>
+    </div>
   );
 };
 

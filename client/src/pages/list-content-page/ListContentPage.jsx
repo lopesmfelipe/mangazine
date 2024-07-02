@@ -28,11 +28,13 @@ const ListContentPage = ({ listId }) => {
   }
 
   return (
-    <main className={classes["content-grid"]}>
-      {items.map((element, index) => (
-        <ElementCard key={index} element={element} />
-      ))}
-    </main>
+    <div className={classes.listBody}>
+      <main className={classes["content-grid"]}>
+        {items.map((element, index) => (
+          <ElementCard key={index} element={element} />
+        ))}
+      </main>
+    </div>
   );
 };
 

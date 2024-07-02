@@ -11,6 +11,7 @@ import AllListsPage from "./pages/all-lists-page/AllListsPage.jsx";
 import Home from "./pages/home/Home.jsx";
 import Details from "./pages/details/Details.jsx";
 import CreateList from "./pages/create-list/CreateList.jsx";
+import "./general.css";
 
 function App() {
   return (

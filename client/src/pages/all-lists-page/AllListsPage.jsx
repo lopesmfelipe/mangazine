@@ -36,17 +36,22 @@ const AllListsPage = () => {
 
   return (
     <div className={classes.allListsBody}>
+      <div className={classes.topMenu}>
+        <p>Menu</p>
+      </div>
       <div className={classes.header}>
         <h1>Your Lists</h1>
       </div>
-      <div className={classes.box}>
-        {lists.map((list) => (
-          <>
-            <div key={list._id}>
-              <h3 className={classes.listName}>{list.name}</h3>
+      <div className={classes.boxContainer}>
+        {lists.map((list, index) => (
+          <Link to={`/list/${list._id}`} key={index}>
+            <div className={classes.box}>
+              <div>
+                <h3 className={classes.listName}>{list.name}</h3>
+              </div>
+              <div>{list.titles.length} titles </div>
             </div>
-            <div>{list.titles.length} titles </div>
-          </>
+          </Link>
         ))}
       </div>
     </div>

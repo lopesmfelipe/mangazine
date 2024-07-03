@@ -1,4 +1,4 @@
-import classes from "./additionalInformation.module.css";
+import classes from "./style.module.css";
 
 const AdditionalInformation = ({ titleData }) => {
   return (

@@ -2,3 +2,28 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* General scrollbar styles for WebKit browsers */
+::-webkit-scrollbar {
+  width: 15px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Roundness of the scrollbar thumb */
+  border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+/* General scrollbar styles for Firefox */
+* {
+  scrollbar-width: thin; /* Scrollbar width */
+  scrollbar-color: #f4006e rgb(27, 27, 28); /* Scrollbar thumb color and track color */
+}

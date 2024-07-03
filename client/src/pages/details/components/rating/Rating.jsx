@@ -1,4 +1,4 @@
-import classes from "./rating.module.css";
+import classes from "./style.module.css";
 
 const Rating = ({ name }) => {
   if (name === "overall rating") {

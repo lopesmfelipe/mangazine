@@ -5,6 +5,13 @@ const List = require('../models/listModel');
 exports.getListById = async (req, res) => {
   try {
     const list = await List.findById(req.params.id).populate('titles');
+    if (!list) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'List not found',
+      });
+    }
+
     res.status(200).json({
       status: 'sucess',
       data: {

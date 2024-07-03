@@ -30,7 +30,7 @@
     }
 
     return (
-      <>
+      <div className={classes.detailsBody}>
         <div className={classes.container}>
           <div className={classes.cover}>
             <img src={titleData.cover} alt="" />
@@ -64,7 +64,7 @@
           </div>
         </div>
         <AdditionalInformation titleData={titleData} />
-      </>
+      </div>
     );
   };
 

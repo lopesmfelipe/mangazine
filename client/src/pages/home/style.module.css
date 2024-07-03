@@ -16,6 +16,7 @@
   justify-content: right;
   align-items: center;
   color: rgb(255, 255, 255);
+  margin-top: 20px;
 }
 
 .menu button {
@@ -44,8 +45,7 @@ main {
   margin-top: 90px;
 }
 
-main h1,
-main h2 {
+main h1, h2 {
   margin: 0;
   padding: 0;
   text-align: center;
@@ -57,22 +57,24 @@ main h2 {
   display: flex;
 }
 
-.searchbar-container input {
-  font-family: "Bebas Neue";
-  font-size: 17px;
-  padding-left: 30px;
-  margin-top: 50px;
-}
 
 .searchbar {
   color: black;
+  font-size: 17px;
+  font-family: "Bebas Neue";
   width: 500px;
   height: 40px;
+  margin-top: 50px;
+  padding-left: 30px;
   border-radius: 20px;
   border: 0;
   background-color: white;
+  outline: none;
 }
 
 .searchbar:hover {
-  outline-color: blue;
+  border: solid 2.5px rgb(255, 0, 98);
+  height: 36.5px;
+  width: 496.5px;
+  padding-left: 26.5px;
 }

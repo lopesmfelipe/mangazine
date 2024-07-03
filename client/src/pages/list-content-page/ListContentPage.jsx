@@ -2,8 +2,10 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "./components/element-card/ElementCard";
+import { useParams } from "react-router-dom";
 
-const ListContentPage = ({ listId }) => {
+const ListContentPage = () => {
+  const { searchedList } = useParams(); // Get listId from URL
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
 
@@ -12,7 +14,7 @@ const ListContentPage = ({ listId }) => {
     const fetchItems = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:2000/api/v1/lists/${listId}`
+          `http://localhost:2000/api/v1/lists/${searchedList}`
         );
         setItems(response.data.data.list.titles);
       } catch (err) {

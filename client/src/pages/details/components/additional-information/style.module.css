@@ -13,7 +13,7 @@
   border-bottom: solid 1px;
   padding: 10px 10px;
   align-items: center;
-  border-color: rgb(244, 0, 85);
+  border-color: white;
 }
 
 .genres {
@@ -38,7 +38,7 @@
 .field {
   color: rgb(244, 0, 85);
   font-family: "Raleway", sans-serif;
-  
+  font-weight: bolder;
 }
 
 .minibox {

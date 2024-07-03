@@ -10,7 +10,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
+.name {
+  font-size: 40px;
+  color: rgb(255, 0, 98);
+  display: flex;
+  font-family: fantasy;
+  font-weight: lighter;
+}
+
+
+
 
 .content-grid {
   display: grid;

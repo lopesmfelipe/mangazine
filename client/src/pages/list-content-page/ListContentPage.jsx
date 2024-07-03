@@ -31,6 +31,13 @@ const ListContentPage = () => {
 
   return (
     <div className={classes.listBody}>
+      <header className={classes.header}>
+        <div>
+        <h1 className={classes.name}>MANGAZINE</h1>
+        </div>
+        <img src="" alt="" />
+
+      </header>
       <main className={classes["content-grid"]}>
         {items.map((element, index) => (
           <ElementCard key={index} element={element} />

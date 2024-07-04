@@ -2,7 +2,7 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "./components/element-card/ElementCard";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ListContentPage = () => {
   const { searchedList } = useParams(); // Get listId from URL
@@ -31,14 +31,28 @@ const ListContentPage = () => {
 
   return (
     <div className={classes.listBody}>
-      <header className={classes.header}>
-        <div>
-        <h1 className={classes.name}>MANGAZINE</h1>
-        </div>
-        <img src="" alt="" />
 
-      </header>
-      <main className={classes["content-grid"]}>
+
+
+      <div className={classes.headerContainer}>
+        <div className={classes.header}>
+          <p>MANGAZINE</p>
+
+          <div className={classes.links}>
+            <Link to="" className={classes.link}>
+              HOME
+            </Link>
+            <Link to="" className={classes.link}>
+              READLIST
+            </Link>
+            <Link to="" className={classes.link}>
+              LISTS
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <main className={classes.contentGrid}>
         {items.map((element, index) => (
           <ElementCard key={index} element={element} />
         ))}

@@ -1,4 +1,26 @@
+const { default: Readlist } = require('../../client/src/pages/readlist/Readlist');
 const User = require('../models/userModel');
+
+exports.getReadlist = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    const user = await User.findOne({ userId });
+
+    if (!user) {
+      return res.status(404).json({message: 'User not foun' });
+    }
+
+    const { readList } = user;
+    
+    console.log("Fetched Readlist: ", readList);
+
+    res.status()
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ message: 'Server Error'})
+  }
+}
 
 exports.getLists = async (req, res) => {
   try {

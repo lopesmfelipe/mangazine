@@ -7,13 +7,11 @@ import { useUser } from "@clerk/clerk-react";
 const AllListsPage = () => {
   const { user } = useUser();
   const [lists, setLists] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLists = async () => {
       if (!user || !user.id) {
-        setLoading(false);
-        return;
+        return <div>No user</div>;
       }
 
       try {
@@ -36,9 +34,6 @@ const AllListsPage = () => {
     };
   }, [user]);
 
-  if (loading) {
-    return <div className={classes.container}>Loading...</div>;
-  }
 
   return (
     <div className={classes.allListsBody}>

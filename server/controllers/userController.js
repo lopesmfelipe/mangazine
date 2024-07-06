@@ -6,7 +6,7 @@ exports.getReadlist = async (req, res) => {
     const user = await User.findOne({ userId }).populate('readList');
 
     if (!user) {
-      return res.status(404).json({ message: 'User not foun' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
     const { readList } = user;

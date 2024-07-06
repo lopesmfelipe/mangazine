@@ -44,7 +44,9 @@ const Readlist = () => {
     <div className={classes.container}>
       <div className={classes.headerContainer}>
         <div className={classes.header}>
-          <p>MANGAZINE</p>
+          <div className={classes.titleContainer}>
+            <p>MANGAZINE</p>
+          </div>
 
           <div className={classes.links}>
             <Link to="/home" className={classes.link}>

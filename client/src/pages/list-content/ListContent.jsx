@@ -4,7 +4,7 @@ import axios from "axios";
 import ElementCard from "../../components/element-card/ElementCard";
 import { Link, useParams } from "react-router-dom";
 
-const ListContentPage = () => {
+const ListContent = () => {
   const { searchedList } = useParams(); // Get listId from URL
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
@@ -68,4 +68,4 @@ const ListContentPage = () => {
   );
 };
 
-export default ListContentPage;
+export default ListContent;

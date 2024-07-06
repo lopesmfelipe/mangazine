@@ -11,27 +11,16 @@
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-.listBody {
-  background-color: rgb(27, 27, 28);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: max-content;
-  margin: 0;
-  padding: 0;
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
+
 .headerContainer {
-  position: absolute;
+  padding-right: 21px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -69,10 +58,21 @@
 .link:hover {
   color: rgb(247, 0, 70);
 }
+
+.listName {
+  color: white;
+  font-size: 60px;
+  font-family: "Audiowide", sans-serif;
+  margin-top: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .contentGrid {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   column-gap: 5px;
   row-gap: 1px;
-  margin-top: 1260px;
 }

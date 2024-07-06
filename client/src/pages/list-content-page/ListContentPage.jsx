@@ -8,6 +8,7 @@ const ListContentPage = () => {
   const { searchedList } = useParams(); // Get listId from URL
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
+  const [list, setList] = useState({});
 
   useEffect(() => {
     // FETCH ITEMS FROM THE LIST
@@ -16,6 +17,7 @@ const ListContentPage = () => {
         const response = await axios.get(
           `http://localhost:2000/api/v1/lists/${searchedList}`
         );
+        setList(response.data.data.list);
         setItems(response.data.data.list.titles);
       } catch (err) {
         console.error(`Failed to fetch list items. Error message: ${err}`);
@@ -23,6 +25,12 @@ const ListContentPage = () => {
       }
     };
     fetchItems();
+
+    document.body.classList.add(classes.bodyStyle);
+
+    return () => {
+      document.body.classList.remove(classes.bodyStyle);
+    };
   }, []); // Empty dependency array ensures the effect runs only once
 
   if (error) {
@@ -30,26 +38,25 @@ const ListContentPage = () => {
   }
 
   return (
-    <div className={classes.listBody}>
-
-
-
+    <div className={classes.container}>
       <div className={classes.headerContainer}>
         <div className={classes.header}>
           <p>MANGAZINE</p>
 
           <div className={classes.links}>
-            <Link to="" className={classes.link}>
+            <Link to="/home" className={classes.link}>
               HOME
             </Link>
             <Link to="" className={classes.link}>
               READLIST
             </Link>
-            <Link to="" className={classes.link}>
+            <Link to="/lists" className={classes.link}>
               LISTS
             </Link>
           </div>
         </div>
+
+        <div className={classes.listName}>{list.name}</div>
       </div>
 
       <main className={classes.contentGrid}>

@@ -28,6 +28,12 @@ const AllListsPage = () => {
     };
 
     fetchLists();
+
+    document.body.classList.add(classes.bodyStyle);
+
+    return () => {
+      document.body.classList.remove(classes.bodyStyle);
+    };
   }, [user]);
 
   if (loading) {
@@ -37,19 +43,28 @@ const AllListsPage = () => {
   return (
     <div className={classes.allListsBody}>
       <div className={classes.topMenu}>
-        <p>Menu</p>
+        <div className={classes.y}>
+          <Link to="/home" className={classes.menuItem}>
+            <p>Home</p>
+          </Link>
+          <Link to="/read-list" className={classes.menuItem}>
+            <p>Readlist</p>
+          </Link>
+        </div>
       </div>
       <div className={classes.header}>
         <h1>Your Lists</h1>
       </div>
       <div className={classes.boxContainer}>
         {lists.map((list, index) => (
-          <Link to={`/list/${list._id}`} key={index}>
+          <Link
+            to={`/list/${list._id}`}
+            key={index}
+            className={classes.noDecoration}
+          >
             <div className={classes.box}>
-              <div>
-                <h3 className={classes.listName}>{list.name}</h3>
-              </div>
-              <div>{list.titles.length} titles </div>
+              <h3 className={classes.listName}>{list.name}</h3>
+              <p>{list.titles.length} titles </p>
             </div>
           </Link>
         ))}

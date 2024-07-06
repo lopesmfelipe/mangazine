@@ -9,6 +9,8 @@ router.route('/signup').post(userController.createUser);
 
 router.route('/exists/:id').get(userController.checkUserExists);
 
+router.route('/:userId/readlist').get(userController.getReadlist);
+
 router.route('/update-readlist').patch(userController.updateReadlist);
 
 router.route('/lists/:id').get(userController.getLists);

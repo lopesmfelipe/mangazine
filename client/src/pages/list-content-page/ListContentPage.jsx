@@ -1,7 +1,7 @@
 import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ElementCard from "./components/element-card/ElementCard";
+import ElementCard from "../../components/element-card/ElementCard";
 import { Link, useParams } from "react-router-dom";
 
 const ListContentPage = () => {
@@ -31,7 +31,7 @@ const ListContentPage = () => {
     return () => {
       document.body.classList.remove(classes.bodyStyle);
     };
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []); 
 
   if (error) {
     return <div>{error}</div>;

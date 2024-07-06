@@ -1,26 +1,26 @@
-const { default: Readlist } = require('../../client/src/pages/readlist/Readlist');
 const User = require('../models/userModel');
 
 exports.getReadlist = async (req, res) => {
   try {
-    const userId = req.params.id;
-
-    const user = await User.findOne({ userId });
+    const { userId } = req.params;
+    const user = await User.findOne({ userId }).populate('readList');
 
     if (!user) {
-      return res.status(404).json({message: 'User not foun' });
+      return res.status(404).json({ message: 'User not foun' });
     }
 
     const { readList } = user;
-    
-    console.log("Fetched Readlist: ", readList);
+    console.log('Fetched Readlist: ', readList);
 
-    res.status()
+    res.status(200).json({
+      status: 'success',
+      data: { readList },
+    });
   } catch (err) {
-    console.log(err)
-    return res.status(500).json({ message: 'Server Error'})
+    console.log(err);
+    return res.status(500).json({ message: 'Server Error' });
   }
-}
+};
 
 exports.getLists = async (req, res) => {
   try {
@@ -37,7 +37,7 @@ exports.getLists = async (req, res) => {
     // Extract the lists from the user object
     const { lists } = user;
 
-    console.log("Fetched lists: ", lists);
+    console.log('Fetched lists: ', lists);
 
     // Return the lists
     return res.status(200).json({

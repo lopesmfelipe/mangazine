@@ -12,6 +12,7 @@ import Home from "./pages/home/Home.jsx";
 import Details from "./pages/details/Details.jsx";
 import CreateList from "./pages/create-list/CreateList.jsx";
 import "./general.css";
+import Readlist from "./pages/readlist/Readlist.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
           <Route path="/lists" element={<AllListsPage />} />
+          <Route path="/readlist" element={<Readlist />} />
           <Route path="/list/:searchedList" element={<ListContentPage />} />
           <Route path="/create-List" element={<CreateList />} />
           <Route path="/add-title" element={<AddTitle />} />

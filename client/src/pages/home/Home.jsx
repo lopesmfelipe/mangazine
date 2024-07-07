@@ -1,16 +1,18 @@
 import classes from "./style.module.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  SignedIn,
+  UserButton,
+  useUser,
+} from "@clerk/clerk-react";
 
 const Home = () => {
   const { user } = useUser();
   let navigate = useNavigate();
   const [searchedName, setSearchedName] = useState("");
-  console.log("COMPONENT RENDERED");
 
   useEffect(() => {
-    console.log("COMPONENT RENDERED");
     if (user) {
       const checkAndCreateUser = async () => {
         try {
@@ -53,6 +55,12 @@ const Home = () => {
 
       checkAndCreateUser();
     }
+
+    document.body.classList.add(classes.bodyStyle);
+
+    return () => {
+      document.body.classList.remove(classes.bodyStyle);
+    };
   }, [user]);
 
   const handlekeyPress = (event) => {
@@ -62,13 +70,22 @@ const Home = () => {
   };
 
   return (
-    <div className={classes.homeBody}>
-        <div className={classes.menu}>
-          <button>Readlist</button>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+    <div>
+      <div className={classes.menu}>
+        <div className={classes.links}>
+          <Link to="" className={classes.link}>
+            READLIST
+          </Link>
+          <Link to="/lists" className={classes.link}>
+            LISTS
+          </Link>
         </div>
+        <SignedIn>
+          <div className={classes.userButton}>
+            <UserButton />
+          </div>
+        </SignedIn>
+      </div>
       <main>
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>

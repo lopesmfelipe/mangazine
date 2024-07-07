@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-
 .information2 {
   display: inline-block;
   margin-top: 10px;
@@ -21,7 +20,7 @@
   align-items: center;
   padding: 5px;
   gap: 5px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: lighter;
   letter-spacing: 1px;
 }
@@ -36,7 +35,7 @@
 }
 
 .field {
-  color: rgb(244, 0, 85);
+  color: var(--main-color);
   font-family: "Raleway", sans-serif;
   font-weight: bolder;
 }
@@ -52,6 +51,6 @@
 }
 
 .data {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 1px;
 }

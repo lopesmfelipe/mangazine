@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import CreateButton from "./components/create-button/CreateButton";
 
 const AllListsPage = () => {
   const { user } = useUser();
@@ -50,6 +51,7 @@ const AllListsPage = () => {
       <div className={classes.header}>
         <h1>Your Lists</h1>
       </div>
+      <CreateButton />
       <div className={classes.boxContainer}>
         {lists.map((list, index) => (
           <Link

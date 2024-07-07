@@ -6,7 +6,7 @@ const Rating = ({ name }) => {
       <div className={classes.rating}>
         <p className={classes.type}>{name}</p>
         <div className={classes.score}>
-          <i className="fa-solid fa-star full-star"></i>
+          <i className={`fa-solid fa-star ${classes.fullStar}`}></i>
           <p className={classes.score}>9.0</p>
         </div>
       </div>
@@ -16,7 +16,7 @@ const Rating = ({ name }) => {
       <div className={classes.rating}>
         <p className={classes.type}>{name}</p>
         <div className={classes.score}>
-          <i className={`fa-regular fa-star ${classes["empty-star"]}`}></i>
+          <i className={`fa-regular fa-star ${classes.emptyStar}`}></i>
           <p className={classes.score}>9.0</p>
         </div>
       </div>

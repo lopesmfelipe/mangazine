@@ -1,3 +1,8 @@
+/*VARIABLES*/
+:root {
+  --main-color: rgb(207, 0, 76);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,5 +30,5 @@ body {
 /* General scrollbar styles for Firefox */
 * {
   scrollbar-width: thin; /* Scrollbar width */
-  scrollbar-color: #f4006e rgb(27, 27, 28); /* Scrollbar thumb color and track color */
+  scrollbar-color: var(--main-color) rgb(27, 27, 28); /* Scrollbar thumb color and track color */
 }

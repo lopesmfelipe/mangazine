@@ -2,7 +2,7 @@ import { useUser } from "@clerk/clerk-react";
 import Axios from "axios";
 import classess from "./style.module.css";
 
-const ButtonReadlist = ({ titleId }) => {
+const AddButton = ({ titleId }) => {
   const { user } = useUser();
 
   const handleAddToReadlist = async () => {
@@ -45,4 +45,4 @@ const ButtonReadlist = ({ titleId }) => {
   );
 };
 
-export default ButtonReadlist;
+export default AddButton;

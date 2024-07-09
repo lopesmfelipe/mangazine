@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
+import classes from "./style.module.css";
 
 const CreateList = () => {
   const { user } = useUser();
@@ -18,6 +19,12 @@ const CreateList = () => {
         userId: user.id,
       }));
     }
+
+    document.body.classList.add(classes.bodyStyle);
+
+    return () => {
+      document.body.classList.remove(classes.bodyStyle);
+    };
   }, [user]);
 
   const handleChange = (e) => {
@@ -70,31 +77,39 @@ const CreateList = () => {
   };
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+    <div className={classes.container}>
+      <div className={classes.w}>
+        <div className={classes.title}>
+          CREATE A NEW LIST
         </div>
-        <div>
-          <label htmlFor="">Titles</label>
-          <input
-            type="text"
-            name="titles"
-            value={formData.titles}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">{isUploading ? "Uploading..." : "Submit"}</button>
-      </form>
-    </main>
+        <form onSubmit={handleSubmit}>
+          <div className={classes.field}>
+            <label htmlFor="">NAME</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className={classes.field}>
+            <label htmlFor="">TITLES</label>
+            <input
+              type="text"
+              name="titles"
+              value={formData.titles}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">
+            {isUploading ? "Uploading..." : "Submit"}
+          </button>
+        </form>
+
+      </div>
+    </div>
   );
 };
 

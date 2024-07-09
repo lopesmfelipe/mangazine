@@ -1,11 +1,7 @@
 import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  SignedIn,
-  UserButton,
-  useUser,
-} from "@clerk/clerk-react";
+import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 
 const Home = () => {
   const { user } = useUser();

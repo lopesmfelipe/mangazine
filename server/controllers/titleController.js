@@ -72,12 +72,12 @@ exports.getTitleById = async (req, res) => {
 // GET TITLE BY NAME
 exports.getTitlesByName = async (req, res) => {
   try {
-    const regex = new RegExp(req.params.name, 'i'); // 'i' flag makes the regex case-insensitive
-    const titles = await Title.find({ name: regex });
+    const query = req.query.q; // Get the query parameter from the URL
+    const titles = await Title.find({ name: new RegExp(query, 'i')  }); // Perform case-insensitive search
 
     if (titles.length === 0) {
       return res.status(404).json({
-        status: 'fail',
+        status: 'success',
         message: 'No titles found',
       });
     }

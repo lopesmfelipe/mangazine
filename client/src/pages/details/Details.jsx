@@ -14,7 +14,7 @@ const Details = () => {
     const fetchTitleData = async () => {
       try {
         const response = await Axios.get(
-          `http://localhost:2000/api/v1/titles/search/${searchedName}`
+          `http://localhost:2000/api/v1/titles/search?name=${searchedName}`
         );
         setTitleData(response.data.data.titles[0]);
       } catch (err) {

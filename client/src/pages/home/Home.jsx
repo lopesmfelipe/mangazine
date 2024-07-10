@@ -2,11 +2,12 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
+import Searchbar from "./components/searchbar/Searchbar";
 
 const Home = () => {
   const { user } = useUser();
-  let navigate = useNavigate();
-  const [searchedName, setSearchedName] = useState("");
+  /* let navigate = useNavigate();
+  const [searchedName, setSearchedName] = useState(""); */
 
   useEffect(() => {
     if (user) {
@@ -59,12 +60,6 @@ const Home = () => {
     };
   }, [user]);
 
-  const handlekeyPress = (event) => {
-    if (event.key === "Enter") {
-      navigate(`/details/${searchedName}`);
-    }
-  };
-
   return (
     <div>
       <div className={classes.menu}>
@@ -86,14 +81,7 @@ const Home = () => {
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>
         <div>
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchedName}
-            onChange={(event) => setSearchedName(event.target.value)}
-            onKeyDown={handlekeyPress}
-            className={classes.searchbar}
-          />
+          <Searchbar />
         </div>
       </main>
     </div>

@@ -72,8 +72,8 @@ exports.getTitleById = async (req, res) => {
 // GET TITLE BY NAME
 exports.getTitlesByName = async (req, res) => {
   try {
-    const query = req.query.q; // Get the query parameter from the URL
-    const titles = await Title.find({ name: new RegExp(query, 'i')  }); // Perform case-insensitive search
+    const { name } = req.query; // Get the query parameter from the URL
+    const titles = await Title.find({ name: new RegExp(name, 'i') }); // Perform case-insensitive search
 
     if (titles.length === 0) {
       return res.status(404).json({
@@ -84,6 +84,7 @@ exports.getTitlesByName = async (req, res) => {
 
     res.status(200).json({
       status: 'success',
+      message: `${titles.length} items found.`,
       data: {
         titles,
       },
@@ -91,7 +92,7 @@ exports.getTitlesByName = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: err.message,
+      message: `hellow ${err.message}`,
     });
   }
 };

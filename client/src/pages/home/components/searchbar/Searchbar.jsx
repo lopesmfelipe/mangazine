@@ -4,25 +4,36 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Searchbar = () => {
-  const [query, setQuery] = useState("");
+  const [name, setName] = useState("");
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleClick = (event) => {
-    navigate(`/details/${query}`);
-  };
-
   const handleSearch = async (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && name.trim() !== "") {
+      setLoading(true);
+      setError(null);
       try {
-        const response = await axios.get(`/api/titles/search?${query}`);
-        setResults(response.data);
+        console.log(name);
+        const response = await axios.get(
+          `http://localhost:2000/api/v1/titles/search?name=${name}`
+        );
+        console.log("Response Data:", response.data); // Log the response data
+        setResults(response.data.data.titles);
         setShowResults(true);
       } catch (err) {
         console.log(err);
+        setError("An error occurred while searching. Please try again.");
+      } finally {
+        setLoading(false);
       }
     }
+  };
+
+  const handleClick = (id) => {
+    navigate(`/details/${id}`);
   };
 
   return (
@@ -30,24 +41,32 @@ const Searchbar = () => {
       <input
         type="text"
         placeholder="Search"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        value={name}
+        onChange={(event) => setName(event.target.value)}
         onKeyDown={handleSearch}
         className={classes.searchbar}
       />
-      {showResults && (
-        <div>
-          {results.map((title) => (
-            <div key={title._id}>
-              <img src="" alt="" />
-              <div>
-                <h3>NAME</h3>
-                <p>AUTHOR</p>
-                <p>RELEASE YEAR</p>
+      {loading && <div> Loading...</div>}
+      {error && <div>{error}</div>}
+      {showResults && !loading && (
+          <div className={classes.gridContainer}>
+            {results.map((title) => (
+              <div
+                key={title._id}
+                onClick={() => handleClick(title.name)}
+                className={classes.gridItem}
+              >
+                <img src={title.cover} className={classes.cover} />
+                <div className={classes.informationContainer}>
+                  <p className={classes.name}>{title.name}</p>
+                  <div className={classes.box2}>
+                    <p className={classes.author}>{title.author}</p>
+                    <p className={classes.releaseYear}>{title.releaseYear}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
       )}
     </div>
   );

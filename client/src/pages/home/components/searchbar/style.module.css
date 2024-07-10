@@ -1,0 +1,57 @@
+.gridContainer {
+  width: 900px;
+  height: 600px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(30, 54, 54);
+  display: grid;
+  grid-template-columns: 200px 200px;
+  row-gap: 10px;
+  column-gap: 300px;
+  justify-content: center;
+  padding-left: 65px;
+  padding-right: 0;
+  border-radius: 15px;
+}
+
+.gridItem {
+  background-color: cornflowerblue;
+  height: 150px;
+  width: 350px;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.cover {
+  height: 100%;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.informationContainer {
+  background-color: brown;
+  margin-left: 20px;
+  width: 220px;
+}
+
+p {
+  font-size: 15px;
+}
+
+.box2 {
+  display: flex;
+  gap: 5px;
+  color: rgba(219, 213, 213, 0.841);
+}
+
+.name {
+}
+
+.author {
+}
+
+.releaseYear {
+}

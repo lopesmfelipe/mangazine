@@ -30,7 +30,7 @@
   font-size: 20px;
 }
 .link:hover {
-  color: rgb(247, 0, 70);
+  color: var(--main-color);
 }
 
 .userButton {
@@ -42,7 +42,7 @@
 .userButton button:hover {
   margin: 0;
   padding: 5px;
-  border-color: rgb(243, 0, 81);
+  border-color: var(--main-color);
 }
 
 main {
@@ -51,7 +51,7 @@ main {
   align-items: center;
   justify-content: center;
   color: rgb(255, 255, 255);
-  font-family: sans-serif;
+  font-family: var(--secondary-font);
   margin-top: 90px;
 }
 
@@ -64,8 +64,9 @@ h2 {
 
 .name {
   font-size: 80px;
-  color: rgb(255, 0, 98);
+  color: var(--main-color);
   display: flex;
+  font-family: var(--primary-font);
 }
 
 .searchbar {

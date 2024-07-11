@@ -13,12 +13,15 @@ import Details from "./pages/details/Details.jsx";
 import CreateList from "./pages/create-list/CreateList.jsx";
 import "./general.css";
 import Readlist from "./pages/readlist/Readlist.jsx";
+import Test from "./testing/Test.jsx";
 
 function App() {
   return (
     <Router>
       <div className="app-container">
         <Routes>
+          <Route path="/test" element={<Test />} />
+
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
           <Route path="/lists" element={<Lists />} />

@@ -67,24 +67,18 @@
   width: 220px;
 }
 
-p {
+.box2, p {
   font-size: 15px;
-}
-
-.box2 {
   display: flex;
+  align-items: baseline;
+  justify-content: left;
   gap: 5px;
   color: rgba(219, 213, 213, 0.841);
 }
 
 .name {
-
-}
-
-.author {
-}
-
-.releaseYear {
+  font-size: 20px;
+  color: white;
 }
 
 .loading {

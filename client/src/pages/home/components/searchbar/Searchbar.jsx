@@ -64,9 +64,10 @@ const Searchbar = () => {
               <div className={classes.informationContainer}>
                 <p className={classes.name}>{title.name}</p>
                 <div className={classes.box2}>
-                  <p className={classes.author}>{title.author}</p>
-                  <p className={classes.releaseYear}>{title.releaseYear}</p>
+                  <p className={classes.author}>{title.author} • </p>
+                  <p className={classes.releaseYear}> {title.releaseYear}</p>
                 </div>
+                <p> {title.type}</p>
               </div>
             </div>
           ))}

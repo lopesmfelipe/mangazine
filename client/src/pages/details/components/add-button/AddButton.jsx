@@ -1,8 +1,11 @@
 import { useUser } from "@clerk/clerk-react";
 import Axios from "axios";
 import classess from "./style.module.css";
+import { useState } from "react";
+import Prompt from "../prompt/Prompt";
 
 const AddButton = ({ titleId }) => {
+  const [showPrompt, setShowPrompt] = useState(false);
   const { user } = useUser();
 
   const handleAddToReadlist = async () => {
@@ -25,6 +28,14 @@ const AddButton = ({ titleId }) => {
     }
   };
 
+  const handleButton2Click = () => {
+    setShowPrompt(true);
+  };
+
+  const handleClose = () => {
+    setShowPrompt(false);
+  };
+
   return (
     <div className={classess.container}>
       <button
@@ -36,11 +47,15 @@ const AddButton = ({ titleId }) => {
           Add to Readlist
         </div>
       </button>
-      <button className={classess["add-to-readlist-2"]}>
+      <button
+        onClick={handleButton2Click}
+        className={classess["add-to-readlist-2"]}
+      >
         <div>
           <i className="fa-solid fa-angle-down"></i>
         </div>
       </button>
+      {showPrompt && <Prompt onClose={handleClose} />}
     </div>
   );
 };

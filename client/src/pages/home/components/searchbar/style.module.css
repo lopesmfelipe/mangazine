@@ -1,28 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar {
+  color: rgb(246, 246, 246);
+  font-size: 17px;
+  font-family: Kanit;
+  width: 500px;
+  height: 40px;
+  margin-top: 50px;
+  padding-left: 30px;
+  border-radius: 20px;
+  border: 0;
+  background-color: transparent;
+  border: solid 2.5px rgb(255, 0, 98);
+  outline: none;
+}
+.searchbar::placeholder {
+  color: rgb(149, 148, 148);
+}
+
 .gridContainer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   width: 900px;
   height: 600px;
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color: rgb(30, 54, 54);
-  display: grid;
-  grid-template-columns: 200px 200px;
-  row-gap: 10px;
-  column-gap: 300px;
-  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(50, 41, 45, 0.39);
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0px;
   padding-left: 65px;
-  padding-right: 0;
   border-radius: 15px;
 }
 
 .gridItem {
-  background-color: cornflowerblue;
+  margin-top: 30px;
   height: 150px;
   width: 350px;
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 0;
   padding: 10px;
-  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.gridItem:hover {
+  background-color: rgba(230, 49, 112, 0.193);
+  transition: 200ms;
 }
 
 .cover {
@@ -32,7 +63,6 @@
 }
 
 .informationContainer {
-  background-color: brown;
   margin-left: 20px;
   width: 220px;
 }
@@ -48,10 +78,20 @@ p {
 }
 
 .name {
+
 }
 
 .author {
 }
 
 .releaseYear {
+}
+
+.loading {
+  margin-top: 30px;
+  font-size: 19px;
+}
+.error {
+  margin-top: 30px;
+  font-size: 19px;
 }

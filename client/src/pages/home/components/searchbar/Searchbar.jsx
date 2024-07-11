@@ -37,7 +37,7 @@ const Searchbar = () => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <input
         type="text"
         placeholder="Search"
@@ -46,27 +46,31 @@ const Searchbar = () => {
         onKeyDown={handleSearch}
         className={classes.searchbar}
       />
-      {loading && <div> Loading...</div>}
-      {error && <div>{error}</div>}
+      {loading && <div className={classes.loading}> Loading...</div>}
+      {error && <div className={classes.error}>{error}</div>}
       {showResults && !loading && (
-          <div className={classes.gridContainer}>
-            {results.map((title) => (
-              <div
-                key={title._id}
-                onClick={() => handleClick(title.name)}
-                className={classes.gridItem}
-              >
-                <img src={title.cover} className={classes.cover} />
-                <div className={classes.informationContainer}>
-                  <p className={classes.name}>{title.name}</p>
-                  <div className={classes.box2}>
-                    <p className={classes.author}>{title.author}</p>
-                    <p className={classes.releaseYear}>{title.releaseYear}</p>
-                  </div>
+        <div
+          className={`${classes.gridContainer} ${
+            showResults ? "" : classes.hidden
+          }`}
+        >
+          {results.map((title) => (
+            <div
+              key={title._id}
+              onClick={() => handleClick(title.name)}
+              className={classes.gridItem}
+            >
+              <img src={title.cover} className={classes.cover} />
+              <div className={classes.informationContainer}>
+                <p className={classes.name}>{title.name}</p>
+                <div className={classes.box2}>
+                  <p className={classes.author}>{title.author}</p>
+                  <p className={classes.releaseYear}>{title.releaseYear}</p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

@@ -69,23 +69,4 @@ h2 {
   font-family: var(--primary-font);
 }
 
-.searchbar {
-  color: black;
-  font-size: 17px;
-  font-family: "Bebas Neue";
-  width: 500px;
-  height: 40px;
-  margin-top: 50px;
-  padding-left: 30px;
-  border-radius: 20px;
-  border: 0;
-  background-color: white;
-  outline: none;
-}
 
-.searchbar:hover {
-  border: solid 2.5px rgb(255, 0, 98);
-  height: 36.5px;
-  width: 496.5px;
-  padding-left: 26.5px;
-}

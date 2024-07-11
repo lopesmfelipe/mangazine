@@ -1,0 +1,26 @@
+.bodyStyle {
+  background-color: var(--background-color);
+  color: white;
+  font-family: var(--secondary-font);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: rgb(37, 64, 91);
+  border: solid 5px var(--main-color);
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 200px 500px;
+  grid-template-columns: 100px 300px;
+}
+
+.item {
+  background-color: rgb(67, 24, 93);
+}
+
+.item1 {
+  background-color: brown;
+}
+
+

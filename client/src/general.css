@@ -6,12 +6,15 @@
   --background-color: rgb(30, 30, 32);
   --primary-font: "Audiowide", sans-serif;
   --secondary-font: "Botanika Mono Bold";
-  --tertiary-font: "Kanit" 
+  --tertiary-font: "Kanit";
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+  color: white;
+  font-family: var(--secondary-font);
 }
 
 /* General scrollbar styles for WebKit browsers */

@@ -4,37 +4,144 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .promptWindow {
-  background-color: white;
-  padding: 20px;
+  background-color: rgb(37, 37, 37);
+  width: 400px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 1px 10px rgba(255, 0, 81, 0.762);
+  padding: 0;
+  padding-bottom: 10px;
 }
 
-.promptWindow h2 {
-  margin: 0 0 10px;
+
+.header {
+  display: flex;
+  margin-top: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgb(22, 22, 22);
 }
 
-.promptWindow p {
-  margin: 0 0 20px;
+.cover {
+  height: 100px;
+  border-radius: 10px;
+  width: auto;
+  margin-left: 15px;
 }
 
-.promptWindow button {
-  padding: 10px 20px;
-  background-color: #007bff;
+.textContainer {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  margin-left: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: baseline;
+}
+
+.textContainer p {
+  margin: 0;
+  font-family: var(--tertiary-font);
+}
+
+.titleName {
+  font-size: 16px;
+}
+
+.headline {
+  padding-top: 5px;
+  font-size: 27px;
+  font-weight: bolder;
+  font-family: var(--tertiary-font);
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.promptWindow button:hover {
-  background-color: #0056b3;
+.noDecoration {
+  text-decoration: none;
+  font-family: var(--primary-font);
+  color: white;
+}
+
+
+.listsContainer {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px;
+  width: 85%;
+}
+
+.box i {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: lighter;
+}
+
+.box:hover {
+  background-color: rgb(50, 47, 47);
+}
+
+.verticalLineContainer {
+  border-bottom: solid 1px;
+}
+
+.verticalLine {
+  border: solid 1px;
+  height: 35px;
+  margin-top: 6px;
+}
+
+.goToList {
+  width: 15%;
+  border-bottom: solid 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: solid 1px 10px;
+}
+
+.goToList i {
+  font-size: 20px;
+}
+
+
+
+.container button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 20px;
+  color: white;
+  cursor: pointer;
+  top: -245px;
+  right: -310px;
+  background-color: transparent;
+}
+
+i {
+  margin: 0;
+  padding: 0;
+  font-weight: lighter;
+  font-size: 23px;
+}
+
+.container button:hover {
+  background-color: rgba(94, 94, 94, 0.31);
+  padding: 20px;
+  border: 0;
 }

@@ -4,7 +4,7 @@ import classess from "./style.module.css";
 import { useState } from "react";
 import Prompt from "../prompt/Prompt";
 
-const AddButton = ({ titleId }) => {
+const AddButton = ({ titleData }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const { user } = useUser();
 
@@ -13,7 +13,7 @@ const AddButton = ({ titleId }) => {
       const response = await Axios.patch(
         `http://localhost:2000/api/v1/user/update-readlist`,
         {
-          titleId: titleId,
+          titleId: titleData._id,
           userId: user.id,
         }
       );
@@ -55,7 +55,7 @@ const AddButton = ({ titleId }) => {
           <i className="fa-solid fa-angle-down"></i>
         </div>
       </button>
-      {showPrompt && <Prompt onClose={handleClose} />}
+      {showPrompt && <Prompt onClose={handleClose} titleData={titleData} />}
     </div>
   );
 };

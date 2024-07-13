@@ -101,10 +101,15 @@ exports.updateReadlist = async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    if (!user.readList.includes(titleId)) {
-      user.readList.push(titleId);
-      await user.save();
+    if (user.readList.includes(titleId)) {
+      return res.status(200).json({
+        message: 'Title is already on readlist',
+        readList: user.readList,
+      });
     }
+
+    user.readList.push(titleId);
+    await user.save();
 
     res.status(200).json({
       message: 'Readlist updated successfully',

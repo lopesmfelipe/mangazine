@@ -23,12 +23,6 @@ const Details = () => {
     };
 
     fetchTitleData();
-
-    document.body.classList.add(classes.bodyStyle);
-
-    return () => {
-      document.body.classList.remove(classes.bodyStyle);
-    };
   }, [searchedName]);
 
   if (!titleData) {
@@ -64,7 +58,7 @@ const Details = () => {
               </div>
             </div>
             <div className={classes["addition-button"]}>
-              <AddButton titleId={titleData._id} />
+              <AddButton titleData={titleData} />
             </div>
           </div>
         </div>

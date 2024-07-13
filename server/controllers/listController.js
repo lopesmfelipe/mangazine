@@ -57,3 +57,37 @@ exports.createList = async (req, res) => {
     console.log('Error creating list', err);
   }
 };
+
+// UPDATE LIST
+exports.updateList = async (req, res) => {
+  try {
+    const { titleId, listId } = req.body;
+
+    const list = await List.findOne({ _id: listId });
+
+    if (!list) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    if (list.titles.includes(titleId)) {
+      return res.status(200).json({
+        message: 'the title is already on the list',
+        list: list,
+      });
+    }
+
+    list.titles.push(titleId);
+    await list.save();
+
+    res.status(200).json({
+      message: 'List updated succesfully',
+      list: list,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err.message,
+    });
+    console.log('Error creating list', err);
+  }
+};

@@ -1,9 +1,5 @@
 .bodyStyle {
-  margin: 0;
-  padding: 0;
-  background-color: rgb(30, 30, 32);
   color: rgb(233, 219, 221);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   flex-direction: column;
 } 

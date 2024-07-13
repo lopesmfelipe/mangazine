@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-.bodyStyle {
-  background-color: #1e1e20;
-}
-
 .container {
   display: flex;
   margin-left: 100px;
@@ -50,7 +46,7 @@ h1 {
 
 .description-container p {
   font-family: "Raleway", sans-serif;
-  line-height: 1.5 
+  line-height: 1.5;
 }
 
 .author-released-button {

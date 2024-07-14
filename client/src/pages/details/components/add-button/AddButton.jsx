@@ -19,9 +19,11 @@ const AddButton = ({ titleData }) => {
       );
 
       if (response.status === 200) {
-        console.log("READLIST UPDATED SUCCESSFULLY", response);
-      } else {
-        console.log("FAIL TO UPDATE READLIST", response);
+        console.log(response.message);
+      } 
+      
+      if (response.status === 204) {
+        console.log(response.message);
       }
     } catch (err) {
       console.log("ERROR TRYING TO SEND THE REQUEST ", err);

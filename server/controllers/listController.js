@@ -4,7 +4,7 @@ const List = require('../models/listModel');
 // GET LIST BY ID
 exports.getListById = async (req, res) => {
   try {
-    const list = await List.findById(req.params.id).populate('titles');
+    const list = await List.findById(req.params.userId).populate('titles');
     if (!list) {
       return res.status(404).json({
         status: 'fail',
@@ -22,6 +22,23 @@ exports.getListById = async (req, res) => {
     res.status(404).json({
       status: 'fail',
       message: 'Unable to find the list',
+    });
+  }
+};
+
+// CHECK IF TITLE EXISTS
+exports.checkTitleExists = async (req, res) => {
+  try {
+    const list = await List.findOne({ _id: req.params.listId });
+
+    if (list.titles.includes(req.params.titleId)) {
+      return res.status(200).json({ exists: true });
+    }
+
+    return res.status(200).json({ exists: false });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
     });
   }
 };
@@ -71,6 +88,7 @@ exports.updateList = async (req, res) => {
 
     if (list.titles.includes(titleId)) {
       return res.status(200).json({
+        status: 'success',
         message: 'the title is already on the list',
         list: list,
       });
@@ -80,6 +98,7 @@ exports.updateList = async (req, res) => {
     await list.save();
 
     res.status(200).json({
+      status: 'success',
       message: 'List updated succesfully',
       list: list,
     });

@@ -64,13 +64,6 @@
   color: white;
 }
 
-.noDecoration {
-  text-decoration: none;
-  font-family: var(--primary-font);
-  color: white;
-}
-
-
 .listsContainer {
   display: flex;
 }
@@ -86,9 +79,12 @@
   margin-left: 20px;
   margin-right: 20px;
   font-weight: lighter;
+
+  
 }
 
 .box:hover {
+  cursor: pointer;
   background-color: rgb(50, 47, 47);
 }
 
@@ -113,6 +109,11 @@
 
 .goToList i {
   font-size: 20px;
+}
+
+.goToList:hover {
+  cursor: pointer;
+  background-color: rgb(50, 47, 47);
 }
 
 

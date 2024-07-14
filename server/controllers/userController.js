@@ -102,7 +102,7 @@ exports.updateReadlist = async (req, res, next) => {
     }
 
     if (user.readList.includes(titleId)) {
-      return res.status(200).json({
+      return res.status(204).json({
         message: 'Title is already on readlist',
         readList: user.readList,
       });

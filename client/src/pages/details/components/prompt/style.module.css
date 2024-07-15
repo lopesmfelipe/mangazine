@@ -12,7 +12,7 @@
 
 .promptWindow {
   background-color: rgb(37, 37, 37);
-  width: 400px;
+  width: 600px;
   border-radius: 10px;
   box-shadow: 0 1px 10px rgba(255, 0, 81, 0.762);
   padding: 0;
@@ -71,16 +71,13 @@
 .box {
   display: flex;
   align-items: center;
-  border-bottom: solid 1px;
+  /* border-bottom: solid 1px; */
   width: 85%;
 }
 
 .box i {
   margin-left: 20px;
   margin-right: 20px;
-  font-weight: lighter;
-
-  
 }
 
 .box:hover {
@@ -88,23 +85,18 @@
   background-color: rgb(50, 47, 47);
 }
 
-.verticalLineContainer {
-  border-bottom: solid 1px;
-}
 
 .verticalLine {
-  border: solid 1px;
+  border: solid 0.1px;
   height: 35px;
   margin-top: 6px;
 }
 
 .goToList {
   width: 15%;
-  border-bottom: solid 1px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: solid 1px 10px;
 }
 
 .goToList i {

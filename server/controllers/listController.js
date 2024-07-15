@@ -83,13 +83,17 @@ exports.updateList = async (req, res) => {
     const list = await List.findOne({ _id: listId });
 
     if (!list) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'List not found' });
     }
 
     if (list.titles.includes(titleId)) {
+      // Remove titleId from the list
+      list.titles.pull(titleId);
+      await list.save();
+
       return res.status(200).json({
         status: 'success',
-        message: 'the title is already on the list',
+        message: 'Title removed from the list',
         list: list,
       });
     }

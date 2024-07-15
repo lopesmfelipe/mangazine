@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Prompt = ({ onClose, titleData }) => {
   const { user } = useUser();
   const [lists, setLists] = useState([]);
+  const [titleExists, setTitleExists] = useState({});
   const navigate = useNavigate();
 
   const goToList = (listId) => {
@@ -29,13 +30,16 @@ const Prompt = ({ onClose, titleData }) => {
   const checkTitleExists = async (listId) => {
     try {
       const response = await axios.get(
-        `http://localhost:2000/api/v1/user/lists/${listId}/titles/${titleData._id}/exists`
+        `http://localhost:2000/api/v1/lists/${listId}/titles/${titleData._id}/exists`
       );
 
-      console.log("RESULT IF THE TITLE IS ALREADY IN THE LIST: ", response);
+      console.log(
+        "DOES THE TITLE ALREADY EXIST IN THE LIST? ",
+        response.data.exists
+      );
       return response.data.exists;
     } catch (err) {
-      console.error("Error trying to check if title is in the list ", err);
+      console.error("ERROR TRYING TO CHECK IF THE TITLE IS IN THE LIST: ", err);
       return;
     }
   };
@@ -50,15 +54,30 @@ const Prompt = ({ onClose, titleData }) => {
         const response = await axios.get(
           `http://localhost:2000/api/v1/user/lists/${user.id}`
         );
-        setLists(response.data.data.lists);
-        console.log(lists);
+
+        const fetchedLists = response.data.data.lists;
+        setLists(fetchedLists);
+        console.log(fetchedLists);
+
+        const checkExistence = async () => {
+          const titleExistsMap = {};
+          await Promise.all(
+            fetchedLists.map(async (list) => { 
+              const exists = await checkTitleExists(list._id);
+              titleExistsMap[list._id] = exists;
+            })
+          );
+          setTitleExists(titleExistsMap);
+        };
+
+        checkExistence();
       } catch (err) {
         console.error("Error fetching lists: ", err);
       }
     };
 
     getLists();
-  }, [user]);
+  }, [user, titleData._id]);
 
   return (
     <div className={classes.promptBackdrop}>
@@ -80,7 +99,7 @@ const Prompt = ({ onClose, titleData }) => {
                     addToList({ titleId: titleData._id, listId: list._id })
                   }
                 >
-                  {checkTitleExists(list._id) ? (
+                  {titleExists[list._id] ? (
                     <i className="fa-solid fa-check"></i>
                   ) : (
                     <i className="fa-solid fa-plus"></i>

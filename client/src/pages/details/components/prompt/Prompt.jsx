@@ -15,6 +15,12 @@ const Prompt = ({ onClose, titleData }) => {
   };
 
   const addToList = async ({ titleId, listId }) => {
+    // Optimistically update the state
+    setTitleExists((prevTitleExists) => ({
+      ...prevTitleExists,
+      [listId]: !prevTitleExists[listId],
+    }));
+
     try {
       const response = await axios.patch(
         `http://localhost:2000/api/v1/lists/update-list`,
@@ -22,8 +28,20 @@ const Prompt = ({ onClose, titleData }) => {
       );
 
       console.log(response.data.message);
+
+      // Update state based on the actual resonse from the server
+      setTitleExists((prevTitleExists) => ({
+        ...prevTitleExists,
+        [listId]: response.data.exists,
+      }));
     } catch (err) {
       console.error("ERROR TRYING TO SEND THE REQUEST: ", err);
+
+      // If there's an error, revert the optimistic update
+      setTitleExists((prevTitleExists) => ({
+        ...prevTitleExists,
+        [listId]: !prevTitleExists[listId],
+      }));
     }
   };
 
@@ -62,7 +80,7 @@ const Prompt = ({ onClose, titleData }) => {
         const checkExistence = async () => {
           const titleExistsMap = {};
           await Promise.all(
-            fetchedLists.map(async (list) => { 
+            fetchedLists.map(async (list) => {
               const exists = await checkTitleExists(list._id);
               titleExistsMap[list._id] = exists;
             })

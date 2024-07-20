@@ -1,0 +1,42 @@
+.listsContainer {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  width: 85%;
+}
+
+.box i {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.box:hover {
+  cursor: pointer;
+  background-color: rgb(50, 47, 47);
+}
+
+
+.verticalLine {
+  border: solid 0.1px;
+  height: 35px;
+  margin-top: 6px;
+}
+
+.goToList {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.goToList i {
+  font-size: 20px;
+}
+
+.goToList:hover {
+  cursor: pointer;
+  background-color: rgb(50, 47, 47);
+}

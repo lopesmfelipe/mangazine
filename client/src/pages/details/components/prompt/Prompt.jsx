@@ -1,101 +1,42 @@
-import { useEffect, useState } from "react";
-import classes from "./style.module.css";
-import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
+import { useLists } from "./hooks/useLists";
+import axios from "axios";
+import classes from "./style.module.css";
+import ListItem from "./components/ListItem";
+import { useEffect } from "react";
 
 const Prompt = ({ onClose, titleData }) => {
   const { user } = useUser();
-  const [lists, setLists] = useState([]);
-  const [titleExists, setTitleExists] = useState({});
-  const navigate = useNavigate();
+  const { lists, titleExists, setTitleExists } = useLists(
+    user?.id,
+    titleData._id
+  );
 
-  const goToList = (listId) => {
-    navigate(`/list/${listId}`);
-  };
+  console.log("CURRENT titleExists 💥💥💥💥: ", titleExists);
 
   const addToList = async ({ titleId, listId }) => {
-    // Optimistically update the state
-    setTitleExists((prevTitleExists) => ({
-      ...prevTitleExists,
-      [listId]: !prevTitleExists[listId],
-    }));
-
     try {
       const response = await axios.patch(
         `http://localhost:2000/api/v1/lists/update-list`,
         { titleId, listId }
       );
 
-      console.log(response.data.message);
-
-      // Update state based on the actual resonse from the server
-      setTitleExists((prevTitleExists) => ({
-        ...prevTitleExists,
-        [listId]: response.data.exists,
-      }));
+      // Create a new object for titleExists to ensure re-render
+      setTitleExists((prevTitleExists) => {
+        const updatedTitleExists = {
+          ...prevTitleExists,
+          [listId]: response.data.exists,
+        };
+        return updatedTitleExists;
+      });
     } catch (err) {
-      console.error("ERROR TRYING TO SEND THE REQUEST: ", err);
-
-      // If there's an error, revert the optimistic update
-      setTitleExists((prevTitleExists) => ({
-        ...prevTitleExists,
-        [listId]: !prevTitleExists[listId],
-      }));
-    }
-  };
-
-  const checkTitleExists = async (listId) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:2000/api/v1/lists/${listId}/titles/${titleData._id}/exists`
-      );
-
-      console.log(
-        "DOES THE TITLE ALREADY EXIST IN THE LIST? ",
-        response.data.exists
-      );
-      return response.data.exists;
-    } catch (err) {
-      console.error("ERROR TRYING TO CHECK IF THE TITLE IS IN THE LIST: ", err);
-      return;
+      console.error("Error trying to send the request: ", err);
     }
   };
 
   useEffect(() => {
-    if (!user || !user.id) {
-      return;
-    }
-
-    const getLists = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:2000/api/v1/user/lists/${user.id}`
-        );
-
-        const fetchedLists = response.data.data.lists;
-        setLists(fetchedLists);
-        console.log(fetchedLists);
-
-        const checkExistence = async () => {
-          const titleExistsMap = {};
-          await Promise.all(
-            fetchedLists.map(async (list) => {
-              const exists = await checkTitleExists(list._id);
-              titleExistsMap[list._id] = exists;
-            })
-          );
-          setTitleExists(titleExistsMap);
-        };
-
-        checkExistence();
-      } catch (err) {
-        console.error("Error fetching lists: ", err);
-      }
-    };
-
-    getLists();
-  }, [user, titleData._id]);
+    console.log("CURRENT titleExists 🧱 ", titleExists);
+  }, [titleExists]);
 
   return (
     <div className={classes.promptBackdrop}>
@@ -109,36 +50,18 @@ const Prompt = ({ onClose, titleData }) => {
             </div>
           </div>
           <div>
-            {lists.map((list, index) => (
-              <div className={classes.listsContainer} key={index}>
-                <div
-                  className={classes.box}
-                  onClick={() =>
-                    addToList({ titleId: titleData._id, listId: list._id })
-                  }
-                >
-                  {titleExists[list._id] ? (
-                    <i className="fa-solid fa-check"></i>
-                  ) : (
-                    <i className="fa-solid fa-plus"></i>
-                  )}
-
-                  <h3 className={classes.listName}>{list.name}</h3>
-                </div>
-                <div className={classes.verticalLineContainer}>
-                  <div className={classes.verticalLine}></div>
-                </div>
-                <div
-                  className={classes.goToList}
-                  onClick={() => goToList(list._id)}
-                >
-                  <i className={`fa-solid fa-chevron-right`}></i>
-                </div>
-              </div>
+            {lists.map((list) => (
+              <ListItem
+                key={list._id}
+                list={list}
+                titleId={titleData._id}
+                titleExists={titleExists}
+                addToList={addToList}
+              />
             ))}
           </div>
         </div>
-        <button onClick={onClose}>
+        <button onClick={onClose} className={classes.closeButton}>
           <i className="fa-solid fa-xmark"></i>
         </button>
       </div>

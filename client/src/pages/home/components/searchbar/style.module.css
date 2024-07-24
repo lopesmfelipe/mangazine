@@ -28,17 +28,18 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  width: 900px;
-  height: 600px;
+  width: auto;
+  height: auto;
   margin-top: 30px;
   margin-bottom: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(50, 41, 45, 0.39);
+  background-color: rgb(43, 41, 42);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 0px;
-  padding-left: 65px;
+  padding-left: 30px;
+  padding-right: 30px;
   border-radius: 15px;
 }
 
@@ -49,6 +50,7 @@
   display: flex;
   padding: 10px;
   border-radius: 20px;
+  padding-right: 30px;
 }
 
 .gridItem:hover {

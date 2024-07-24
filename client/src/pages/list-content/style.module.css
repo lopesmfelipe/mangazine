@@ -71,10 +71,32 @@
   color: white;
   font-size: 60px;
   font-family: "Audiowide", sans-serif;
-  margin-top: 350px;
+  margin-top: 300px;
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.addItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBarContainer input {
+  margin-top: 30px;
+}
+
+.textContainer {
+  margin: 0;
+  margin-top: 55px;
+}
+
+.textContainer p {
+  font-size: 20px;
+  margin: 0;
+  color: rgb(204, 202, 202);
 }
 
 .contentGrid {

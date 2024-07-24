@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "../../components/element-card/ElementCard";
 import { Link, useParams } from "react-router-dom";
+import Searchbar from "../home/components/searchbar/Searchbar";
 
 const ListContent = () => {
   const { searchedList } = useParams(); // Get listId from URL
@@ -31,7 +32,7 @@ const ListContent = () => {
     return () => {
       document.body.classList.remove(classes.bodyStyle);
     };
-  }, []); 
+  }, []);
 
   if (error) {
     return <div>{error}</div>;
@@ -57,6 +58,14 @@ const ListContent = () => {
         </div>
 
         <div className={classes.listName}>{list.name}</div>
+        <div className={classes.addItemContainer}>
+          <div className={classes.textContainer}>
+            <p>Add a new item to your list</p>
+          </div>
+          <div className={classes.searchBarContainer}>
+            <Searchbar />
+          </div>
+        </div>
       </div>
 
       <main className={classes.contentGrid}>

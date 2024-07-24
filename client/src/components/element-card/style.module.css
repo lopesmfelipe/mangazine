@@ -99,6 +99,7 @@
 
 .button-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -113,9 +114,11 @@ button {
     "Lucida Sans", Arial, sans-serif;
   padding-left: 55px;
   padding-right: 55px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #30353c;
+  margin-left: 0px;
+  margin-right: 44px;;
 }
 
 button:hover {
@@ -126,6 +129,6 @@ button:hover {
     "Lucida Sans", Arial, sans-serif;
   padding-left: 55px;
   padding-right: 55px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

@@ -13,6 +13,7 @@ import Details from "./pages/details/Details.jsx";
 import CreateList from "./pages/create-list/CreateList.jsx";
 import "./general.css";
 import Readlist from "./pages/readlist/Readlist.jsx";
+import RatingPrompt from "./components/rating-prompt/RatingPrompt.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/details/:searchedName" element={<Details />} />
           <Route path="/add-title" element={<AddTitle />} />
           <Route path="/create-List" element={<CreateList />} />
+          <Route path="/rating" element={<RatingPrompt />} />
         </Routes>
       </div>
     </Router>

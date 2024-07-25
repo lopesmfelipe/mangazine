@@ -34,7 +34,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-top: 7px;
   margin-bottom: 20px;
-  max-width: ;
+  max-width: 100px;
 }
 
 .title p {
@@ -105,7 +105,7 @@
   margin-top: 20px;
 }
 
-button {
+.elementCardButton {
   font-size: 16px;
   color: white;
   border: 0;
@@ -121,7 +121,7 @@ button {
   margin-right: 44px;;
 }
 
-button:hover {
+.elementCardButton:hover {
   border: solid 0.5px rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 4px;

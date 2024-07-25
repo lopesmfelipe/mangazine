@@ -38,10 +38,9 @@ const Details = () => {
         <div className={classes.information1}>
           <div className={classes["top-container"]}>
             <div>
-              <h1>{titleData.name} </h1>
+              <h1 className={classes.titleName}>{titleData.name} </h1>
             </div>
-            <Rating name="overall rating" />
-            <Rating name="your rating" />
+            <Rating titleData={titleData} />
           </div>
           <div className={classes["description-container"]}>
             <p>{titleData.description}</p>

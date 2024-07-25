@@ -41,11 +41,11 @@ input {
   margin-bottom: 50px;
 }
 
-button {
+.myButton {
   margin-left: 45px;
 }
 
-button:hover {
+.myButton:hover {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 55px;

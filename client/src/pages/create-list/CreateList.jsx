@@ -103,7 +103,7 @@ const CreateList = () => {
               required
             />
           </div>
-          <button type="submit">
+          <button type="submit" className={classes.myButton}>
             {isUploading ? "Uploading..." : "Submit"}
           </button>
         </form>

@@ -37,7 +37,7 @@ const ElementCard = ({ element }) => {
       </div>
 
       <div className={classes["button-container"]}>
-        <button onClick={() => navigateToDetails(element.name)}>Details</button>
+        <button onClick={() => navigateToDetails(element.name)} className={classes.elementCardButton}>Details</button>
       </div>
     </div>
   );

@@ -6,8 +6,6 @@
   font-style: normal;
 }
 
-
-
 .audiowide-regular {
   font-family: "Audiowide", sans-serif;
   font-weight: 400;
@@ -32,15 +30,14 @@
   align-items: center;
 }
 
+.score i {
+  font-size: 25px;
+  margin-right: 5px;
+}
+
 .score p {
   font-family: "Bebas Neue", sans-serif;
   font-size: 23px;
-
-}
-
-i {
-  font-size: 25px;
-  margin-right: 5px;
 }
 
 .fullStar {
@@ -49,4 +46,5 @@ i {
 
 .emptyStar {
   color: var(--main-color);
+  cursor: pointer;
 }

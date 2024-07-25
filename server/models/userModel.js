@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     readList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Title' }],
     lists: [{ type: mongoose.Schema.Types.ObjectId, ref: 'List' }],
+    ratings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
   },
   { timestamps: true },
 );

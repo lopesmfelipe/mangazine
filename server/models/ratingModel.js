@@ -14,7 +14,6 @@ const ratingSchema = new mongoose.Schema({
   rating: {
     type: Number,
     required: true,
-    default: 0,
     min: 1,
     max: 10,
   },

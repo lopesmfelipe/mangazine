@@ -69,8 +69,8 @@ const ListContent = () => {
       </div>
 
       <main className={classes.contentGrid}>
-        {items.map((element, index) => (
-          <ElementCard key={index} element={element} />
+        {items.map((title, index) => (
+          <ElementCard key={index} titleData={title} />
         ))}
       </main>
     </div>

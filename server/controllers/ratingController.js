@@ -2,6 +2,7 @@ const Rating = require('../models/ratingModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
+// GET RATING
 exports.getRating = catchAsync(async (req, res, next) => {
   const { userId, titleId } = req.params;
 
@@ -20,6 +21,7 @@ exports.getRating = catchAsync(async (req, res, next) => {
   });
 });
 
+// GET AVERAGE RATING
 exports.getAverageRating = catchAsync(async (req, res, next) => {
   const { id } = req.params;
 
@@ -39,6 +41,7 @@ exports.getAverageRating = catchAsync(async (req, res, next) => {
   });
 });
 
+// CREATE OR UPDATE RATING
 exports.createRating = catchAsync(async (req, res, next) => {
   const { userId, titleId, ratingValue } = req.body;
 

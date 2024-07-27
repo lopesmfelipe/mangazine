@@ -18,7 +18,6 @@ const titleSchema = new mongoose.Schema({
   status: String,
   type: String,
   alternateName: String,
-  ratings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
 });
 
 const Title = mongoose.model('Title', titleSchema);

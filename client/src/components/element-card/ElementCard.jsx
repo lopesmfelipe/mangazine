@@ -2,46 +2,60 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RatingPrompt from "../rating-prompt/RatingPrompt";
-import { Axios } from "axios";
+import axios from "axios";
+import { useUser } from "@clerk/clerk-react";
 
 const ElementCard = ({ titleData }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [averageRating, setAverageRating] = useState(null);
-
+  const [userRating, setUserRating] = useState(null);
+  const { user } = useUser();
   const navigate = useNavigate();
 
+  const titleId = titleData?._id;
+  const userId = user?.id;
+
   useEffect(() => {
+    console.log("Title ID: ", titleId)
+    if (!user) return;
+
     const fetchAverageRating = async () => {
       try {
-        const response = await Axios.get(
-          `http:localhost:2000/api/v1/ratings/${titleData.id}/general-rating`
+        const response = await axios.get(
+          `http://localhost:2000/api/v1/rating/average-rating/${titleId}`
         );
+        console.log("Average Rating: ", response);
         setAverageRating(response.data.averageRating);
+        console.log(userRating);
       } catch (err) {
-        console.error("Error", err);
+        console.error(err);
       }
     };
 
-    const fetchTitleRating = async () => {
+    const fetchUserRating = async () => {
       try {
-        const response = await Axios.get(``)
+        const response = await axios.get(
+          `http://localhost:2000/api/v1/rating/${userId}/get-rating/${titleId}`
+        );
+        setUserRating(response.data.userRating.rating);
       } catch (err) {
-        console.error('Error', err);
+        console.error(err);
       }
-    }
+    };
 
-    fetchAverageRating;
-  }, []);
+    fetchAverageRating();
+    fetchUserRating();
+  }, [user, titleId]);
 
   const navigateToDetails = (name) => {
     navigate(`/details/${name}`);
   };
 
-  const handleClick = () => {
+  const openPrompt = () => {
     setShowPrompt(true);
   };
 
-  const handleClose = () => {
+  const closePrompt = () => {
     setShowPrompt(false);
   };
 
@@ -68,15 +82,15 @@ const ElementCard = ({ titleData }) => {
                 <i className="fa-solid fa-star fa-2xs"></i>
               </div>
               <div>
-                <p>8.0</p>
+                <p>{averageRating ? averageRating.toFixed(1) : "N/A"}</p>
               </div>
             </div>
-            <div className={classes.test} onClick={handleClick}>
+            <div className={classes.test} onClick={openPrompt}>
               <div>
                 <i className="fa-regular fa-star fa-2xs"></i>
               </div>
               <div>
-                <p>Rate</p>
+                <p>{userRating ? Math.round(userRating) : "Rate"}</p>
               </div>
             </div>
           </div>
@@ -92,7 +106,7 @@ const ElementCard = ({ titleData }) => {
         </div>
       </div>
       {showPrompt && (
-        <RatingPrompt onClose={handleClose} titleData={titleData} />
+        <RatingPrompt onClose={closePrompt} titleData={titleData} />
       )}
     </>
   );

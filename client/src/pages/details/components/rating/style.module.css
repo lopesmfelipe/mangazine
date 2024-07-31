@@ -44,7 +44,7 @@
   color: rgb(246, 205, 0);
 }
 
-.emptyStar {
+.userStar {
   color: var(--main-color);
   cursor: pointer;
 }

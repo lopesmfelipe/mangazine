@@ -96,7 +96,7 @@
   flex-direction: column;
 }
 
-.button1 {
+.rateButton {
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -106,7 +106,7 @@
   color: white;
 }
 
-.button1:hover {
+.rateButton:hover {
   background-color: rgb(163, 0, 57);
   cursor: pointer;
 }

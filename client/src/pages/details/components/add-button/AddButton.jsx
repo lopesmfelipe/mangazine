@@ -17,16 +17,9 @@ const AddButton = ({ titleData }) => {
           userId: user.id,
         }
       );
-
-      if (response.status === 200) {
-        console.log(response.message);
-      } 
-      
-      if (response.status === 204) {
-        console.log(response.message);
-      }
+      console.log(response.message);
     } catch (err) {
-      console.log("ERROR TRYING TO SEND THE REQUEST ", err);
+      console.error("Error trying to send the request ", err);
     }
   };
 

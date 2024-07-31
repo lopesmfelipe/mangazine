@@ -6,8 +6,14 @@ const router = express.Router();
 // Get rating
 router.route('/:userId/get-rating/:titleId').get(ratingController.getRating);
 
-router.route('/:id/average-rating').get(ratingController.getAverageRating);
+// Get average rating
+router.route('/average-rating/:titleId').get(ratingController.getAverageRating);
 
+// Create or update rating
 router.route('/create-update-rating').post(ratingController.createRating);
+
+// Delete rating
+router
+  .route('/:userId/delete-rating/:titleId').delete(ratingController.deleteRating);
 
 module.exports = router;

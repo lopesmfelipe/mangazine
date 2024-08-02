@@ -13,7 +13,7 @@
 }
 
 .content-container:hover {
-  border-color: rgb(219, 0, 80);
+  border-color: var(--main-color);
 }
 
 .cover-container {
@@ -39,9 +39,11 @@
 
 .title p {
   margin: 0;
+  margin-left: 10px;
   max-width: 95%;
   word-wrap: break-word;
-  font-size: 18px;
+  font-size: 20px;
+  color: white;
 }
 
 .info {
@@ -75,18 +77,18 @@
 
 .test {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: baseline;
   justify-content: center;
   height: 20px;
   padding-right: 10px;
-  margin-left: 9px;  
-  background-color: #1a1a1a;
+  margin-left: 40px;  
   cursor: pointer;
+  position: relative;
 }
 
 .rating i {
-  color: #ffd43b;
-  font-size: 14.2px;
+  font-size: 16px;
   padding-right: 5px;
   margin: 0;
 }
@@ -98,38 +100,49 @@
   margin: 0;
 }
 
+.avgRating i {
+  color: #ffd43b;
+  position: absolute;
+  left: -22px;
+  top: 7px;
+}
+
+.userRating i {
+  color: var(--main-color);
+  position: absolute;
+  left: -22px;
+  top: 7px;
+}
+
 .button-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: baseline;
 }
 
 .elementCardButton {
+  margin-left: 15px;
   font-size: 16px;
   color: white;
   border: 0;
   border-radius: 4px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  padding-left: 55px;
-  padding-right: 55px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   background-color: #30353c;
-  margin-left: 0px;
-  margin-right: 44px;;
+  cursor: pointer;
 }
 
 .elementCardButton:hover {
   border: solid 0.5px rgb(255, 255, 255);
-  cursor: pointer;
-  border-radius: 4px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  padding-left: 55px;
-  padding-right: 55px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+}
+
+.tag {
+  position: absolute;
+  right: 55px;
+  top: -6px;
 }

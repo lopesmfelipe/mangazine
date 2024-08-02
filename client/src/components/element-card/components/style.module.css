@@ -1,0 +1,6 @@
+.icon {
+  position: absolute;
+  font-size: 55px;
+  color: var(--main-color);
+  cursor: pointer;
+}

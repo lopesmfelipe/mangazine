@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import RatingPrompt from "../rating-prompt/RatingPrompt";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
+import Tag from "./components/Tag";
 
 const ElementCard = ({ titleData }) => {
   const [showPrompt, setShowPrompt] = useState(false);
@@ -16,7 +17,7 @@ const ElementCard = ({ titleData }) => {
   const userId = user?.id;
 
   useEffect(() => {
-    console.log("Title ID: ", titleId)
+    console.log("Title ID: ", titleId);
     if (!user) return;
 
     const fetchAverageRating = async () => {
@@ -78,7 +79,7 @@ const ElementCard = ({ titleData }) => {
 
           <div className={classes.rating}>
             <div className={classes.test}>
-              <div>
+              <div className={classes.avgRating}>
                 <i className="fa-solid fa-star fa-2xs"></i>
               </div>
               <div>
@@ -86,7 +87,7 @@ const ElementCard = ({ titleData }) => {
               </div>
             </div>
             <div className={classes.test} onClick={openPrompt}>
-              <div>
+              <div className={classes.userRating}>
                 <i className="fa-regular fa-star fa-2xs"></i>
               </div>
               <div>
@@ -97,12 +98,17 @@ const ElementCard = ({ titleData }) => {
         </div>
 
         <div className={classes["button-container"]}>
-          <button
-            onClick={() => navigateToDetails(titleData.name)}
-            className={classes.elementCardButton}
-          >
-            Details
-          </button>
+          <div>
+            <button
+              onClick={() => navigateToDetails(titleData.name)}
+              className={classes.elementCardButton}
+            >
+              Details
+            </button>
+          </div>
+          <div className={classes.tag}>
+            <Tag />
+          </div>
         </div>
       </div>
       {showPrompt && (

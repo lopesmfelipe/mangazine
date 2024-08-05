@@ -1,4 +1,11 @@
-.icon {
+.addIcon {
+  position: absolute;
+  font-size: 55px;
+  color: rgba(255, 255, 255, 0.907);
+  cursor: pointer;
+}
+
+.addedIcon {
   position: absolute;
   font-size: 55px;
   color: var(--main-color);

@@ -88,7 +88,13 @@ const ElementCard = ({ titleData }) => {
             </div>
             <div className={classes.test} onClick={openPrompt}>
               <div className={classes.userRating}>
-                <i className="fa-regular fa-star fa-2xs"></i>
+                <i
+                  className={
+                    userRating
+                      ? `fa-solid fa-star fa-2xs`
+                      : `fa-regular fa-star fa-2xs`
+                  }
+                ></i>
               </div>
               <div>
                 <p>{userRating ? Math.round(userRating) : "Rate"}</p>
@@ -107,7 +113,7 @@ const ElementCard = ({ titleData }) => {
             </button>
           </div>
           <div className={classes.tag}>
-            <Tag />
+            {userId && <Tag userId={userId} titleId={titleId} /> }
           </div>
         </div>
       </div>

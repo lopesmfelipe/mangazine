@@ -27,6 +27,7 @@ app.use('/api/v1/titles', titleRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/rating', ratingRouter);
 app.use('/api/v1/lists', listRouter);
+app.use('/api/v1/readlist', listRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

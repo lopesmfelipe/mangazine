@@ -7,12 +7,28 @@ const router = express.Router();
 
 router.route('/signup').post(userController.createUser);
 
-router.route('/exists/:id').get(userController.checkUserExists);
+// Check user exists
+router.route('/exists/:userId').get(userController.checkUserExists);
 
-router.route('/:userId/readlist').get(userController.getReadlist);
+// Get readlist
+router.route('/readlist/:userId').get(userController.getReadlist);
 
-router.route('/update-readlist').patch(userController.updateReadlist);
+// Check title exists in the readlist
+router
+  .route('/readlist/:userId/check-item-exists/:titleId')
+  .get(userController.checkItemExists);
 
-router.route('/lists/:id').get(userController.getLists);
+// Add item to the readlist
+router
+  .route('/readlist/:userId/add-to-readlist/:titleId')
+  .patch(userController.addToReadlist);
+
+// Remove item from the readlist
+router
+  .route('/readlist/:userId/remove-from-readlist/:titleId')
+  .delete(userController.removeFromReadlist);
+
+// Get lists
+router.route('/lists/:userId').get(userController.getLists);
 
 module.exports = router;

@@ -2,19 +2,19 @@ import classes from "./style.module.css";
 import { useState } from "react";
 import Axios from "axios";
 
-const AddTitle = () => {
+const CreateTitle = () => {
   const [formData, setFormData] = useState({
     name: "",
-    author: "",
-    releaseYear: "",
+    author: "", 
+    releaseYear: "", // select
     description: "",
     chapters: "",
     publishedBy: "",
-    genre: [],
+    genre: [], // select
     cover: "",
     otherCovers: [],
-    type: "",
-    status: "",
+    type: "",   // select
+    status: "",  // select
     alternateName: ""
   });
 
@@ -230,4 +230,4 @@ const AddTitle = () => {
   );
 };
 
-export default AddTitle;
+export default CreateTitle;

@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Auth } from "./pages/auth/Auth.jsx";
-import AddTitle from "./pages/add-title/AddTitle.jsx";
+import CreateTitle from "./pages/create-title/CreateTitle.jsx";
 import ListContent from "./pages/list-content/ListContent.jsx";
 import Lists from "./pages/lists/Lists.jsx";
 import Home from "./pages/home/Home.jsx";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/lists" element={<Lists />} />
           <Route path="/list/:searchedList" element={<ListContent />} />
           <Route path="/details/:searchedName" element={<Details />} />
-          <Route path="/add-title" element={<AddTitle />} />
+          <Route path="/create-title" element={<CreateTitle />} />
           <Route path="/create-List" element={<CreateList />} />
           <Route path="/rating" element={<RatingPrompt />} />
         </Routes>

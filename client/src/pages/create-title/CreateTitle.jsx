@@ -1,11 +1,15 @@
 import classes from "./style.module.css";
 import { useState } from "react";
 import Axios from "axios";
+import FormInput from "./components/form-input/FormInput";
+import FormSelect from "./components/form-select/FormSelect";
+import GenreSelector from "./components/genre-selector/GenreSelector";
+import ImageUploader from "./components/image-uploader/ImageUploader";
 
 const CreateTitle = () => {
   const [formData, setFormData] = useState({
     name: "",
-    author: "", 
+    author: "",
     releaseYear: "", // select
     description: "",
     chapters: "",
@@ -13,9 +17,9 @@ const CreateTitle = () => {
     genre: [], // select
     cover: "",
     otherCovers: [],
-    type: "",   // select
-    status: "",  // select
-    alternateName: ""
+    type: "", // select
+    status: "", // select
+    alternateName: "",
   });
 
   const [imageSelected, setImageSelected] = useState(null); // STATE TO STORE SELECTED IMAGE
@@ -24,16 +28,20 @@ const CreateTitle = () => {
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
+  const handleGenreClick = (genre) => {
+    setFormData((prevData) => {
+      const isGenreAlreadySelected = prevData.genre.includes(genre);
+      const updatedGenres = isGenreAlreadySelected
+        ? prevData.genre.filter((g) => g !== genre) // Remove the genre already selected by filtering only the ones whose name is not equal to the genre already selected
+        : [...prevData.genre, genre];
+      return { ...prevData, genre: updatedGenres };
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // For the genre field, split the input value by spaces
-    if (name === "genre") {
-      const genres = value.split(",");
-      setFormData({ ...formData, genre: genres });
-    } else {
-      // For other fields, update the formData state as usual
-      setFormData({ ...formData, [name]: value });
-    }
+
+    setFormData({ ...formData, [name]: value });
   };
 
   const uploadImage = async () => {
@@ -105,46 +113,64 @@ const CreateTitle = () => {
       otherCovers: [],
       type: "",
       status: "",
-      alternateName: ""
+      alternateName: "",
     });
   };
+
+  const genreOptions = [
+    "Shounen",
+    "Seinen",
+    "Shoujo",
+    "Fantasy",
+    "Adventure",
+    "Action",
+    "Drama",
+    "Comedy",
+    "Romance",
+    "Mystery",
+    "Horror",
+    "Thriller",
+    "Sci Fi",
+    "Historical",
+    "Western",
+    "Dark Fantasy",
+    "Isekai",
+  ];
+
+  const typeOptions = ["Manga", "Manhwa", "Manhua", "Comics"];
+  const statusOptions = ["Ongoing", "Completed", "Hiatus"];
 
   return (
     <div>
       <h2>Add New Title</h2>
       <div className={classes["form-container"]}>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Author:</label>
-            <input
-              type="text"
-              name="author"
-              value={formData.author}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Release Year:</label>
-            <input
-              type="text"
-              name="releaseYear"
-              value={formData.releaseYear}
-              onChange={handleChange}
-              placeholder="YYYY"
-              required
-            />
-          </div>
+          <FormInput
+            label="Name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <FormInput
+            label="Author"
+            type="text"
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
+            required
+          />
+          <FormInput
+            label="Release Year"
+            type="number"
+            name="releaseYear"
+            value={formData.releaseYear}
+            onChange={handleChange}
+            placeholder="YYYY"
+            required
+          />
+
           <div>
             <label>Description:</label>
             <textarea
@@ -154,73 +180,71 @@ const CreateTitle = () => {
               required
             />
           </div>
+          <FormInput
+            label="Chapters"
+            type="number"
+            name="chapters"
+            value={formData.chapters}
+            onChange={handleChange}
+            required
+          />
+          <FormInput
+            label="Published By"
+            type="text"
+            name="publishedBy"
+            value={formData.publishedBy}
+            onChange={handleChange}
+          />
+
+          <GenreSelector
+            genres={genreOptions}
+            selectedGenres={formData.genre}
+            onGenreClick={handleGenreClick}
+          />
+
           <div>
-            <label>Chapters:</label>
-            <input
-              type="number"
-              name="chapters"
-              value={formData.chapters}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Published By:</label>
-            <input
-              type="text"
-              name="publishedBy"
-              value={formData.publishedBy}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Genre:</label>
-            <input
-              type="text"
-              name="genre"
-              value={formData.genre}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Type:</label>
-            <input
-              type="text"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Status:</label>
-            <input
-              type="text"
-              name="status"
-              value={formData.genre}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Alternate Name:</label>
-            <input
-              type="text"
-              name="alternate-name"
-              value={formData.genre}
-              onChange={handleChange}
-            />
-          </div>
-          <div className={classes.uploadImage}>
-            <label>Cover:</label>
-            <div>
-              <input
-                type="file"
-                accept="image/png, image/jpg, image/jpeg"
-                onChange={(event) => {
-                  setImageSelected(event.target.files[0]);
+            {formData.genre.map((g, index) => (
+              <button
+                key={index}
+                className={classes.genreButton}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setFormData({
+                    ...formData,
+                    genre: formData.genre.filter((genre) => genre !== g),
+                  });
                 }}
-              />
-            </div>
+              >
+                {g}
+              </button>
+            ))}
           </div>
+
+          <FormSelect
+            label="Type"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            options={typeOptions}
+          />
+          <FormSelect
+            label="Status"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            options={statusOptions}
+          />
+
+          <FormInput
+            label="Alternate Name"
+            type="text"
+            name="alternateName"
+            value={formData.alternateName}
+            onChange={handleChange}
+          />
+
+          <ImageUploader onSelectImage={setImageSelected} />
+
           <button type="submit" disabled={isUploading}>
             {isUploading ? "Uploading..." : "Submit"}
           </button>

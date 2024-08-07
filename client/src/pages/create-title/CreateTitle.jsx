@@ -1,6 +1,6 @@
 import classes from "./style.module.css";
 import { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import FormInput from "./components/form-input/FormInput";
 import FormSelect from "./components/form-select/FormSelect";
 import GenreSelector from "./components/genre-selector/GenreSelector";
@@ -24,6 +24,7 @@ const CreateTitle = () => {
 
   const [imageSelected, setImageSelected] = useState(null); // STATE TO STORE SELECTED IMAGE
   const [isUploading, setIsUploading] = useState(false); // STATE TO TRACK IMAGE UPLOAD STATUS
+  const [isSuccess, setIsSuccess] = useState(false); // STATE TO TRACK SUCCESSFUL CREATION
 
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -56,7 +57,7 @@ const CreateTitle = () => {
     imageData.append("upload_preset", uploadPreset);
 
     try {
-      const response = await Axios.post(
+      const response = await axios.post(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         imageData
       );
@@ -82,21 +83,21 @@ const CreateTitle = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2000/api/v1/titles", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await axios.post(
+        "http://localhost:2000/api/v1/titles",
+        formData
+      );
 
-      if (response.ok) {
+      if (response.status === 201) {
         console.log("Title added successfully");
+        setIsSuccess(true);
+        setIsUploading(false);
       } else {
         console.error("Failed to add title:", response.statusText);
+        setIsUploading(false);
       }
-    } catch (error) {
-      console.error("Error adding title: ", error.message);
+    } catch (err) {
+      console.error("Error adding title: ", err.message);
     }
 
     console.log("FormData sent: ", formData);
@@ -141,8 +142,9 @@ const CreateTitle = () => {
   const statusOptions = ["Ongoing", "Completed", "Hiatus"];
 
   return (
-    <div>
+    <div className={classes.container}>
       <h2>Add New Title</h2>
+      {isSuccess && <div className={classes.successPrompt}>Title created!</div>}
       <div className={classes["form-container"]}>
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -151,7 +153,7 @@ const CreateTitle = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
+            required={true}
           />
           <FormInput
             label="Author"
@@ -159,7 +161,7 @@ const CreateTitle = () => {
             name="author"
             value={formData.author}
             onChange={handleChange}
-            required
+            required={true}
           />
           <FormInput
             label="Release Year"
@@ -168,7 +170,7 @@ const CreateTitle = () => {
             value={formData.releaseYear}
             onChange={handleChange}
             placeholder="YYYY"
-            required
+            required={true}
           />
 
           <div>
@@ -186,7 +188,7 @@ const CreateTitle = () => {
             name="chapters"
             value={formData.chapters}
             onChange={handleChange}
-            required
+            required={true}
           />
           <FormInput
             label="Published By"
@@ -194,6 +196,16 @@ const CreateTitle = () => {
             name="publishedBy"
             value={formData.publishedBy}
             onChange={handleChange}
+            required={false}
+          />
+
+          <FormInput
+            label="Alternate Name"
+            type="text"
+            name="alternateName"
+            value={formData.alternateName}
+            onChange={handleChange}
+            required={false}
           />
 
           <GenreSelector
@@ -233,14 +245,6 @@ const CreateTitle = () => {
             value={formData.status}
             onChange={handleChange}
             options={statusOptions}
-          />
-
-          <FormInput
-            label="Alternate Name"
-            type="text"
-            name="alternateName"
-            value={formData.alternateName}
-            onChange={handleChange}
           />
 
           <ImageUploader onSelectImage={setImageSelected} />

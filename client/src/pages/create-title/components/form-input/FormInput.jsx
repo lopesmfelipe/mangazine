@@ -1,11 +1,4 @@
-const FormInput = ({
-  label,
-  type,
-  name,
-  value,
-  onChange,
-  required = false,
-}) => (
+const FormInput = ({ label, type, name, value, onChange, required }) => (
   <div>
     <label>{label}:</label>
     <input

@@ -1,7 +1,19 @@
+.container {
+  color: white;
+}
+
+.container h2 {
+  margin-bottom: 20px;
+}
+
 .form-container {
   max-width: 600px;
   width: 500px;
   margin: 0 auto;
+}
+
+.form-container {
+  color: white;
 }
 
 .form-container h2 P {

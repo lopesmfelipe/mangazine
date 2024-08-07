@@ -14,6 +14,8 @@ import CreateList from "./pages/create-list/CreateList.jsx";
 import "./general.css";
 import Readlist from "./pages/readlist/Readlist.jsx";
 import RatingPrompt from "./components/rating-prompt/RatingPrompt.jsx";
+import ProtectedRoute from "./components/protected-route/ProtectedRoute.jsx";
+import About from "./pages/about/About.jsx";
 
 function App() {
   return (
@@ -23,13 +25,37 @@ function App() {
           <Route path="/" element={<Navigate to="auth" />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/readlist" element={<Readlist />} />
-          <Route path="/lists" element={<Lists />} />
-          <Route path="/list/:searchedList" element={<ListContent />} />
           <Route path="/details/:searchedName" element={<Details />} />
-          <Route path="/create-title" element={<CreateTitle />} />
-          <Route path="/create-List" element={<CreateList />} />
-          <Route path="/rating" element={<RatingPrompt />} />
+          <Route path="/about" element={<About />} />
+
+          <Route
+            path="/readlist"
+            element={<ProtectedRoute element={Readlist} />}
+          />
+          <Route path="/Lists" element={<ProtectedRoute element={Lists} />} />
+          <Route
+            path="/list/:searchedList"
+            element={<ProtectedRoute element={ListContent} />}
+          />
+          <Route
+            path="/rating"
+            element={<ProtectedRoute element={RatingPrompt} />}
+          />
+          <Route
+            path="/create-list"
+            element={<ProtectedRoute element={CreateList} />}
+          />
+          <Route
+            path="/create-title"
+            element={<ProtectedRoute element={CreateTitle} />}
+          />
+
+          {/* // Example of props being passed to the component through the wrapper component 'ProtectedRoute'
+              <Route
+               path="/create-title"
+               element={<ProtectedRoute element={CreateTitle} someProp="examplePropValue"/>}
+              />
+            */}
         </Routes>
       </div>
     </Router>

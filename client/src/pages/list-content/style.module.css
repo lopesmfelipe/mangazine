@@ -38,7 +38,7 @@
 }
 .header p {
   font-size: 40px;
-  color: rgb(255, 0, 98);
+  color: var(--main-color);
   font-family: fantasy;
   font-weight: lighter;
   margin-right: 150px;

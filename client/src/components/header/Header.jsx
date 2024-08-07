@@ -1,23 +1,33 @@
-import "./header.module.css";
+import classes from "./style.module.css";
+import { NavLink } from "react-router-dom";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 
 const Header = () => {
   return (
-    <header className="header">
-      <h1>Mangabook</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div className={classes.menu}>
+      <h1>MANGAZINE</h1>
+      <div className={classes.links}>
+        <SignedIn>
+          <div className={classes.userButton}>
+            <UserButton />
+          </div>
+        </SignedIn>
+        <NavLink
+          to="/about"
+          className={classes.link}
+          activeClassName={classes.activeLink}
+        >
+          ABOUT
+        </NavLink>
+        <NavLink
+          to="/home"
+          className={classes.link}
+          activeClassName={classes.activeLink}
+        >
+          HOME
+        </NavLink>
+      </div>
+    </div>
   );
 };
 

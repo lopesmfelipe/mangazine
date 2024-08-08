@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import Searchbar from "./components/searchbar/Searchbar";
+import axios from "axios";
 
 const Home = () => {
   const { user } = useUser();
@@ -11,31 +12,25 @@ const Home = () => {
     if (user) {
       const checkAndCreateUser = async () => {
         try {
-          const checkUserResponse = await fetch(
+          const checkUser = await axios.get(
             `http://localhost:2000/api/v1/user/exists/${user.id}`
           );
-          const checkData = await checkUserResponse.json();
+          const checkData = checkUser.data;
 
+          // USER DOES NOT EXIST, CREATE NEW USER
           if (!checkData.exists) {
-            // USER DOES NOT EXIST, CREATE NEW USER
             const userData = {
               userId: user.id,
               email: user.emailAddresses[0].emailAddress,
               userName: user.username,
             };
 
-            const createUserResponse = await fetch(
+            const createUser = await axios.post(
               "http://localhost:2000/api/v1/user/signup",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(userData),
-              }
+              userData
             );
 
-            if (createUserResponse.ok) {
+            if (createUser.status === 200) {
               console.log("User created successfully");
             } else {
               console.error("Failed to create user");

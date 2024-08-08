@@ -10,6 +10,9 @@ router.route('/signup').post(userController.createUser);
 // Check user exists
 router.route('/exists/:userId').get(userController.checkUserExists);
 
+// Get user role
+router.route('/get-role/:userId').get(userController.getUserRole);
+
 // Get readlist
 router.route('/readlist/:userId').get(userController.getReadlist);
 

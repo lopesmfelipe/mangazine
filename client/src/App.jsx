@@ -16,6 +16,7 @@ import Readlist from "./pages/readlist/Readlist.jsx";
 import RatingPrompt from "./components/rating-prompt/RatingPrompt.jsx";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute.jsx";
 import About from "./pages/about/About.jsx";
+import AdminRoute from "./components/admin-route/AdminRoute.jsx";
 
 function App() {
   return (
@@ -45,9 +46,10 @@ function App() {
             path="/create-list"
             element={<ProtectedRoute element={CreateList} />}
           />
+
           <Route
             path="/create-title"
-            element={<ProtectedRoute element={CreateTitle} />}
+            element={<AdminRoute element={CreateTitle} />}
           />
 
           {/* // Example of props being passed to the component through the wrapper component 'ProtectedRoute'

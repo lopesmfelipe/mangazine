@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
     userId: { type: String, required: true, unique: true },
     userName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    role: { type: String, default: 'user' },
     readList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Title' }],
     lists: [{ type: mongoose.Schema.Types.ObjectId, ref: 'List' }],
   },

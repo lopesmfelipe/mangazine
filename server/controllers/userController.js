@@ -12,6 +12,19 @@ exports.checkUserExists = catchAsync(async (req, res, next) => {
   return res.status(200).json({ exists: false });
 });
 
+// GET USER ROLE
+exports.getUserRole = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ userId: req.params.userId });
+
+  if (!user) {
+    return next(new AppError('User not found', 404));
+  }
+  return res.status(200).json({
+    status: 'success',
+    userRole: user.role,
+  });
+});
+
 // CREATE USER
 exports.createUser = catchAsync(async (req, res, next) => {
   const { userName, email, userId } = req.body;

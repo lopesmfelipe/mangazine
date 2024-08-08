@@ -27,11 +27,16 @@
   margin-left: 30px;
   text-decoration: none;
   color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .link:hover {
-  color: var(--main-color);
   transition: 200ms;
+  border: solid 2px white;
+  transition: 120ms;
 }
 
 .userButton {

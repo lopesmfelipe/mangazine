@@ -21,9 +21,21 @@
 }
 
 @font-face {
+  font-family: "Botanika Mono Medium";
+  src: url(./BotanikaMonoTRIAL-Medium-BF65a7316339008.otf) format("opentype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Botanika Mono Bold";
   src: url(./BotanikaMonoTRIAL-SemiBoldItalic-BF65a731633db5e.otf)
     format("opentype");
   font-weight: bold;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "x";
+  src: url(./BotanikaMonoTRIAL-Medium-BF65a7316339008.otf) format("opentype");
 }

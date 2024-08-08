@@ -8,12 +8,19 @@
 
 .menu {
   display: flex;
-  position: relative;
+  position: absolute;
+  top: 0;
   justify-content: right;
   align-items: center;
   color: rgb(255, 255, 255);
   margin-top: 20px;
   margin-right: 50px;
+  background-color: brown;
+}
+
+.menu h1 {
+  margin-left: 600px;
+  color: blue
 }
 
 .links {

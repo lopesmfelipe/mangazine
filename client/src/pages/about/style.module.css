@@ -1,3 +1,32 @@
-.container p {
-  color: white;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.text {
+  margin-top: 180px;
+  width: 600px;
+  color: rgb(211, 211, 211);
+  display: flex;
+  line-height: 1.5;
+}
+
+.text h2 {
+  margin-bottom: 20px;
+}
+
+.text p {
+  font-family: var(--font1);
+  display: inline;
+  font-size: 20px;
+  font-weight: 400;
+  color: #c2c2bc;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
 }

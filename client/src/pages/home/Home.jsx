@@ -1,13 +1,11 @@
 import classes from "./style.module.css";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import Searchbar from "./components/searchbar/Searchbar";
 
 const Home = () => {
   const { user } = useUser();
-  /* let navigate = useNavigate();
-  const [searchedName, setSearchedName] = useState(""); */
 
   useEffect(() => {
     if (user) {
@@ -63,12 +61,16 @@ const Home = () => {
   return (
     <div>
       <div className={classes.menu}>
+        <h1>MANGAZINE</h1>
         <div className={classes.links}>
           <Link to="" className={classes.link}>
             READLIST
           </Link>
           <Link to="/lists" className={classes.link}>
             LISTS
+          </Link>
+          <Link to="/about" className={classes.link}>
+            ABOUT
           </Link>
         </div>
         <SignedIn>

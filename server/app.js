@@ -29,6 +29,8 @@ app.use('/api/v1/rating', ratingRouter);
 app.use('/api/v1/lists', listRouter);
 app.use('/api/v1/readlist', listRouter);
 
+
+// needs to be the last part after all the other routes
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });

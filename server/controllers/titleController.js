@@ -80,7 +80,7 @@ exports.getTitlesByName = catchAsync(async (req, res, next) => {
   });
 });
 
-// CREATE TITLE
+// CREATE TITLE      This entire async fn is passed as parameter to catchAsync
 exports.createTitle = catchAsync(async (req, res, next) => {
   const newTitle = await Title.create(req.body);
   res.status(201).json({

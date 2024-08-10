@@ -5,6 +5,13 @@ const handleCastErrorDB = (err) => {
   return new AppError(message, 400);
 };
 
+const handleDuplicateFieldsDB = (err) => {
+  const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+  const message = `Duplicate field value: ${value}. Please use another value.`;
+
+  return new AppError(message, 400);
+};
+
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -37,7 +44,6 @@ const sendErrorProd = (err, res) => {
 
 // By specifying 4 parameters Express automatically knows that the function is an error handling middleware
 module.exports = (err, req, res, next) => {
-  console.log('♥️♥️♥️♥️', process.env.NODE_ENV);
   err.statusCode = err.statusCode || 500; // If statusCode is not defined, it will be 500
   err.status = err.status || 'error'; // If the error status is not defined, it will be 'error'
 
@@ -45,9 +51,16 @@ module.exports = (err, req, res, next) => {
     // If the environment is development, we want to send more detail in the response
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === 'production') {
-    let error = { ...err, name: err.name, message: err.message };
-    console.log('👀👀👀', err.propertyIsEnumerable('name'));
+    let error = { ...err };
+
+    // Manually copy non-enumerable properties
+    error.message = err.message;
+    error.name = err.name;
+    error.code = err.code;
+    error.errmsg = err.errmsg;
+
     if (err.name === 'CastError') error = handleCastErrorDB(error);
+    if (err.code === 11000) error = handleDuplicateFieldsDB(error);
 
     sendErrorProd(error, res);
   }

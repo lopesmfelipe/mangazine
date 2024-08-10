@@ -6,6 +6,14 @@ const titleSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A title must have a name'],
     unique: true,
+    trim: true, // Removes whitespace from the beginning and end of the string
+    validate: {
+     validator: function(value) {
+      return value && value.trim().length > 0;  // Ensures the name is not an empty string
+     },
+     message: 'A title name cannot be empty'
+
+    } 
   },
   author: String,
   releaseYear: String,

@@ -91,6 +91,26 @@ exports.createTitle = catchAsync(async (req, res, next) => {
   });
 });
 
+// UPDATE TITLE
+exports.updateTitle = catchAsync(async (req, res, next) => {
+  const { titleId } = req.params;
+
+  const updates = req.body;
+
+  const title = await Title.findOneAndUpdate({ _id: titleId }, updates, {
+    new: true, // Return the updated document
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Title updated succesfully',
+    data: {
+      title,
+    },
+  });
+});
+
 // DELETE TITLE
 exports.deleteTitle = catchAsync(async (req, res, next) => {
   const title = await Title.findOneAndDelete(req.params.id);

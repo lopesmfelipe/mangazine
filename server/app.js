@@ -22,13 +22,17 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
+
 // ROUTES
 app.use('/api/v1/titles', titleRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/rating', ratingRouter);
 app.use('/api/v1/lists', listRouter);
 app.use('/api/v1/readlist', listRouter);
-
 
 // needs to be the last part after all the other routes
 app.all('*', (req, res, next) => {

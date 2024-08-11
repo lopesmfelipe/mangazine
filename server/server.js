@@ -8,27 +8,17 @@ const app = require('./app');
 const PORT = process.env.PORT || 3000;
 const DB = process.env.DATABASE;
 
-if (!DB) {
-  console.error('MongoDB connection string not provided');
-  process.exit(1);
-}
+mongoose.connect(DB).then(() => console.log('DB connected successfully'));
+const server = app.listen(PORT, () => {
+  console.log(`App running on PORT: ${PORT}`);
+});
 
-const start = async () => {
-  try {
-    await mongoose.connect(DB);
-    console.log('mangabook database connected successfully');
-    app
-      .listen(PORT, () => {
-        console.log(`App running on PORT: ${PORT}`);
-      })
-      .on('error', (err) => {
-        console.error('Server startup error:', err.message);
-        process.exit(1);
-      });
-  } catch (err) {
-    console.error('Error connecting to MongoDB:', err.message);
-    process.exit(1);
-  }
-};
-
-start();
+// Listening to the unhandled rejection event
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  console.log('UNHANDLED REJECTION!😭 Shutting down...');
+  // By using server.close() we give the server time to finish all the request that are still pending or being handled at the time and then the server is killed
+  server.close(() => {
+    process.exit(1); // 0 stands for success, 1 stands for uncaught exception
+  });
+});

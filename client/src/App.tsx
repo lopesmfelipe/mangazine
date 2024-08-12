@@ -4,19 +4,19 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Auth } from "./pages/auth/Auth.jsx";
-import CreateTitle from "./pages/create-title/CreateTitle.jsx";
-import ListContent from "./pages/list-content/ListContent.jsx";
-import Lists from "./pages/lists/Lists.jsx";
-import Home from "./pages/home/Home.jsx";
-import Details from "./pages/details/Details.jsx";
-import CreateList from "./pages/create-list/CreateList.jsx";
+import { Auth } from "./pages/auth/Auth.js";
+import CreateTitle from "./pages/create-title/CreateTitle.js";
+import ListContent from "./pages/list-content/ListContent.js";
+import Lists from "./pages/lists/Lists.js";
+import Home from "./pages/home/Home.js";
+import Details from "./pages/details/Details.js";
+import CreateList from "./pages/create-list/CreateList.js";
 import "./general.css";
-import Readlist from "./pages/readlist/Readlist.jsx";
-import RatingPrompt from "./components/rating-prompt/RatingPrompt.jsx";
-import ProtectedRoute from "./components/protected-route/ProtectedRoute.jsx";
-import About from "./pages/about/About.jsx";
-import AdminRoute from "./components/admin-route/AdminRoute.jsx";
+import Readlist from "./pages/readlist/Readlist.js";
+import RatingPrompt from "./components/rating-prompt/RatingPrompt.js";
+import ProtectedRoute from "./components/protected-route/ProtectedRoute.js";
+import About from "./pages/about/About.js";
+import AdminRoute from "./components/admin-route/AdminRoute.js";
 
 function App() {
   return (

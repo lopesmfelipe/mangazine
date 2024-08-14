@@ -1,13 +1,14 @@
-const AppError = require('../utils/appError');
+import { Request, Response, NextFunction } from 'express';
+import AppError from '../utils/appError';
 
 // HANDLE DB CAST ERROR
-const handleCastErrorDB = (err) => {
+const handleCastErrorDB = (err: any) => {
   const message = `Invalid ${err.path}: ${err.value}`;
   return new AppError(message, 400);
 };
 
 // HANDLE DB DUPLICATED FIELDS
-const handleDuplicateFieldsDB = (err) => {
+const handleDuplicateFieldsDB = (err: any) => {
   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   const message = `Duplicate field value: ${value}. Please use another value.`;
 
@@ -15,15 +16,15 @@ const handleDuplicateFieldsDB = (err) => {
 };
 
 // HANDLE DB VALIDATION ERROR
-const handleValidationErrorDB = (err) => {
-  const errors = Object.values(err.errors).map((el) => el.message);
+const handleValidationErrorDB = (err: any) => {
+  const errors = Object.values(err.errors).map((el: any) => el.message);
 
   const message = `Invalid input data. ${errors.join('. ')}`;
 
   return new AppError(message, 400);
 };
 
-const sendErrorDev = (err, res) => {
+const sendErrorDev = (err: any, res: Response) => {
   res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
@@ -32,7 +33,7 @@ const sendErrorDev = (err, res) => {
   });
 };
 
-const sendErrorProd = (err, res) => {
+const sendErrorProd = (err: any, res: Response) => {
   // Operational, trusted error: send message to client
   if (err.isOperational) {
     res.status(err.statusCode).json({
@@ -54,7 +55,12 @@ const sendErrorProd = (err, res) => {
 };
 
 // By specifying 4 parameters Express automatically knows that the function is an error handling middleware
-module.exports = (err, req, res, next) => {
+export const globalErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   err.statusCode = err.statusCode || 500; // If statusCode is not defined, it will be 500
   err.status = err.status || 'error'; // If the error status is not defined, it will be 'error'
 
@@ -65,10 +71,10 @@ module.exports = (err, req, res, next) => {
     let error = { ...err };
 
     // Manually copy non-enumerable properties
-    error.message = err.message;
-    error.name = err.name;
-    error.code = err.code;
-    error.errmsg = err.errmsg;
+    error.message = err?.message;
+    error.name = err?.name;
+    error.code = err?.code;
+    error.errmsg = err?.errmsg;
 
     if (err.name === 'CastError') error = handleCastErrorDB(error);
     if (err.code === 11000) error = handleDuplicateFieldsDB(error);

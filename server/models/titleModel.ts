@@ -8,7 +8,7 @@ const titleSchema = new mongoose.Schema({
     unique: true,
     trim: true, // Removes whitespace from the beginning and end of the string
     validate: {
-      validator: function (value : string) {
+      validator: function (value: string) {
         return value && value.trim().length > 0; // Ensures the name is not an empty string
       },
       message: 'A title name cannot be empty',
@@ -29,4 +29,4 @@ const titleSchema = new mongoose.Schema({
 
 const Title = mongoose.model('Title', titleSchema);
 
-module.exports = Title;
+export default Title;

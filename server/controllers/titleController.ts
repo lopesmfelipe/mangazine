@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-const Title = require('../models/titleModel');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
+import Title from '../models/titleModel';
+import catchAsync from '../utils/catchAsync';
+import AppError from '../utils/appError';
+import { Types } from 'mongoose';
 
 export const getAllTitles = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +20,7 @@ export const getAllTitles = catchAsync(
     let query = Title.find(JSON.parse(queryStr)); // temporary final query
 
     // 2) SORTING
-    if (req.query.sort) {
+    if (typeof req.query.sort === 'string') {
       const sortBy = req.query.sort.split(',').join(' ');
       console.log(sortBy);
       query = query.sort(sortBy);
@@ -28,7 +29,7 @@ export const getAllTitles = catchAsync(
     }
 
     // 3) FIELD LIMITING
-    if (req.query.fields) {
+    if (typeof req.query.fields === 'string') {
       const fields = req.query.fields.split(',').join(' ');
       console.log(fields);
       query = query.select(fields);
@@ -71,19 +72,21 @@ export const getTitleById = catchAsync(
 export const getTitlesByName = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { name } = req.query; // Get the query parameter from the URL
-    const titles = await Title.find({ name: new RegExp(name, 'i') }); // Perform case-insensitive search
+    if (typeof name === 'string') {
+      const titles = await Title.find({ name: new RegExp(name, 'i') }); // Perform case-insensitive search
 
-    if (titles.length === 0) {
-      return next(new AppError('No title found with that name', 404));
+      if (titles.length === 0) {
+        return next(new AppError('No title found with that name', 404));
+      }
+
+      res.status(200).json({
+        status: 'success',
+        message: `${titles.length} items found.`,
+        data: {
+          titles,
+        },
+      });
     }
-
-    res.status(200).json({
-      status: 'success',
-      message: `${titles.length} items found.`,
-      data: {
-        titles,
-      },
-    });
   },
 );
 
@@ -125,7 +128,13 @@ export const updateTitle = catchAsync(
 // DELETE TITLE
 export const deleteTitle = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const title = await Title.findOneAndDelete(req.params.id);
+    // Validate the ID
+    const { id } = req.params;
+    if (!Types.ObjectId.isValid(id)) {
+      return next(new AppError('Invalid ID format', 400));
+    }
+
+    const title = await Title.findOneAndDelete({ _id: id });
 
     if (!title) {
       return next(

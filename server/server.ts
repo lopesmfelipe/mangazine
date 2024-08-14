@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+import app from './app'; // 
 
 // Listening and Catching Uncaught Exceptions
 process.on('uncaughtException', (err) => {
@@ -10,7 +11,6 @@ process.on('uncaughtException', (err) => {
 
 dotenv.config({ path: './config.env' });
 
-const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
 const DB = process.env.DATABASE;

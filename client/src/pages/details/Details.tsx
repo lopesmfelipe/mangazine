@@ -1,5 +1,5 @@
 import classes from "./style.module.css";
-import Axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdditionalInformation from "./components/additional-information/AdditionalInformation";
@@ -7,14 +7,14 @@ import Rating from "./components/rating/Rating";
 import AddButton from "./components/add-button/AddButton";
 
 const Details = () => {
-  const { searchedName } = useParams();
+  const { titleId } = useParams();
   const [titleData, setTitleData] = useState(null);
 
   useEffect(() => {
     const fetchTitleData = async () => {
       try {
-        const response = await Axios.get(
-          `http://localhost:2000/api/v1/titles/search?name=${searchedName}`
+        const response = await axios.get(
+          `http://localhost:2000/api/v1/titles/${titleId}`
         );
         setTitleData(response.data.data.titles[0]);
       } catch (err) {
@@ -23,7 +23,7 @@ const Details = () => {
     };
 
     fetchTitleData();
-  }, [searchedName]);
+  }, [titleId]);
 
   if (!titleData) {
     return <div> Loading...</div>;

@@ -1,6 +1,6 @@
 import classes from "./style.module.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from react-router-dom';
 import axios from "axios";
 
 const Searchbar = () => {
@@ -18,7 +18,7 @@ const Searchbar = () => {
       try {
         console.log(name);
         const response = await axios.get(
-          `http://localhost:2000/api/v1/titles/search?name=${name}`
+          `http://localhost:2000/api/v1/titles/search/${name}`
         );
         console.log("Response Data:", response.data); // Log the response data
         setResults(response.data.data.titles);
@@ -32,8 +32,8 @@ const Searchbar = () => {
     }
   };
 
-  const handleClick = (id) => {
-    navigate(`/details/${id}`);
+  const handleClick = (titleId: string) => {
+    navigate(`/details/${titleId}`);
   };
 
   return (
@@ -57,7 +57,7 @@ const Searchbar = () => {
           {results.map((title) => (
             <div
               key={title._id}
-              onClick={() => handleClick(title.name)}
+              onClick={() => handleClick(title._id)}
               className={classes.gridItem}
             >
               <img src={title.cover} className={classes.cover} />

@@ -53,7 +53,7 @@ export const getAllTitles = catchAsync(
 // GET TITLE BY ID
 export const getTitleById = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const title = await Title.findById(req.params.id);
+    const title = await Title.findById(req.params.titleId);
 
     if (!title) {
       return next(new AppError('No title found with that ID', 404));
@@ -71,9 +71,9 @@ export const getTitleById = catchAsync(
 // GET TITLE BY NAME
 export const getTitlesByName = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { name } = req.query; // Get the query parameter from the URL
-    if (typeof name === 'string') {
-      const titles = await Title.find({ name: new RegExp(name, 'i') }); // Perform case-insensitive search
+    const { titleName } = req.params; // Get the query parameter from the URL
+    if (typeof titleName === 'string') {
+      const titles = await Title.find({ name: new RegExp(titleName, 'i') }); // Perform case-insensitive search
 
       if (titles.length === 0) {
         return next(new AppError('No title found with that name', 404));

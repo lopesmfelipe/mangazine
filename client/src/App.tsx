@@ -26,7 +26,7 @@ function App() {
           <Route path="/" element={<Navigate to="auth" />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/details/:searchedName" element={<Details />} />
+          <Route path="/details/:titleId" element={<Details />} />
           <Route path="/about" element={<About />} />
 
           <Route

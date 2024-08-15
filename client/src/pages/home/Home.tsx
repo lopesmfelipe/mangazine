@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import Searchbar from "./components/searchbar/Searchbar";
 import axios from "axios";
+import Header from "../../components/header/Header";
 
 const Home = () => {
   const { user } = useUser();
@@ -55,25 +56,8 @@ const Home = () => {
 
   return (
     <div>
-      <div className={classes.menu}>
-        <h1>MANGAZINE</h1>
-        <div className={classes.links}>
-          <Link to="" className={classes.link}>
-            READLIST
-          </Link>
-          <Link to="/lists" className={classes.link}>
-            LISTS
-          </Link>
-          <Link to="/about" className={classes.link}>
-            ABOUT
-          </Link>
-        </div>
-        <SignedIn>
-          <div className={classes.userButton}>
-            <UserButton />
-          </div>
-        </SignedIn>
-      </div>
+      <Header />
+      
       <main>
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>

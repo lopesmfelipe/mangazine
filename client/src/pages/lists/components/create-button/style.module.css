@@ -1,41 +1,41 @@
 .container {
   display: flex;
   justify-content: end;
+  background-color: blue;
+  position: relative;
 }
 
 .buttonContainer {
-  margin-right: 60px;
+  position: absolute;
+  right: 250px;
 }
 
 .createList {
-  padding-left: 20px;
-  font-size: 17px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 7px;
   background-color: var(--main-color);
-  color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(0, 0, 0);
   margin-right: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: fantasy;
+  font-weight: lighter;
+
 }
 
 .createList i {
-  font-size: 17px;
-  padding-right: 20px;
-  padding-left: 20px;
+  font-size: 20px;
+  padding-right: 15px;
+  padding-left: 10px;
 }
 
 .createList:hover {
-  padding-left: 20px;
-  font-size: 17px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  background-color: rgb(176, 0, 68);
+  cursor: pointer;
+  border: solid 2px white;
+  background-color: black;
   color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  border: none;
+  transition: 90ms;
 }
 

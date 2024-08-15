@@ -1,7 +1,7 @@
 import classess from "./style.module.css";
 import { Link } from "react-router-dom";
 
-const CreateButton = () => {
+const CreateListButton = () => {
   return (
     <div className={classess.container}>
       <div className={classess.buttonContainer}>
@@ -18,4 +18,4 @@ const CreateButton = () => {
   );
 };
 
-export default CreateButton;
+export default CreateListButton;

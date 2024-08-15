@@ -5,25 +5,30 @@ import { SignedIn, UserButton } from "@clerk/clerk-react";
 const Header = () => {
   return (
     <div className={classes.menu}>
-      <h1>MANGAZINE</h1>
+      <NavLink to="/home" className={classes.titleLink}>
+      <div>
+        <h1 className={classes.title}>MANGAZINE</h1>
+
+      </div>
+      </NavLink>
       <div className={classes.links}>
         <SignedIn>
           <div className={classes.userButton}>
             <UserButton />
           </div>
         </SignedIn>
-        <NavLink
-          to="/about"
-          className={classes.link}
-          activeClassName={classes.activeLink}
-        >
+        <NavLink to="/about" className={classes.link}>
           ABOUT
         </NavLink>
-        <NavLink
-          to="/home"
-          className={classes.link}
-          activeClassName={classes.activeLink}
-        >
+        <SignedIn>
+          <NavLink to="/lists" className={classes.link}>
+            LISTS
+          </NavLink>
+        </SignedIn>
+        <NavLink to="/readlist" className={classes.link}>
+          READLIST
+        </NavLink>
+        <NavLink to="/home" className={classes.link}>
           HOME
         </NavLink>
       </div>

@@ -1,32 +1,36 @@
 .bodyStyle {
-  color: rgb(233, 219, 221);
   display: flex;
   flex-direction: column;
-} 
+}
 .topMenu {
   display: flex;
   width: 100%;
   column-gap: 20px;
   position: absolute;
+  height: 21%;
   top: 0;
   justify-content: end;
-  font-family: "Audiowide", sans-serif;
   background-color: var(--main-color);
   font-size: 20px;
-  
 }
 
-.y {
+.links {
+  right: 20%;
   display: flex;
-  margin-right: 80px
+  margin-right: 10%;
+  align-items: center;
 }
 
-.y p {
+.links p {
   margin-right: 20px;
+  color: black;
+  font-family: var(--tertiary-font);
+  font-weight: bolder;
+  font-size: 20px;
 }
 
-.y p:hover {
-  color: rgb(0, 0, 0);
+.links p:hover {
+  color: black;
 }
 
 .menuItem {
@@ -35,27 +39,30 @@
 }
 
 .header {
-  margin-top: 10px;
-  height: 200px;
+  margin-top: 10%;
+  height: 100px;
   background-color: var(--main-color);
   margin-bottom: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .header h1 {
-  padding-top: 20px;
-  margin-left: 70px;
+  margin-left: 8%;
   font-size: 55px;
 }
-
 
 .boxContainer {
   border: solid 2.2px;
   margin-left: 90px;
   margin-right: 600px;
   border-radius: 10px;
+  color: white;
+  background-color: brown;
 }
 
 .box {
+  background-color: blue;
   margin-top: 20px;
   margin-left: 20px;
   margin-bottom: 20px;

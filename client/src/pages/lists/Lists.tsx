@@ -3,7 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import CreateButton from "./components/create-button/CreateButton";
+import CreateListButton from "./components/create-button/CreateListButton";
+import Header from "../../components/header/Header";
 
 const AllListsPage = () => {
   const { user } = useUser();
@@ -35,23 +36,13 @@ const AllListsPage = () => {
     };
   }, [user]);
 
-
   return (
     <div className={classes.allListsBody}>
-      <div className={classes.topMenu}>
-        <div className={classes.y}>
-          <Link to="/home" className={classes.menuItem}>
-            <p>Home</p>
-          </Link>
-          <Link to="/read-list" className={classes.menuItem}>
-            <p>Readlist</p>
-          </Link>
-        </div>
-      </div>
+      <Header />
       <div className={classes.header}>
         <h1>Your Lists</h1>
       </div>
-      <CreateButton />
+      <CreateListButton />
       <div className={classes.boxContainer}>
         {lists.map((list, index) => (
           <Link

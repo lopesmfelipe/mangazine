@@ -8,6 +8,7 @@ import AddButton from "./components/add-button/AddButton";
 
 const Details = () => {
   const { titleId } = useParams();
+  console.log("Title ID from URL:", titleId);
   const [titleData, setTitleData] = useState(null);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Details = () => {
         const response = await axios.get(
           `http://localhost:2000/api/v1/titles/${titleId}`
         );
-        setTitleData(response.data.data.titles[0]);
+        setTitleData(response.data.titles[0]);
       } catch (err) {
         console.error("ERROR", err);
       }

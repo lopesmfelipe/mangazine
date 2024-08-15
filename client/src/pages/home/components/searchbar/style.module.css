@@ -16,7 +16,7 @@
   border-radius: 20px;
   border: 0;
   background-color: transparent;
-  border: solid 2.5px rgb(255, 0, 98);
+  border: solid 2.5px var(--main-color);
   outline: none;
 }
 .searchbar::placeholder {
@@ -34,7 +34,7 @@
   margin-bottom: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgb(43, 41, 42);
+  background-color: rgba(246, 246, 246, 0.095);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 0px;
@@ -49,20 +49,34 @@
   width: 350px;
   display: flex;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding-right: 30px;
+  margin-right: 10px;
+  border: solid 1px white;
 }
 
 .gridItem:hover {
-  background-color: rgba(230, 49, 112, 0.193);
-  transition: 200ms;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: solid 1px white;
+  transition: 100ms;
+  cursor: pointer;
 }
 
 .cover {
   height: 100%;
   width: 100px;
   border-radius: 10px;
+  border: 1px solid transparent;
 }
+.gridItem:hover p {
+  color: black;
+}
+
+.gridItem:hover .cover {
+  border: 1px solid black;
+}
+
 
 .informationContainer {
   margin-left: 20px;
@@ -83,11 +97,14 @@
   color: white;
 }
 
+
 .loading {
   margin-top: 30px;
   font-size: 19px;
+  color: white;
 }
 .error {
   margin-top: 30px;
   font-size: 19px;
+  color: white;
 }

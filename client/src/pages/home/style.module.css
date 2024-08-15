@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 .bodyStyle {
-  background-color: rgb(30, 30, 32);
   margin: 0;
   padding: 0;
 }
@@ -10,24 +9,28 @@
   display: flex;
   position: absolute;
   top: 0;
-  justify-content: right;
+  left: 0;
+  width: 100%;
   align-items: center;
   color: rgb(255, 255, 255);
   margin-top: 20px;
   margin-right: 50px;
-  background-color: brown;
 }
 
 .menu h1 {
-  margin-left: 600px;
-  color: blue
+  margin-left: 100px;
+  color: blue;
+  font-family: fantasy;
+  font-weight: lighter;
+  color: var(--main-color);
 }
 
 .links {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 650px;
+  position: absolute;
+  right: 40px;
 }
 .link {
   text-decoration: none;
@@ -59,7 +62,7 @@ main {
   justify-content: center;
   color: rgb(255, 255, 255);
   font-family: var(--secondary-font);
-  margin-top: 90px;
+  margin-top: 190px;
 }
 
 main h1,
@@ -75,5 +78,3 @@ h2 {
   display: flex;
   font-family: var(--primary-font);
 }
-
-

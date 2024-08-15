@@ -3,11 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 200px;
+  margin-top: 50px;
 }
 
 .boxContainer {
-  margin-top: 10%;
+  margin-top: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,8 +25,9 @@
 }
 
 .box h3 {
-  padding-top: 25px;
+  padding-top: 45px;
   border-top: solid 2px;
+  margin: 0;
 }
 
 .SignInContainer button {
@@ -35,13 +36,13 @@
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #fff;
+  color: #000000;
   background-color: var(--main-color); /* Dark Red */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 10px;
+  margin-top: 40px;
 }
 
 /* Hover State */

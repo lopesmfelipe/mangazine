@@ -17,7 +17,8 @@ const Details = () => {
         const response = await axios.get(
           `http://localhost:2000/api/v1/titles/${titleId}`
         );
-        setTitleData(response.data.titles[0]);
+        console.log('RESPONSE', response);
+        setTitleData(response.data.title);
       } catch (err) {
         console.error("ERROR", err);
       }

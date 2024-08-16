@@ -82,9 +82,7 @@ export const getTitlesByName = catchAsync(
       res.status(200).json({
         status: 'success',
         message: `${titles.length} items found.`,
-        data: {
-          titles,
-        },
+        titles,
       });
     }
   },

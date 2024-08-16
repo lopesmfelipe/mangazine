@@ -17,7 +17,8 @@ const Details = () => {
         const response = await axios.get(
           `http://localhost:2000/api/v1/titles/${titleId}`
         );
-        setTitleData(response.data.titles[0]);
+        console.log('RESPONSE', response);
+        setTitleData(response.data.title);
       } catch (err) {
         console.error("ERROR", err);
       }
@@ -34,7 +35,7 @@ const Details = () => {
     <div className={classes.detailsBody}>
       <div className={classes.container}>
         <div className={classes.cover}>
-          <img src={titleData.cover} alt="" />
+          <img src={titleData.cover} />
         </div>
         <div className={classes.information1}>
           <div className={classes["top-container"]}>

@@ -54,7 +54,7 @@ const Rating = ({ titleData }) => {
   return (
     <>
       <div className={classes.rating}>
-        <p className={classes.type}>Overall Rating</p>
+        <p className={classes.type}>OVERALL RATING</p>
         <div className={classes.score}>
           <i className={`fa-solid fa-star ${classes.fullStar}`}></i>
           <p>{averageRating ? averageRating.toFixed(1) : "N/A"}/10</p>
@@ -62,7 +62,7 @@ const Rating = ({ titleData }) => {
       </div>
       <div>
         <div className={classes.rating}>
-          <p className={classes.type}>Your Rating</p>
+          <p className={classes.type}>YOUR RATING</p>
           <div className={classes.score}>
             <i
               className={

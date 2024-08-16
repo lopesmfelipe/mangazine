@@ -1,5 +1,5 @@
 import classes from "./style.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const Searchbar = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSearch = async (event) => {
+  const handleSearch = async (event: any) => {
     if (event.key === "Enter" && name.trim() !== "") {
       setLoading(true);
       try {

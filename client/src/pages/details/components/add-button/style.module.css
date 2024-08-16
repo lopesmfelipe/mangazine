@@ -4,15 +4,21 @@
 }
 
 .add-to-readlist-1 {
-  padding-left: 10px;
+  padding-left: 15px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-size: 17px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: rgb(239, 207, 0);
+  background-color: var(--main-color);
   color: black;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border: 0;
+  border-right: solid 4px black;
+  white-space: nowrap;
 }
 
 .add-to-readlist-1 i {
@@ -21,18 +27,12 @@
 }
 
 .add-to-readlist-1:hover {
-  padding-left: 10px;
-  font-size: 17px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-left: solid 2px rgb(193, 171, 6);
-  transition: none !important;
-  background-color: rgb(211, 183, 0);
-  color: black;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  border: none;
+  cursor: pointer;
+  transition: 200ms;
+  background-color: black;
+  color: white;
+  border: solid 1px white;
+  border-right: solid 4px white;
 }
 
 .add-to-readlist-2 {
@@ -40,13 +40,14 @@
   padding-right: 10px;
   margin-left: 0px;
   font-size: 17px;
-  border-left: solid 2px rgb(193, 171, 6);
+  border: 0;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
-  background-color: rgb(239, 207, 0);
+  background-color: var(--main-color);
   color: black;
+  border: solid 1px transparent;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
@@ -56,16 +57,9 @@
 }
 
 .add-to-readlist-2:hover {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 17px;
-  border-left: solid 2px rgb(193, 171, 6) !important;
-  border-bottom-right-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  background-color: rgb(211, 183, 0);
-  color: black;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  border: none;
+  cursor: pointer;
+  transition: 200ms;
+  color: white;
+  background-color: black;
+  border: solid 1px white;
 }

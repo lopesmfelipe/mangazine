@@ -2,10 +2,11 @@
 
 .container {
   display: flex;
-  margin-left: 100px;
   margin-top: 40px;
   font-family: "Raleway", sans-serif;
   color: white;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .cover {
@@ -14,14 +15,14 @@
 }
 
 .cover img {
-  width: 243px;
-  height: 364.5px;
+  width: 210px;
+  height: 300px;
   border-radius: 5px;
 }
 
 .information1 {
-  margin-top: 30px;
-  margin-left: 40px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .titleName {
@@ -32,8 +33,6 @@
 }
 
 .description-container {
-  width: 970px;
-  height: 150px;
   font-size: 16px;
   margin-bottom: 13px;
 }
@@ -45,17 +44,20 @@
 }
 
 .description-container p {
-  font-family: "Raleway", sans-serif;
-  line-height: 1.5;
+  font-family: var(--font1);
+  font-weight: lighter;
+  line-height: 1.3;
 }
 
 .author-released-button {
+  position: relative;
   display: flex;
+  margin-top: 6%;
 }
 
 .addition-button {
-  margin-left: 450px;
-  margin-top: 10px;
+  position: absolute;
+  right: 5%;
 }
 
 .information1 h3 {
@@ -74,5 +76,5 @@
 }
 
 .field {
-  color: var(--main-color);
+  color: rgba(254, 254, 254, 0.634);
 }

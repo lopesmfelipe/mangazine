@@ -35,7 +35,7 @@ const Details = () => {
     <div className={classes.detailsBody}>
       <div className={classes.container}>
         <div className={classes.cover}>
-          <img src={titleData.cover} alt="" />
+          <img src={titleData.cover} />
         </div>
         <div className={classes.information1}>
           <div className={classes["top-container"]}>

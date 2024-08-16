@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+.genresContainer {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
 .information2 {
   display: inline-block;
   margin-top: 10px;
-  margin-left: 100px;
   color: white;
+  margin-left: 5%;
 }
 
 .minibox {
-  margin-bottom: 10px;
-  border-bottom: solid 1px;
-  padding: 10px 10px;
-  align-items: center;
-  border-color: white;
 }
 
 .genres {

@@ -1,5 +1,6 @@
 .promptBackdrop {
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -11,6 +12,7 @@
 }
 
 .promptWindow {
+  position: relative;
   background-color: rgb(32, 32, 32);
   display: flex;
   flex-direction: column;
@@ -18,7 +20,7 @@
   justify-content: center;
   width: 600px;
   border-radius: 10px;
-  box-shadow: 0 1px 10px rgba(236, 111, 174, 0.762);
+  box-shadow: 0 1px 10px rgba(246, 246, 246, 0.762);
   padding: 0;
   padding-bottom: 10px;
 }
@@ -32,7 +34,7 @@
   margin-bottom: 10px;
   margin-top: -60px;
   margin-bottom: 60px;
-
+  font-family: var(--font1);
 }
 
 .cover {
@@ -46,50 +48,54 @@
 
 .titleName {
   font-size: 20px;
+  color: white;
+  font-family: var(--font1);
 }
 
 .rating {
   transform: translate(-0%, -80%) rotateY(180deg);
   display: flex;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .rating input {
-   display: none;
+  display: none;
 }
 
 .rating label {
-  display: block;
   cursor: pointer;
   width: 50px;
 }
 
 .rating label:before {
-  content: '\f005';
+  content: "\f005";
   font-family: fontAwesome;
   position: relative;
   display: block;
   font-size: 40px;
-  color: rgb(212, 212, 212);
+  color: rgb(148, 148, 148);
 }
 
 .rating label:after {
-  content: '\f005';
+  content: "\f005";
   font-family: fontAwesome;
   position: absolute;
   display: block;
   font-size: 40px;
-  color: rgb(230, 195, 0);
+  color: rgb(255, 255, 255);
   top: 0;
   opacity: 0;
-  transform: .5s;
-  text-shadow: 0 2px 5px rgba(0,0,0,.5);
+  transform: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .rating label:hover:after,
 .rating label:hover ~ label:after,
 .rating input:checked ~ label:after {
   opacity: 1;
-} 
+}
 
 .buttonContainer {
   display: flex;
@@ -97,18 +103,22 @@
 }
 
 .rateButton {
+  font-size: 16px;
+  font-weight: bolder;
   border: none;
   border-radius: 5px;
   padding: 10px;
   padding-right: 110px;
   padding-left: 110px;
   background-color: var(--main-color);
-  color: white;
+  color: black;
 }
 
 .rateButton:hover {
-  background-color: rgb(163, 0, 57);
+  color: white;
   cursor: pointer;
+  background-color: rgba(142, 138, 138, 0.561);
+  transition: 100ms;
 }
 
 .button2 {
@@ -119,17 +129,16 @@
   padding: 10px;
   padding-right: 110px;
   padding-left: 110px;
-  
 }
 
 .button2:hover {
   background-color: rgba(142, 138, 138, 0.561);
-  transition: 0.1s;
+  transition: 100ms;
   cursor: pointer;
 }
 
 .closeButton {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,22 +148,19 @@
   padding: 20px;
   color: white;
   cursor: pointer;
-  top: -470px;
-  right: -280px;
+  top: -13%;
+  right: 1%;
   background-color: transparent;
   border: 0;
 }
 
 .closeButton:hover {
-  background-color: rgba(94, 94, 94, 0.31);
+  background-color: rgba(94, 94, 94, 0.449);
   padding: 20px;
-} 
+}
 
 .closeButton i {
   margin: 0;
   padding: 0;
   font-size: 25px;
 }
-
-
-

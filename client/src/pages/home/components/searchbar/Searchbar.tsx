@@ -3,7 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Searchbar = () => {
+interface SearchbarProps {
+  placeholder: string;
+}
+
+const Searchbar: React.FC<SearchbarProps> = ({placeholder}) => {
   const [name, setName] = useState("");
   const [items, setItems] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -38,7 +42,7 @@ const Searchbar = () => {
     <div className={classes.container}>
       <input
         type="text"
-        placeholder="Search"
+        placeholder={placeholder}
         value={name}
         onChange={(event) => setName(event.target.value)}
         onKeyDown={handleSearch}

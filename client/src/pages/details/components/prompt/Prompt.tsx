@@ -4,6 +4,8 @@ import axios from "axios";
 import classes from "./style.module.css";
 import ListItem from "./components/ListItem";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon you want to use
 
 const Prompt = ({ onClose, titleData }) => {
   const { user } = useUser();

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import classes from "./style.module.css";
+import Searchbar from "../home/components/searchbar/Searchbar";
 
 const CreateList = () => {
   const { user } = useUser();
@@ -20,11 +21,6 @@ const CreateList = () => {
       }));
     }
 
-    document.body.classList.add(classes.bodyStyle);
-
-    return () => {
-      document.body.classList.remove(classes.bodyStyle);
-    };
   }, [user]);
 
   const handleChange = (e) => {
@@ -45,6 +41,7 @@ const CreateList = () => {
     console.log("FormData being sent: ", formData);
 
     try {
+      
       const response = await fetch(
         "http://localhost:2000/api/v1/lists/create-list",
         {
@@ -77,6 +74,8 @@ const CreateList = () => {
   };
 
   return (
+    <div className={classes.superContainer}>
+
     <div className={classes.container}>
       <div className={classes.w}>
         <div className={classes.title}>
@@ -103,12 +102,17 @@ const CreateList = () => {
               required
             />
           </div>
+          <div className={classes.searchBarContainer}>
+            <Searchbar placeholder="Search titles to add" />
+
+          </div>
           <button type="submit" className={classes.myButton}>
             {isUploading ? "Uploading..." : "Submit"}
           </button>
         </form>
 
       </div>
+    </div>
     </div>
   );
 };

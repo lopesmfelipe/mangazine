@@ -1,19 +1,19 @@
-.bodyStyle {
-  background-color: var(--background-color);
+.superContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .container {
+  background-color: blue;
   color: white;
-  width: 500px;
+  width: 90%;
   height: 500px;
+
   margin-top: 60px;
   border: solid 2px var(--main-color);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -39,6 +39,13 @@ input {
   font-size: 25px;
   font-family: var(--primary-font);
   margin-bottom: 50px;
+}
+
+.searchBarContainer {
+  margin-top: 50px;
+  width: 500px;
+  background-color: brown;
+  margin-bottom: 30px;
 }
 
 .myButton {

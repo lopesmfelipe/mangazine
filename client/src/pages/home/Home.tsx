@@ -61,8 +61,8 @@ const Home = () => {
       <main>
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>
-        <div>
-          <Searchbar />
+        <div className={classes.searchBarContainer}>
+          <Searchbar placeholder="Search"/>
         </div>
       </main>
     </div>

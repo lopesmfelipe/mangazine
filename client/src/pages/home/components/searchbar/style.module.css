@@ -33,19 +33,17 @@
   margin-bottom: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(246, 246, 246, 0.095);
+  background-color: rgba(5, 250, 13, 0.589);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 0px;
-  padding-left: 30px;
-  padding-right: 30px;
   border-radius: 15px;
 }
 
 .gridItem {
   margin-top: 30px;
-  height: 150px;
-  width: 350px;
+  height: 90px;
+  width: 200px;
   display: flex;
   padding: 10px;
   border-radius: 10px;
@@ -79,15 +77,15 @@
 
 .informationContainer {
   margin-left: 20px;
-  width: 220px;
+  width: 200px;
+  background-color: blue;
 }
 
 .box2, p {
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   align-items: baseline;
   justify-content: left;
-  gap: 5px;
   color: rgba(219, 213, 213, 0.841);
 }
 

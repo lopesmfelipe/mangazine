@@ -92,6 +92,9 @@ const CreateList = () => {
               required
             />
           </div>
+          <button type="submit" className={classes.myButton}>
+            {isUploading ? "Uploading..." : "Submit"}
+          </button>
           <div className={classes.field}>
             <label htmlFor="">TITLES</label>
             <input
@@ -106,9 +109,6 @@ const CreateList = () => {
             <Searchbar placeholder="Search titles to add" />
 
           </div>
-          <button type="submit" className={classes.myButton}>
-            {isUploading ? "Uploading..." : "Submit"}
-          </button>
         </form>
 
       </div>

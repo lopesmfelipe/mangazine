@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import classes from "./style.module.css";
-import Searchbar from "../home/components/searchbar/Searchbar";
+import Searchbar from "../create-list/components/searchbar/Searchbar";
 import axios from "axios";
 
 const CreateList = () => {
   const { user } = useUser();
+  const [selectedItems, setSelectedItems] = useState<any[]>([]);
+
   const [formData, setFormData] = useState({
     userId: user?.id ?? "",
     name: "",

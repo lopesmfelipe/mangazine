@@ -1,23 +1,21 @@
 import classes from "./style.module.css";
 import berserk from "./berserk.jpg";
 
-interface ItemData {
+interface Item {
+  _id: string;
   cover: string;
   name: string;
 }
 
 interface ScrollbarProps {
-  itemData: ItemData;
+  items: Item[];
   itemsNumber: number;
 }
 
 const HorizontalScrollbar: React.FC<ScrollbarProps> = ({
-  itemData,
+  items,
   itemsNumber,
 }) => {
-  // Creatae an array with the given number of items
-  const itemsArray = new Array(itemsNumber).fill(null);
-
   return (
     <>
       <div>
@@ -25,13 +23,13 @@ const HorizontalScrollbar: React.FC<ScrollbarProps> = ({
           className={classes.wrapper}
           style={{ "--itemsNumber": itemsNumber } as React.CSSProperties} // Type assertion to handle CSS custom properties
         >
-          {itemsArray.map((_, index) => (
-            <div key={index} className={classes.item}>
+          {items.map((item) => (
+            <div key={item._id} className={classes.item}>
               <div className={classes.coverContainer}>
-                <img src={itemData.cover} />
+                <img src={item.cover} />
               </div>
               <div>
-                <p>{itemData.name}</p>
+                <p>{item.name}</p>
               </div>
             </div>
           ))}

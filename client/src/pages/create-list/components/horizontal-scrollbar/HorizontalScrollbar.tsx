@@ -1,5 +1,4 @@
 import classes from "./style.module.css";
-import berserk from "./berserk.jpg";
 
 interface Item {
   _id: string;

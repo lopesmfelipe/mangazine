@@ -4,13 +4,16 @@
 }
 
 .wrapper {
+  background-color: blue;
   width: 90%;
   height: 260px;
   max-width: 1536px;
   margin-inline: auto;
   position: relative;
-  margin-top: 5rem;
+  margin-top: 20px;
   overflow: hidden;
+  display: flex;
+  gap: 10px;
   mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0),
@@ -31,13 +34,15 @@
 }
 
 .item {
-  width: var(--item-width);
+  width: calc(100% / var(--item-width));
+  margin-top: 5px;
   height: 250px;
+  flex-shrink: 0;
   border-radius: 7px;
-  position: absolute;
+  position: relative;
   left: max(calc(var(--item-width) * var(--itemsNumber)), 100%);
   animation-name: scrollleft;
-  animation-duration: 30s;
+  animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.611);
@@ -72,7 +77,7 @@
 /* Dynamic handling of items*/
 .item:nth-child(n) {
   animation-delay: calc(
-    30s / var(--itemsNumber) * (var(--itemsNumber) - n) * -1
+    10s / var(--itemsNumber) * (var(--itemsNumber) - n) * -1
   );
 }
 

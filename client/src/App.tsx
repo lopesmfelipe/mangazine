@@ -17,8 +17,7 @@ import RatingPrompt from "./components/rating-prompt/RatingPrompt.js";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute.js";
 import About from "./pages/about/About.js";
 import AdminRoute from "./components/admin-route/AdminRoute.js";
-import HorizontalScrollbar from "./pages/create-list/components/horizontal-scrollbar/HorizontalScrollbar.js"
-
+import ScrollbarTest from "./components/scrollbarTest.js";
 
 function App() {
   return (
@@ -30,8 +29,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/details/:titleId" element={<Details />} />
           <Route path="/about" element={<About />} />
-          <Route path="/scrollbar" element={<HorizontalScrollbar />}/>
-        
+          <Route path="/scrollbar-test" element={<ScrollbarTest />} />
+
           <Route
             path="/readlist"
             element={<ProtectedRoute element={Readlist} />}

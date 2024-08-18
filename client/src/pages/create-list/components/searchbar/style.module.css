@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar {
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  font-family: Kanit;
+  width: 90%;
+  height: 40px;
+  padding-left: 30px;
+  border-radius: 20px;
+  border: 0;
+  background-color: white;
+  border: solid 2.5px var(--main-color);
+  outline: none;
+}
+.searchbar::placeholder {
+  color: rgb(149, 148, 148);
+}
+
+.gridContainer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: auto;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(5, 250, 13, 0.589);
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0px;
+  border-radius: 15px;
+}
+
+.gridItem {
+  margin-top: 30px;
+  height: 90px;
+  width: 200px;
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  padding-right: 30px;
+  margin-right: 10px;
+  border: solid 1px white;
+}
+
+.gridItem:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: solid 1px white;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.cover {
+  height: 100%;
+  width: 100px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+.gridItem:hover p {
+  color: black;
+}
+
+.gridItem:hover .cover {
+  border: 1px solid black;
+}
+
+
+.informationContainer {
+  margin-left: 20px;
+  width: 200px;
+  background-color: blue;
+}
+
+.box2, p {
+  font-size: 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: left;
+  color: rgba(219, 213, 213, 0.841);
+}
+
+.name {
+  font-size: 20px;
+  color: white;
+}
+
+
+.loading {
+  margin-top: 30px;
+  font-size: 19px;
+  color: white;
+}
+.error {
+  margin-top: 30px;
+  font-size: 19px;
+  color: white;
+}
+
+.scrollbarContainer {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.scrollbarContainer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.text {
+  background-color: brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}

@@ -1,21 +1,43 @@
-import classes from './style.module.css';
+import classes from "./style.module.css";
+import berserk from "./berserk.jpg";
 
-const HorizontalScrollbar = () => {
+interface ItemData {
+  cover: string;
+  name: string;
+}
+
+interface ScrollbarProps {
+  itemData: ItemData;
+  itemsNumber: number;
+}
+
+const HorizontalScrollbar: React.FC<ScrollbarProps> = ({
+  itemData,
+  itemsNumber,
+}) => {
+  // Creatae an array with the given number of items
+  const itemsArray = new Array(itemsNumber).fill(null);
+
   return (
-    <div>
-      <div className={classes.wrapper}>
-        <div className={`${classes.item} ${classes.item1}` }></div>
-        <div className={`${classes.item} ${classes.item2}` }></div>
-        <div className={`${classes.item} ${classes.item3}` }></div>
-        <div className={`${classes.item} ${classes.item4}` }></div>
-        <div className={`${classes.item} ${classes.item5}` }></div>
-        <div className={`${classes.item} ${classes.item5}` }></div>
-        <div className={`${classes.item} ${classes.item6}` }></div>
-        <div className={`${classes.item} ${classes.item7}` }></div>
-        <div className={`${classes.item} ${classes.item8}` }></div>
-        <div className={`${classes.item} ${classes.item9}` }></div>
+    <>
+      <div>
+        <div
+          className={classes.wrapper}
+          style={{ "--itemsNumber": itemsNumber } as React.CSSProperties} // Type assertion to handle CSS custom properties
+        >
+          {itemsArray.map((_, index) => (
+            <div key={index} className={classes.item}>
+              <div className={classes.coverContainer}>
+                <img src={itemData.cover} />
+              </div>
+              <div>
+                <p>{itemData.name}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

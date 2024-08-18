@@ -97,7 +97,7 @@ const CreateTitle = () => {
         setIsUploading(false);
       }
     } catch (err) {
-      console.error("Error adding title: ", err.message);
+      console.error("Error adding title: ", err);
     }
 
     console.log("FormData sent: ", formData);

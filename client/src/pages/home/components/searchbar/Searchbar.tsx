@@ -8,19 +8,19 @@ interface SearchbarProps {
 }
 
 const Searchbar: React.FC<SearchbarProps> = ({placeholder}) => {
-  const [name, setName] = useState("");
+  const [searchedName, setSearchedName] = useState("");
   const [items, setItems] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = async (event: any) => {
-    if (event.key === "Enter" && name.trim() !== "") {
+    if (event.key === "Enter" && searchedName.trim() !== "") {
       setLoading(true);
       try {
-        console.log(name);
+        console.log(searchedName);
         const response = await axios.get(
-          `http://localhost:2000/api/v1/titles/search/${name}`
+          `http://localhost:2000/api/v1/titles/search/${searchedName}`
         );
         const titles = response.data.titles;
         setItems(titles);
@@ -43,8 +43,8 @@ const Searchbar: React.FC<SearchbarProps> = ({placeholder}) => {
       <input
         type="text"
         placeholder={placeholder}
-        value={name}
-        onChange={(event) => setName(event.target.value)}
+        value={searchedName}
+        onChange={(event) => setSearchedName(event.target.value)}
         onKeyDown={handleSearch}
         className={classes.searchbar}
       />

@@ -17,8 +17,10 @@ interface Item {
   releaseYear: string;
 }
 
-const Searchbar: React.FC<SearchbarProps> = ({ placeholder, setSelectedItems }) => {
-  const [searchedName, setSearchedName] = useState("");
+const Searchbar: React.FC<SearchbarProps> = ({
+  placeholder,
+  setSelectedItems,
+}) => {
   const [items, setItems] = useState([]);
   const [localSelectedItems, setLocalSelectedItems] = useState<Item[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -48,6 +50,16 @@ const Searchbar: React.FC<SearchbarProps> = ({ placeholder, setSelectedItems }) 
     }
   };
 
+  const debounce = (func: Function, delay: number) => {
+    let timeoutId: NodeJS.Timeout;
+    return (...args: any) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(null, args), delay);
+    };
+  };
+
+  const debouncedHandleSearch = debounce(handleSearch, 300);
+
   const handleClick = (item: Item) => {
     setLocalSelectedItems((prevSelectedItems) => {
       if (
@@ -64,17 +76,18 @@ const Searchbar: React.FC<SearchbarProps> = ({ placeholder, setSelectedItems }) 
       {}
       {localSelectedItems.length > 0 && (
         <div className={classes.scrollbarContainer}>
-          <p>LIST ITEMS</p> 
-          <HorizontalScrollbar items={localSelectedItems} itemsNumber={localSelectedItems.length} />
+          <p>LIST ITEMS</p>
+          <HorizontalScrollbar
+            items={localSelectedItems}
+            itemsNumber={localSelectedItems.length}
+          />
         </div>
       )}
       <div className={classes.container}>
         <input
           type="text"
           placeholder={placeholder}
-          value={searchedName}
-          onChange={(event) => setSearchedName(event.target.value)}
-          onKeyDown={handleSearch}
+          onChange={debouncedHandleSearch}
           className={classes.searchbar}
         />
         {loading && <div className={classes.loading}> Loading...</div>}

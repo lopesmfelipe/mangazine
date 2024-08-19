@@ -6,11 +6,9 @@ const CreateListButton = () => {
     <div className={classess.container}>
       <div className={classess.buttonContainer}>
         <Link to="/create-list">
-          <button className={classess.createList}>
-            <div>
+          <button className={classess.theButton}>
               <i className="fa-solid fa-plus"></i>
               CREATE LIST
-            </div>
           </button>
         </Link>
       </div>

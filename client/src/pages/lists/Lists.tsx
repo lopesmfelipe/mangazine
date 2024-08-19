@@ -1,7 +1,7 @@
 import classes from "./style.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import CreateListButton from "./components/create-button/CreateListButton";
 import Header from "../../components/header/Header";
@@ -9,6 +9,11 @@ import Header from "../../components/header/Header";
 const AllListsPage = () => {
   const { user } = useUser();
   const [lists, setLists] = useState([]);
+  const navigate = useNavigate();
+
+  const click = (list: any) => {
+    navigate(`/list/${list._id}`);
+  };
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -28,33 +33,23 @@ const AllListsPage = () => {
     };
 
     fetchLists();
-
-    document.body.classList.add(classes.bodyStyle);
-
-    return () => {
-      document.body.classList.remove(classes.bodyStyle);
-    };
   }, [user]);
 
   return (
-    <div className={classes.allListsBody}>
+    <div className={classes.container}>
       <Header />
-      <div className={classes.header}>
+      <div className={classes.headline}>
         <h1>Your Lists</h1>
       </div>
       <CreateListButton />
-      <div className={classes.boxContainer}>
+      <div className={classes.grid}>
         {lists.map((list, index) => (
-          <Link
-            to={`/list/${list._id}`}
-            key={index}
-            className={classes.noDecoration}
-          >
-            <div className={classes.box}>
-              <h3 className={classes.listName}>{list.name}</h3>
-              <p>{list.titles.length} titles </p>
+          <div className={classes.box} onClick={() => click(list._id)}>
+            <div className={classes.listNameContainer}>
+              <p>{list.name}</p>
             </div>
-          </Link>
+            <p>{list.titles.length} titles </p>
+          </div>
         ))}
       </div>
     </div>

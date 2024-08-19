@@ -17,7 +17,7 @@ import RatingPrompt from "./components/rating-prompt/RatingPrompt.js";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute.js";
 import About from "./pages/about/About.js";
 import AdminRoute from "./components/admin-route/AdminRoute.js";
-import ScrollbarTest from "./components/scrollbarTest.js";
+import ScrollbarTest from "./components/ScrollbarTest.js";
 
 function App() {
   return (

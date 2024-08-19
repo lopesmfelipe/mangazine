@@ -1,14 +1,3 @@
-.container {
-  display: flex;
-  justify-content: end;
-  position: relative;
-}
-
-.buttonContainer {
-  position: absolute;
-  right: 250px;
-}
-
 .theButton {
   border: 0;
   border-radius: 7px;
@@ -22,6 +11,7 @@
   font-family: fantasy;
   font-weight: lighter;
   border:solid 2px transparent;
+  white-space: nowrap;
 }
 
 .theButton i {

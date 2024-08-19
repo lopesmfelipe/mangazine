@@ -41,14 +41,19 @@ const AllListsPage = () => {
       <div className={classes.headline}>
         <h1>Your Lists</h1>
       </div>
-      <CreateListButton />
+      <div className={classes.buttonContainer}>
+        <CreateListButton />
+      </div>
       <div className={classes.grid}>
         {lists.map((list, index) => (
           <div className={classes.box} onClick={() => click(list._id)}>
             <div className={classes.listNameContainer}>
               <p>{list.name}</p>
             </div>
-            <p>{list.titles.length} titles </p>
+            <div className={classes.itemQuantity}>
+            <p >{list.titles.length} titles </p>
+
+            </div>
           </div>
         ))}
       </div>

@@ -1,6 +1,66 @@
 * {
   margin: 0;
   padding: 0;
+  
+  color: #ffffff; 
+}
+
+.stockTicker {  
+  font-size: 16px;
+  padding-block: 8px;
+  border-block: solid 2px;
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  user-select: none;
+  animation: scroll 2s linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.stockTicker ul:first-child {
+  background-color: red;
+}
+
+.stockTicker ul {
+  list-style: none;
+  flex-shrink: 0;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+
+  background-color: yellow
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -21,4 +81,4 @@
 
 .logosSlide {
   white-space: nowrap;
-}
+} */

@@ -1,84 +1,60 @@
-* {
-  margin: 0;
-  padding: 0;
-  
-  color: #ffffff; 
+/* src/components/HorizontalScroll.module.css */
+.container {
+  background-color: green;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Hide overflow to ensure smooth scrolling */
 }
 
-.stockTicker {  
-  font-size: 16px;
-  padding-block: 8px;
-  border-block: solid 2px;
+.scrollWrapper {
+  background-color: red;
+  width: 100%;
+  overflow: hidden; /* Hide overflow to ensure smooth scrolling */
+}
+
+.scrollContainer {
+  background-color: red;
   display: flex;
-  gap: 2rem;
-  overflow: hidden;
-  user-select: none;
-  animation: scroll 2s linear infinite;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.item {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.addButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+}
+
+@keyframes scrollleft {
+  from {right: 90%}
+  to {left: 10%}
 }
 
 @keyframes scroll {
-  to {
-    transform: translateX(-100%);
+  0% {
+    transform: translateX(500);
+  }
+  100% {
+    transform: translateX(-90%);
   }
 }
-
-.stockTicker ul:first-child {
-  background-color: red;
-}
-
-.stockTicker ul {
-  list-style: none;
-  flex-shrink: 0;
-  min-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  align-items: center;
-
-  background-color: yellow
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container {
-  background-color: rgb(45, 45, 45);
-}
-
-.logos {
-  overflow: hidden;
-  padding: 60px 0;
-  background-color: pink;
-}
-
-.logosSlide P {
-  height: 50px;
-  display: inline;
-}
-
-.logosSlide {
-  white-space: nowrap;
-} */

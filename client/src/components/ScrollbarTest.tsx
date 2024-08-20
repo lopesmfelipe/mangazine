@@ -1,47 +1,26 @@
+import { useState } from "react";
 import classes from "./style.module.css";
 
 const ScrollbarTest = () => {
+  const [items, setItems] = useState([]);
+
+  const addItem = () => {
+    setItems([...items, `Item ${items.length + 1}`]);
+  };
+
   return (
     <div className={classes.container}>
-      <h1>SCROLLBAR</h1>
-      <div className={classes.stockTicker}>
-        <ul>
-          <li className={classes.minus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-          <li className={classes.plus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-          <li className={classes.plus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-        </ul>
-        <ul aria-hidden="true">
-          <li className={classes.minus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-          <li className={classes.plus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-          <li className={classes.plus}>
-            <span className={classes.company}>AAPL</span>
-            <span className={classes.company}>AMAZON</span>
-            <span className={classes.company}>MICROSOFT</span>
-          </li>
-        </ul>
+      <div className={classes.scrollContainer}>
+        {items.map((item, index) => (
+          <div key={index} className={classes.item}>
+            {item}
+          </div>
+        ))}
       </div>
+      <button className={classes.addButton} onClick={addItem}>
+        Add New Content
+      </button>
     </div>
   );
 };
-
 export default ScrollbarTest;

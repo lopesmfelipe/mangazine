@@ -22,16 +22,18 @@ const HorizontalScrollbar: React.FC<ScrollbarProps> = ({
           className={classes.wrapper}
           style={{ "--itemsNumber": itemsNumber } as React.CSSProperties} // Type assertion to handle CSS custom properties
         >
-          {items.map((item) => (
-            <div key={item._id} className={classes.item}>
-              <div className={classes.coverContainer}>
-                <img src={item.cover} />
+          <div className={classes.itemContainer}>
+            {items.map((item) => (
+              <div key={item._id} className={classes.item}>
+                <div className={classes.coverContainer}>
+                  <img src={item.cover} />
+                </div>
+                <div>
+                  <p>{item.name}</p>
+                </div>
               </div>
-              <div>
-                <p>{item.name}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </>

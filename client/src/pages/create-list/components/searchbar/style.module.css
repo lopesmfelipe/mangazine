@@ -31,17 +31,19 @@
   height: auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 40px;
   background-color: rgba(130, 130, 130, 0.281);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 0px;
-  border-radius: 15px;
+  border-radius: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .gridItem {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 90px;
   width: 200px;
   display: flex;
@@ -49,6 +51,7 @@
   border-radius: 10px;
   padding-right: 30px;
   margin-right: 10px;
+  margin-left: 10px;
   background-color: white;
   color: black;
   cursor: pointer;
@@ -60,32 +63,32 @@
   border-radius: 10px;
   border: 1px solid transparent;
 }
-.gridItem:hover p {
-  color: black;
-}
-
-.gridItem:hover .cover {
-  border: 1px solid black;
-}
-
 
 .informationContainer {
   margin-left: 20px;
   width: 200px;
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.box2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.author {
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 .box2, p {
   font-size: 14px;
-  display: flex;
-  align-items: baseline;
-  justify-content: left;
-  color: rgba(219, 213, 213, 0.841);
+  color: rgba(69, 69, 69, 0.841);
 }
 
 .name {
   font-size: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .loading {
@@ -100,7 +103,7 @@
 }
 
 .scrollbarContainer {
-  background-color: rgb(161, 12, 12);
+  background-color: rgb(255, 255, 255);
   width: 100%;
   margin-bottom: 25px;
 }
@@ -112,6 +115,7 @@
   color: white;
   font-size: 20px;
 }
+
 
 .text {
   display: flex;

@@ -108,7 +108,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
                   <div className={classes.informationContainer}>
                     <p className={classes.name}>{item.name}</p>
                     <div className={classes.box2}>
-                      <p className={classes.author}>{item.author} • </p>
+                      <p className={classes.author}>{item.author} </p>
                       <p className={classes.releaseYear}> {item.releaseYear}</p>
                     </div>
                   </div>

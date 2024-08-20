@@ -1,60 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-.bodyStyle {
-  margin: 0;
-  padding: 0;
-}
-
-.menu {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  align-items: center;
-  color: rgb(255, 255, 255);
-  margin-top: 20px;
-  margin-right: 50px;
-}
-
-.menu h1 {
-  margin-left: 100px;
-  color: blue;
-  font-family: fantasy;
-  font-weight: lighter;
-  color: var(--main-color);
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 40px;
-}
-.link {
-  text-decoration: none;
-  color: white;
-  font-family: "Audiowide", sans-serif;
-  margin: 10px;
-  font-size: 20px;
-}
-.link:hover {
-  color: var(--main-color);
-}
-
-.userButton {
-  margin: 0;
-  margin-left: 20px;
-  padding: 5px;
-}
-
-.userButton button:hover {
-  margin: 0;
-  padding: 5px;
-  border-color: var(--main-color);
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -80,7 +25,6 @@ h2 {
 }
 
 .searchBarContainer {
-  background-color: blue;
   margin-top: 50px;
-  width: 500px;
+  width: 600px;
 }

@@ -8,16 +8,15 @@ const AddButton = ({ titleData }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const { user } = useUser();
 
+  const userId = user?.id;
+  const titleId = titleData._id;
+
   const handleAddToReadlist = async () => {
     try {
       const response = await Axios.patch(
-        `http://localhost:2000/api/v1/user/update-readlist`,
-        {
-          titleId: titleData._id,
-          userId: user.id,
-        }
+        `http://localhost:2000/api/v1/user/readlist/${userId}/add-to-readlist/${titleId}`
       );
-      console.log(response.message);
+      console.log(response);
     } catch (err) {
       console.error("Error trying to send the request ", err);
     }

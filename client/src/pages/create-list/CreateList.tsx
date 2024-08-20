@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import classes from "./style.module.css";
 import Searchbar from "../create-list/components/searchbar/Searchbar";
 import axios from "axios";
+import Header from "../../components/header/Header";
 
 const CreateList = () => {
   const { user } = useUser();
@@ -67,32 +68,37 @@ const CreateList = () => {
   };
 
   return (
-    <div className={classes.superContainer}>
-      <div className={classes.container}>
-        <div className={classes.title}>CREATE A NEW LIST</div>
-        <form onSubmit={handleSubmit} className={classes.form}>
-          <div className={classes.field}>
-            <label htmlFor="" className={classes.nameLabel}>NAME</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className={classes.submitButton}>
-            {isUploading ? "Creating List..." : "CREATE LIST"}
-          </button>
-          <div className={classes.searchBarContainer}>
-            <Searchbar
-              setSelectedItems={setSelectedItems}
-              placeholder="Search titles to add"
-            />
-          </div>
-        </form>
+    <>
+      <Header />
+      <div className={classes.superContainer}>
+        <div className={classes.container}>
+          <div className={classes.title}>CREATE A NEW LIST</div>
+          <form onSubmit={handleSubmit} className={classes.form}>
+            <div className={classes.field}>
+              <label htmlFor="" className={classes.nameLabel}>
+                NAME
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit" className={classes.submitButton}>
+              {isUploading ? "Creating List..." : "CREATE LIST"}
+            </button>
+            <div className={classes.searchBarContainer}>
+              <Searchbar
+                setSelectedItems={setSelectedItems}
+                placeholder="Search titles to add"
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

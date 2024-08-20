@@ -54,7 +54,10 @@ export const createUser = catchAsync(
 export const getReadlist = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { userId } = req.params;
-    const user = await User.findOne({ userId }).populate('readList');
+    const user = await User.findOne({ userId }).populate({
+      path: 'readList',
+      select: 'name cover author releaseYear', // Selecting only the necessary fields
+    });
 
     if (!user) {
       return next(new AppError('User not found', 404));
@@ -65,7 +68,7 @@ export const getReadlist = catchAsync(
 
     res.status(200).json({
       status: 'success',
-      readlist: { readList },
+      readList,
     });
   },
 );

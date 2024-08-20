@@ -1,14 +1,14 @@
 .content-container {
-  background-color: #1a1a1a;
+  background-color: #161616;
+  display: flex;
+  flex-direction: column;
   width: 187px;
   height: 451px;
   border: 3px solid transparent;
-  text-align: center;
-  padding-bottom: 30px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  padding-bottom: 50px;
+  margin-bottom: 30px;
+  border-radius: 8px;
   transition: border-color 0.5s ease;
-  margin-left: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
@@ -21,13 +21,18 @@
   width: 100%;
   text-align: center;
   display: inline-block;
-  margin-bottom: 0;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  cursor: pointer;
 }
+
 
 .cover-container img {
   height: 100%;
   width: 100%;
   display: inline-block;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5%;
 }
 
 .title {
@@ -63,6 +68,7 @@
   font-size: 15.5px;
   margin: 0;
   padding: 0;
+  color: rgb(180, 180, 180);
   margin-bottom: 8px;
   white-space: nowrap;
 }
@@ -101,7 +107,7 @@
 }
 
 .avgRating i {
-  color: #ffd43b;
+  color: #ffc800;
   position: absolute;
   left: -22px;
   top: 7px;
@@ -124,7 +130,7 @@
 .elementCardButton {
   margin-left: 15px;
   font-size: 16px;
-  color: white;
+  color: rgb(231, 231, 231);
   border: 0;
   border-radius: 4px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",

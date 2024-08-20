@@ -14,9 +14,10 @@ export const getRating = catchAsync(
     });
 
     if (!userRating) {
-      return next(
-        new AppError('No rating found for this user with that title', 404),
-      );
+      res.status(404).json({
+        status: 'success',
+        message: 'No rating found for this user'
+      })
     }
 
     res.status(200).json({

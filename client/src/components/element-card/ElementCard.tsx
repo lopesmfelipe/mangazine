@@ -6,47 +6,49 @@ import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import Tag from "./components/Tag";
 
-const ElementCard = ({ titleData }) => {
+const ElementCard = ({ element }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [averageRating, setAverageRating] = useState(null);
   const [userRating, setUserRating] = useState(null);
   const { user } = useUser();
   const navigate = useNavigate();
 
-  const titleId = titleData?._id;
+  const titleId = element?._id;
   const userId = user?.id;
 
   useEffect(() => {
     console.log("Title ID: ", titleId);
     if (!user) return;
 
-    const fetchAverageRating = async () => {
+    const fetchRatings = async () => {
       try {
-        const response = await axios.get(
+        // Fetch average rating
+        const avgResponse = await axios.get(
           `http://localhost:2000/api/v1/rating/average-rating/${titleId}`
         );
-        console.log("Average Rating: ", response);
-        setAverageRating(response.data.averageRating);
-        console.log(userRating);
+        setAverageRating(avgResponse.data.averageRating);
+        
+        // Fetch user rating
+        try {
+          const userResponse = await axios.get(
+            `http://localhost:2000/api/v1/rating/${userId}/get-rating/${titleId}`
+          );
+          setUserRating(userResponse.data.userRating.rating);
+        } catch (userErr) {
+          // Handle the case where no user rating is found
+          if (userErr.response?.status === 404) {
+            setUserRating(null);
+          } else {
+            console.error("Failed to fetch user rating: ", userErr);
+          }
+        }
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch average rating: ", err.message);
       }
     };
 
-    const fetchUserRating = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:2000/api/v1/rating/${userId}/get-rating/${titleId}`
-        );
-        setUserRating(response.data.userRating.rating);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchAverageRating();
-    fetchUserRating();
-  }, [user, titleId]);
+    fetchRatings();
+  }, [user, titleId, userId]);
 
   const navigateToDetails = (name) => {
     navigate(`/details/${name}`);
@@ -64,17 +66,17 @@ const ElementCard = ({ titleData }) => {
     <>
       <div className={classes["content-container"]}>
         <div className={classes["cover-container"]}>
-          <img src={titleData.cover} alt={titleData.name} />
+          <img src={element.cover} alt={element.name} />
         </div>
 
         <div className={classes["title"]}>
-          <p>{titleData.name}</p>
+          <p>{element.name}</p>
         </div>
 
         <div className={classes["info"]}>
           <div className={classes["author-date"]}>
-            <p>{titleData.author} </p>
-            <p>{titleData.releaseYear}</p>
+            <p>{element.author} </p>
+            <p>{element.releaseYear}</p>
           </div>
 
           <div className={classes.rating}>
@@ -106,20 +108,18 @@ const ElementCard = ({ titleData }) => {
         <div className={classes["button-container"]}>
           <div>
             <button
-              onClick={() => navigateToDetails(titleData.name)}
+              onClick={() => navigateToDetails(element.name)}
               className={classes.elementCardButton}
             >
               Details
             </button>
           </div>
           <div className={classes.tag}>
-            {userId && <Tag userId={userId} titleId={titleId} /> }
+            {userId && <Tag userId={userId} titleId={titleId} />}
           </div>
         </div>
       </div>
-      {showPrompt && (
-        <RatingPrompt onClose={closePrompt} titleData={titleData} />
-      )}
+      {showPrompt && <RatingPrompt onClose={closePrompt} titleData={element} />}
     </>
   );
 };

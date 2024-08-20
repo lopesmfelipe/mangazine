@@ -42,11 +42,11 @@
   border: solid 2px white;
   border-radius: 5px;
   color: black;
+  outline: none;
 }
 
 .nameLabel {
   margin-bottom: 20px;
-  
 }
 
 .title {
@@ -57,7 +57,7 @@
 .searchBarContainer {
   width: 100%;
   position: absolute;
-  top: 55%;
+  top: 65%;
 }
 
 .submitButton {
@@ -79,5 +79,3 @@
   border: solid 2px white;
   background-color: black;
 }
-
-

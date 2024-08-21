@@ -5,10 +5,27 @@ import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
 import { Types } from 'mongoose';
 
+export const getAllLists = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { userId } = req.params;
+
+    const lists = await List.find({ userId: userId });
+
+    if (!lists) return next(new AppError('No lists found', 404));
+
+    res.status(200).json({
+      status: 'success',
+      lists,
+    });
+  },
+);
+
 // GET LIST BY ID
 export const getListById = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const list = await List.findById(req.params.userId).populate('titles');
+    const { userId } = req.params;
+
+    const list = await List.findById(userId).populate('titles');
     if (!list) {
       return next(new AppError('List not found', 404));
     }
@@ -73,44 +90,39 @@ export const createList = catchAsync(
   },
 );
 
-// UPDATE LIST
-export const updateList = catchAsync(
+// ADD ITEM TO LIST
+export const addToList = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { titleId, listId } = req.body;
-
-    if (!Types.ObjectId.isValid(titleId) || !Types.ObjectId.isValid(listId)) {
-      return next(new AppError('Invalid title or list ID format', 400));
-    }
-
-    const titleObjectId = new Types.ObjectId(titleId);
+    const { titleId, listId } = req.params;
 
     const list = await List.findOne({ _id: listId });
 
-    if (!list) {
-      return next(new AppError('List not found', 404));
-    }
+    if (!list) return next(new AppError('List not found', 404));
 
-    if (list.titles.includes(titleObjectId)) {
-      await List.updateOne(
-        { _id: listId },
-        { $pull: { titles: titleObjectId } },
-      );
+    await List.updateOne({ _id: listId }, { $push: { titles: titleId } });
+    return res.status(200).json({
+      status: 'success',
+      message: 'Item added to list',
+      list: list,
+    });
+  },
+);
 
-      return res.status(200).json({
-        status: 'success',
-        message: 'Title removed from the list',
-        list: list,
-      });
-    } else {
-      await List.updateOne(
-        { _id: listId },
-        { $push: { titles: titleObjectId } },
-      );
-      res.status(200).json({
-        status: 'success',
-        message: 'Title added to the list',
-        list: list,
-      });
-    }
+// REMOVE ITEM FROM LIST
+export const removeFromList = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { titleId, listId } = req.params;
+
+    const list = await List.findOne({ _id: listId });
+
+    if (!list) return next(new AppError('List not found', 404));
+
+    await List.updateOne({ _id: listId }, { $pull: { titles: titleId } });
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'Item removed from list',
+      list: list,
+    });
   },
 );

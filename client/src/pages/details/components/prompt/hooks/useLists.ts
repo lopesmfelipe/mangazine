@@ -1,54 +1,43 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useLists = (userId, titleId) => {
+export const useLists = (userId: any, titleId: any) => {
   const [lists, setLists] = useState([]);
-  const [titleExists, setTitleExists] = useState({});
+  const [itemExistsArray, setItemExistsArray] = useState({});
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || titleId) return;
 
-    const fetchLists = async () => {
+    const fetchListsAndCheckTitles = async () => {
       try {
+        // Fetch all lists
         const response = await axios.get(
-          `http://localhost:2000/api/v1/user/lists/${userId}`
+          `http://localhost:2000/api/v1/lists/get-all-lists/${userId}`
         );
-        const fetchedLists = response.data.data.lists;
+        const fetchedLists = response.data.lists;
         setLists(fetchedLists);
 
-        const checkExistence = async () => {
-          const titleExistsMap = {};
-          await Promise.all(
-            fetchedLists.map(async (list) => {
-              const exists = await checkTitleExists(list._id, titleId);
-              titleExistsMap[list._id] = exists;
-              console.log(`List ID: ${list._id}, Title Exists: ${exists}`);
-            })
-          );
-          console.log("INITIAL titleExistsMap💊 ", titleExistsMap);
-          setTitleExists(titleExistsMap);
-        };
-
-        checkExistence();
-      } catch (err) {
-        console.error("Error fetching lists: ", err);
+        // Check if the title exists in each list
+        const titleExistsObj: any = {};
+        await Promise.all(
+          fetchedLists.map(async (list: any) => {
+            const existsResponse = await axios.get(
+              `http://localhost:2000/api/v1/lists/${list._id}/titles/${titleId}/exists`
+            );
+            titleExistsObj[list._id] = existsResponse.data.exists;
+          })
+        );
+        setItemExistsArray(titleExistsObj);
+      } catch (error) {
+        console.error(
+          "Error fetching lists or checking title existence: ",
+          error
+        );
       }
     };
 
-    fetchLists();
+    fetchListsAndCheckTitles();
   }, [userId, titleId]);
 
-  const checkTitleExists = async (listId, titleId) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:2000/api/v1/lists/${listId}/titles/${titleId}/exists`
-      );
-      return response.data.exists;
-    } catch (err) {
-      console.error("Error trying to check if the title is in the list: ", err);
-      return false;
-    }
-  };
-
-  return { lists, titleExists, setTitleExists };
+  return { lists, itemExistsArray, setItemExistsArray };
 };

@@ -50,8 +50,8 @@ const ElementCard = ({ element }) => {
     fetchRatings();
   }, [user, titleId, userId]);
 
-  const navigateToDetails = (name) => {
-    navigate(`/details/${name}`);
+  const navigateToDetails = (titleId) => {
+    navigate(`/details/${titleId}`);
   };
 
   const openPrompt = () => {
@@ -108,7 +108,7 @@ const ElementCard = ({ element }) => {
         <div className={classes["button-container"]}>
           <div>
             <button
-              onClick={() => navigateToDetails(element.name)}
+              onClick={() => navigateToDetails(element._id)}
               className={classes.elementCardButton}
             >
               Details

@@ -5,9 +5,9 @@
   --main-color: rgb(255, 255, 255);
   --background-color: #000;
   --primary-font: "Audiowide", sans-serif;
-  --secondary-font: "Botanika Mono Bold";
-  --tertiary-font: "Kanit";
   --font1: "x";
+  --font2: "Kanit";
+  --secondary-font: "Botanika Mono Bold";
 }
 
 body {

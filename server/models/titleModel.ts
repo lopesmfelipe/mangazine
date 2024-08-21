@@ -24,6 +24,7 @@ const titleSchema = new mongoose.Schema({
   otherCovers: [String],
   status: String,
   type: String,
+  demographic: String,
   alternateName: String,
 });
 

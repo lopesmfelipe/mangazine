@@ -4,18 +4,18 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Auth } from "./pages/auth/Auth.js";
-import CreateTitle from "./pages/create-title/CreateTitle.js";
-import ListContent from "./pages/list-content/ListContent.js";
-import Lists from "./pages/lists/Lists.js";
-import Home from "./pages/home/Home.js";
-import Details from "./pages/details/Details.js";
-import CreateList from "./pages/create-list/CreateList.js";
+import { Auth } from "./pages/auth/AuthPage.js";
+import CreateTitle from "./pages/create-title/CreateTitlePage.js";
+import ListContent from "./pages/list-content/ListContentPage.js";
+import Lists from "./pages/lists/ListsPage.js";
+import Home from "./pages/home/HomePage.js";
+import Details from "./pages/details/DetailsPage.js";
+import CreateList from "./pages/create-list/CreateListPage";
 import "./general.css";
-import Readlist from "./pages/readlist/Readlist.js";
+import Readlist from "./pages/readlist/ReadlistPage.js";
 import RatingPrompt from "./components/rating-prompt/RatingPrompt.js";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute.js";
-import About from "./pages/about/About.js";
+import About from "./pages/about/AboutPage.js";
 import AdminRoute from "./components/admin-route/AdminRoute.js";
 import ScrollbarTest from "./components/ScrollbarTest.js";
 

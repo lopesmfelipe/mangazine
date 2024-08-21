@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 .genresContainer {
-  padding-left: 3%;
-  padding-right: 3%;
+padding-left: 1%;
 }
 
 .information2 {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
   color: white;
-  margin-left: 5%;
+  width: 100%;
+  border-top: solid 2px white; 
+  border-bottom: solid 2px white;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .minibox {
@@ -32,25 +37,23 @@
   padding: 6px 6px;
   padding-left: 10px;
   padding-right: 10px;
+  color: white;
 }
 
 .field {
-  color: var(--main-color);
+  color: rgba(227, 227, 227, 0.733);
   font-family: "Raleway", sans-serif;
   font-weight: bolder;
 }
 
-.minibox {
-  margin: 0;
-}
-
 .minibox p {
   display: inline-block;
-  font-size: 15px;
+  font-size: 16px;
   margin-right: 10px;
 }
 
 .data {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 1px;
+  color: white;
 }

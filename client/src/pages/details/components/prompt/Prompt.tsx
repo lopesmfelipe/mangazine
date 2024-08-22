@@ -32,15 +32,16 @@ const Prompt = ({ onClose, titleData }) => {
   const removeFromList = async ({ titleId, listId }) => {
     try {
       const response = await axios.patch(
-        `${titleId}/remove-from-list/${listId}`,
-        {}
+        `${titleId}/remove-from-list/${listId}`
       );
+      setTitleExists((prevTitleExists) => ({
+        ...prevTitleExists,
+        [listId]: false,
+      }));
     } catch (error) {
-      console.error("Error trying to remove item", error);
+      console.error("Error removing item from the list:", error);
     }
   };
-
-  useEffect(() => {}, [titleExists]);
 
   return (
     <div className={classes.promptBackdrop}>
@@ -61,6 +62,7 @@ const Prompt = ({ onClose, titleData }) => {
                 titleId={titleData._id}
                 titleExists={titleExists}
                 addToList={addToList}
+                removeFromList={removeFromList}
               />
             ))}
           </div>

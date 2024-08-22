@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import classes from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 
-const ListItem = ({ list, titleId, titleExists, addToList }) => {
+const ListItem = ({ list, titleId, titleExists, addToList, removeFromList }) => {
   const navigate = useNavigate();
 
   const goToList = (listId) => {

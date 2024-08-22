@@ -5,12 +5,20 @@
   background-color: #000; 
 }
 
+.container2 {
+  margin-bottom: 20%;
+}
+
 .text {
   margin-top: 180px;
   width: 600px;
   color: rgb(211, 211, 211);
   display: flex;
   line-height: 1.5;
+}
+
+.headline {
+  margin-bottom: 10%;
 }
 
 .text h2 {

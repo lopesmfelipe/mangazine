@@ -5,9 +5,9 @@ const About = () => {
   return (
     <div className={classes.container}>
       <Header />
-      <div>
+      <div className={classes.container2}>
         <main className={classes.text}>
-          <h1>About Mangazine</h1>
+          <h1 className={classes.headline}>About Mangazine</h1>
           <p>
             Welcome to{" "}
             <stronger style={{ fontWeight: "bolder" }}>MANGAZINE</stronger>,
@@ -55,14 +55,14 @@ const About = () => {
                 Rate the titles you’ve read and see what others think. Your
                 ratings help others discover great reads.
               </p>
-              <p>
+              {/* <p>
                 <stronger style={{ fontWeight: "bolder" }}>
                   • Comments:
                 </stronger>{" "}
                 Share your opinions by commenting on titles. Engage with the
                 community by discussing your favorite reads and commenting on
                 others' lists.
-              </p>
+              </p> */}
               <p>
                 <stronger style={{ fontWeight: "bolder" }}>
                   • Top Rankings:
@@ -70,14 +70,14 @@ const About = () => {
                 Check out the top 100 best-ranked titles overall, or filter by
                 category to find the best mangas, books, comics, and more.
               </p>
-              <p>
+              {/* <p>
                 <stronger style={{ fontWeight: "bolder" }}>
                   • Community Connection:
                 </stronger>{" "}
                 Connect with fellow readers from around the globe. Share your
                 passion for reading and discover new works through the
                 recommendations and reviews of others.
-              </p>
+              </p> */}
             </div>
           </div>
           <div className={classes.box}>

@@ -6,8 +6,9 @@
 }
 
 .superContainer {
-  background-color: blue;
   position: relative;
+  display: block;
+  justify-content: center;
   width: 500px;
 }
 

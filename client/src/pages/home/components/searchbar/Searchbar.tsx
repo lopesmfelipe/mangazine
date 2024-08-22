@@ -35,7 +35,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ placeholder }) => {
     } else {
       setShowResults(false); // Hide results if less than 3 characters are typed
     }
-};
+  };
 
   // Debounce function to limit the rate of API calls
   const debounce = (func: Function, delay: number) => {

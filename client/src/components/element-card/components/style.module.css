@@ -1,13 +1,13 @@
 .addIcon {
   position: absolute;
   font-size: 55px;
-  color: rgba(255, 255, 255, 0.907);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
 .addedIcon {
   position: absolute;
   font-size: 55px;
-  color: var(--main-color);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }

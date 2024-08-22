@@ -11,8 +11,9 @@ const AllListsPage = () => {
   const [lists, setLists] = useState([]);
   const navigate = useNavigate();
 
-  const click = (list: any) => {
-    navigate(`/list/${list._id}`);
+  const handleClick = (listId: any) => {
+    console.log("This is the list id: ", listId);
+    navigate(`/list/${listId}`);
   };
 
   useEffect(() => {
@@ -23,9 +24,9 @@ const AllListsPage = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:2000/api/v1/user/lists/${user.id}`
+          `http://localhost:2000/api/v1/lists/get-all-lists/${user.id}`
         );
-        setLists(response.data.data.lists);
+        setLists(response.data.lists);
         console.log(lists);
       } catch (err) {
         console.error("Error fetching lists: ", err);
@@ -46,13 +47,12 @@ const AllListsPage = () => {
       </div>
       <div className={classes.grid}>
         {lists.map((list, index) => (
-          <div className={classes.box} onClick={() => click(list._id)}>
+          <div className={classes.box} onClick={() => handleClick(list._id)}>
             <div className={classes.listNameContainer}>
               <p>{list.name}</p>
             </div>
             <div className={classes.itemQuantity}>
-            <p >{list.titles.length} titles </p>
-
+              <p>{list.titles.length} titles </p>
             </div>
           </div>
         ))}

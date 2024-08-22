@@ -6,7 +6,7 @@ export const useLists = (userId: any, titleId: any) => {
   const [itemExistsArray, setItemExistsArray] = useState({});
 
   useEffect(() => {
-    if (!userId || titleId) return;
+    if (!userId || !titleId) return;
 
     const fetchListsAndCheckTitles = async () => {
       try {

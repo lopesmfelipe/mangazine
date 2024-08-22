@@ -6,105 +6,64 @@
   font-style: normal;
 }
 
-.bodyStyle {
-  background-color: rgb(27, 27, 28);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.headerContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
+.headlineContainer {
+  height: 700px;
+  max-height: 700px;
   width: 100%;
-  height: 690px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./01.png");
-  background-size: cover;
-}
-.header {
-  display: flex;
+  background-size: contain;
   align-items: center;
-  justify-content: center;
-}
-.header p {
-  font-size: 40px;
-  color: var(--main-color);
-  font-family: fantasy;
-  font-weight: lighter;
-  margin-right: 150px;
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 650px;
-}
-.link {
-  text-decoration: none;
-  color: white;
-  font-family: "Audiowide", sans-serif;
-  margin: 10px;
-  font-size: 20px;
-}
-.link:hover {
-  color: rgb(247, 0, 70);
-}
-
-.titleContainer {
-  margin-right: 100px;
-  margin-top: 20px;
 }
 
 .listName {
+  display: flex;
+  text-align: center;
   color: white;
   font-size: 60px;
   font-family: "Audiowide", sans-serif;
   margin-top: 300px;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
 }
 
-.addItemContainer {
+.searchBarContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 40px;
 }
 
 .searchBarContainer input {
-  margin-top: 30px;
-}
-
-.textContainer {
-  margin: 0;
-  margin-top: 55px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .textContainer p {
   font-size: 20px;
-  margin: 0;
-  color: rgb(204, 202, 202);
+  color: rgb(219, 219, 219);
 }
 
 .contentGrid {
-  margin-top: 720px;
-  margin-right: 20px;
-  margin-left: 100px;
-  width: 100%;
+  margin-top: 50px;
+  width: 76%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 5px;
-  row-gap: 1px;
+  column-gap: 25px;
+}
+
+.noItemsMessage {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 70%;
 }

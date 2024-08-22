@@ -2,78 +2,94 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ElementCard from "../../components/element-card/ElementCard";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Searchbar from "../home/components/searchbar/Searchbar";
+import Header from "../../components/header/Header";
 
 const ListContent = () => {
-  const { searchedList } = useParams(); // Get listId from URL
+  const { listId } = useParams(); // Get listId from URL
   const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
   const [list, setList] = useState({});
+  const [covers, setCovers] = useState([]); // State for covers
+  const [currentCoverIndex, setCurrentCoverIndex] = useState(0);
+
+  // FETCH ITEMS FROM THE LIST
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:2000/api/v1/lists/${listId}`
+      );
+
+      setList(response.data.list);
+      const itemCovers = response.data.list.titles.map((item) => item.cover);
+      console.log(itemCovers);
+      setItems(response.data.list.titles);
+      setCovers(itemCovers);
+      console.log("Those are the items: ", response.data.list.titles);
+    } catch (err) {
+      console.error(`Failed to fetch list items. Error message: ${err}`);
+    }
+  };
 
   useEffect(() => {
-    // FETCH ITEMS FROM THE LIST
-    const fetchItems = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:2000/api/v1/lists/${searchedList}`
-        );
-        setList(response.data.data.list);
-        setItems(response.data.data.list.titles);
-      } catch (err) {
-        console.error(`Failed to fetch list items. Error message: ${err}`);
-        setError(`Failed to fetch list items. Error message: ${err}`);
-      }
-    };
     fetchItems();
+  }, [listId]);
 
-    document.body.classList.add(classes.bodyStyle);
+  useEffect(() => {
+    console.log(currentCoverIndex);
 
-    return () => {
-      document.body.classList.remove(classes.bodyStyle);
-    };
-  }, []);
+    if (covers.length === 0) {
+      console.log("No covers");
+      return;
+    }
 
-  if (error) {
-    return <div>{error}</div>;
+    const interval = window.setInterval(() => {
+      setCurrentCoverIndex((prevIndex) => (prevIndex + 1) % covers.length);
+    }, 10000); // 10 seconds
+
+    return () => window.clearInterval(interval); // Cleanup interval on component unmount
+  }, [covers]);
+
+  if (!listId) {
+    return <div>No ID provided</div>;
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.headerContainer}>
-        <div className={classes.header}>
-          <p>MANGAZINE</p>
-
-          <div className={classes.links}>
-            <Link to="/home" className={classes.link}>
-              HOME
-            </Link>
-            <Link to="" className={classes.link}>
-              READLIST
-            </Link>
-            <Link to="/lists" className={classes.link}>
-              LISTS
-            </Link>
-          </div>
-        </div>
-
-        <div className={classes.listName}>{list.name}</div>
-        <div className={classes.addItemContainer}>
-          <div className={classes.textContainer}>
-            <p>Add a new item to your list</p>
-          </div>
+    <>
+      <Header />
+      <div className={classes.container}>
+        <div
+          className={classes.headlineContainer}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${
+              covers[currentCoverIndex] || "./01.png"
+            })`,
+          }}
+        >
+          <div className={classes.listName}>{list.name}</div>
           <div className={classes.searchBarContainer}>
-            <Searchbar />
+            <div className={classes.textContainer}>
+              <p>Add a new item to your list</p>
+            </div>
+            <Searchbar placeholder="Search to add a new item" />
           </div>
+          {items.length === 0 && (
+            <div className={classes.bla}>
+              <p className={classes.noItemsMessage}>
+                * No items in this list *
+              </p>
+            </div>
+          )}
         </div>
+        {items.length > 0 && (
+          <main className={classes.contentGrid}>
+            {items.map((item, index) => (
+              <ElementCard key={index} item={item} />
+            ))}
+          </main>
+        )}
       </div>
-
-      <main className={classes.contentGrid}>
-        {items.map((title, index) => (
-          <ElementCard key={index} titleData={title} />
-        ))}
-      </main>
-    </div>
+    </>
   );
 };
 

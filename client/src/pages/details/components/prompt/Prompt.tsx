@@ -2,44 +2,61 @@ import { useUser } from "@clerk/clerk-react";
 import { useLists } from "./hooks/useLists";
 import axios from "axios";
 import classes from "./style.module.css";
-import ListItem from "./components/ListItem";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Prompt = ({ onClose, titleData }) => {
   const { user } = useUser();
-  const { lists, titleExists, setTitleExists } = useLists(
+  const navigate = useNavigate();
+  const titleId = titleData._id;
+  const { lists, itemExistsArray, setItemExistsArray } = useLists(
     user?.id,
-    titleData._id
+    titleId
   );
 
-  const addToList = async ({ titleId, listId }) => {
+  const addToList = async (titleId: any, listId: any) => {
     try {
       const response = await axios.patch(
-        `http://localhost:2000/api/v1/lists/${listId}/add-to-list/${titleId}`,
-        { titleId, listId }
+        `http://localhost:2000/api/v1/lists/${listId}/add-to-list/${titleId}`
       );
 
       // Create a new object for titleExists to ensure re-render
-      setTitleExists((prevTitleExists) => ({
+      setItemExistsArray((prevTitleExists) => ({
         ...prevTitleExists,
-        [listId]: response.data.exists,
+        [listId]: true, // explicitly set to true
       }));
+      console.log('ITEM ADDED TO LIST')
     } catch (error) {
       console.error("Error trying to add item: ", error);
     }
   };
 
-  const removeFromList = async ({ titleId, listId }) => {
+  const removeFromList = async (titleId: any, listId: any) => {
     try {
       const response = await axios.patch(
-        `${titleId}/remove-from-list/${listId}`
+        `http://localhost:2000/api/v1/lists/${listId}/remove-from-list/${titleId}`
       );
-      setTitleExists((prevTitleExists) => ({
-        ...prevTitleExists,
+      setItemExistsArray((prevItemExists) => ({
+        ...prevItemExists,
         [listId]: false,
       }));
+      console.log('ITEM REMOVED FROM LIST')
     } catch (error) {
       console.error("Error removing item from the list:", error);
+    }
+  };
+
+  useEffect(() => {}, [itemExistsArray]);
+
+  const navigateToList = (listId: any) => {
+    navigate(`/list/${listId}`);
+  };
+
+  const handleClick = (titleId: any, listId: any) => {
+    if (itemExistsArray[listId]) {
+      removeFromList(titleId, listId);
+    } else {
+      addToList(titleId, listId);
     }
   };
 
@@ -56,14 +73,29 @@ const Prompt = ({ onClose, titleData }) => {
           </div>
           <div>
             {lists.map((list) => (
-              <ListItem
-                key={list._id}
-                list={list}
-                titleId={titleData._id}
-                titleExists={titleExists}
-                addToList={addToList}
-                removeFromList={removeFromList}
-              />
+              <div key={list._id} className={classes.listsContainer}>
+                <div
+                  className={classes.box}
+                  onClick={() => handleClick(titleId, list._id)}
+                >
+                  {/* Toggle between check and plus icons based on title existence */}
+                  {itemExistsArray[list._id] ? (
+                    <i className="fa-solid fa-check"></i>
+                  ) : (
+                    <i className="fa-solid fa-plus"></i>
+                  )}
+                  <h3 className={classes.listName}>{list.name}</h3>
+                </div>
+                <div className={classes.verticalLineContainer}>
+                  <div className={classes.verticalLine}></div>
+                </div>
+                <div
+                  className={classes.goToList}
+                  onClick={() => navigateToList(list._id)}
+                >
+                  <i className={`fa-solid fa-chevron-right`}></i>
+                </div>
+              </div>
             ))}
           </div>
         </div>

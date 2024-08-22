@@ -63,7 +63,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ placeholder }) => {
       />
       {loading && <div className={classes.loading}> Loading...</div>}
       {showResults && !loading && (
-        <div>
+        <div className={classes.superContainer}>
           <div
             className={`${classes.gridContainer} ${
               showResults ? "" : classes.hidden

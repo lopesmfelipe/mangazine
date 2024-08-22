@@ -37,7 +37,7 @@ function App() {
           />
           <Route path="/Lists" element={<ProtectedRoute element={Lists} />} />
           <Route
-            path="/list/:searchedList"
+            path="/list/:listId"
             element={<ProtectedRoute element={ListContent} />}
           />
           <Route

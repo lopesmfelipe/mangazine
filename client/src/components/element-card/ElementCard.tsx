@@ -6,32 +6,32 @@ import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import Tag from "./components/Tag";
 
-const ElementCard = ({ element }) => {
+const ElementCard = (props: any) => {
+  const { item } = props;
   const [showPrompt, setShowPrompt] = useState(false);
   const [averageRating, setAverageRating] = useState(null);
   const [userRating, setUserRating] = useState(null);
   const { user } = useUser();
   const navigate = useNavigate();
 
-  const titleId = element?._id;
+  const itemId = item?._id;
   const userId = user?.id;
 
   useEffect(() => {
-    console.log("Title ID: ", titleId);
     if (!user) return;
 
     const fetchRatings = async () => {
       try {
         // Fetch average rating
         const avgResponse = await axios.get(
-          `http://localhost:2000/api/v1/rating/average-rating/${titleId}`
+          `http://localhost:2000/api/v1/rating/average-rating/${itemId}`
         );
         setAverageRating(avgResponse.data.averageRating);
-        
+
         // Fetch user rating
         try {
           const userResponse = await axios.get(
-            `http://localhost:2000/api/v1/rating/${userId}/get-rating/${titleId}`
+            `http://localhost:2000/api/v1/rating/${userId}/get-rating/${itemId}`
           );
           setUserRating(userResponse.data.userRating.rating);
         } catch (userErr) {
@@ -48,10 +48,10 @@ const ElementCard = ({ element }) => {
     };
 
     fetchRatings();
-  }, [user, titleId, userId]);
+  }, [user, itemId, userId]);
 
-  const navigateToDetails = (titleId) => {
-    navigate(`/details/${titleId}`);
+  const navigateToDetails = (itemId: any) => {
+    navigate(`/details/${itemId}`);
   };
 
   const openPrompt = () => {
@@ -64,19 +64,19 @@ const ElementCard = ({ element }) => {
 
   return (
     <>
-      <div className={classes["content-container"]}>
-        <div className={classes["cover-container"]}>
-          <img src={element.cover} alt={element.name} />
+      <div className={classes.contentContainer}>
+        <div className={classes.coverContainer}>
+          <img src={item.cover} alt={item.name} />
         </div>
 
-        <div className={classes["title"]}>
-          <p>{element.name}</p>
+        <div className={classes.title}>
+          <p>{item.name}</p>
         </div>
 
-        <div className={classes["info"]}>
-          <div className={classes["author-date"]}>
-            <p>{element.author} </p>
-            <p>{element.releaseYear}</p>
+        <div className={classes.info}>
+          <div className={classes.authorDate}>
+            <p>{item.author} </p>
+            <p>{item.releaseYear}</p>
           </div>
 
           <div className={classes.rating}>
@@ -105,21 +105,21 @@ const ElementCard = ({ element }) => {
           </div>
         </div>
 
-        <div className={classes["button-container"]}>
+        <div className={classes.buttonContainer}>
           <div>
             <button
-              onClick={() => navigateToDetails(element._id)}
+              onClick={() => navigateToDetails(item._id)}
               className={classes.elementCardButton}
             >
               Details
             </button>
           </div>
           <div className={classes.tag}>
-            {userId && <Tag userId={userId} titleId={titleId} />}
+            {userId && <Tag userId={userId} itemId={itemId} />}
           </div>
         </div>
       </div>
-      {showPrompt && <RatingPrompt onClose={closePrompt} titleData={element} />}
+      {showPrompt && <RatingPrompt onClose={closePrompt} titleData={item} />}
     </>
   );
 };

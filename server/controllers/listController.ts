@@ -32,9 +32,7 @@ export const getListById = catchAsync(
 
     res.status(200).json({
       status: 'sucess',
-      data: {
-        list,
-      },
+      list,
     });
   },
 );

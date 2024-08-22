@@ -5,6 +5,12 @@
   justify-content: center;
 }
 
+.superContainer {
+  background-color: blue;
+  position: relative;
+  width: 500px;
+}
+
 .searchbar {
   color: rgb(246, 246, 246);
   font-size: 17px;
@@ -27,7 +33,7 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  width: auto;
+  width: 100%;
   height: auto;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -40,6 +46,8 @@
   border-radius: 5px;
   padding-right: 20px;
   padding-left: 20px;
+  background-color: rgba(0, 0, 0, 0.581);
+  position: absolute;
 }
 
 .gridItem {

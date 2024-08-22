@@ -4,75 +4,59 @@ import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 
-const Tag = ({ userId, titleId }) => {
+const Tag = ({ userId, itemId }) => {
   const [isOnReadlist, setIsOnReadlist] = useState(false);
   const { user } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkItemExists = async () => {
-      console.log(userId, titleId);
+      console.log(userId, itemId);
 
       try {
         const response = await axios.get(
-          `http://localhost:2000/api/v1/user/readlist/${userId}/check-item-exists/${titleId}`
+          `http://localhost:2000/api/v1/user/readlist/${userId}/check-item-exists/${itemId}`
         );
-
-        console.log("Item exists: ", response);
         setIsOnReadlist(response.data.exists);
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error("Error checking item existence:", error);
       }
     };
 
     checkItemExists();
-  }, [userId, titleId]);
+  }, [userId, itemId]);
 
   const addOrRemoveItem = async () => {
     if (!user) {
       navigate("/auth");
       return;
     }
-    if (!isOnReadlist) {
-      try {
-        const response = await axios.patch(
-          `http://localhost:2000/api/v1/user/readlist/${userId}/add-to-readlist/${titleId}`
+
+    try {
+      if (isOnReadlist) {
+        await axios.delete(
+          `http://localhost:2000/api/v1/user/readlist/${userId}/remove-from-readlist/${itemId}`
         );
-        console.log(response);
-        setIsOnReadlist(true); // Update state to reflect item added
-      } catch (err) {
-        console.error(err);
-      }
-    } else {
-      try {
-        const response = await axios.delete(
-          `http://localhost:2000/api/v1/user/readlist/${userId}/remove-from-readlist/${titleId}`
+        setIsOnReadlist(false); // Reflect item removal in UI
+      } else {
+        await axios.patch(
+          `http://localhost:2000/api/v1/user/readlist/${userId}/add-to-readlist/${itemId}`
         );
-        console.log(response);
-        setIsOnReadlist(false); // Update state to reflect item removed
-      } catch (err) {
-        console.error(err);
+        setIsOnReadlist(true); // Reflect item addition in UI
       }
+    } catch (err) {
+      console.error("Error updating readlist", err);
     }
   };
 
-  if (isOnReadlist) {
-    return (
-      <span
-        className={`material-icons ${classes.addedIcon}`}
-        onClick={addOrRemoveItem}
-      >
-        bookmark_added
-      </span>
-    );
-  }
-
   return (
     <span
-      className={`material-icons ${classes.addIcon}`}
+      className={`material-icons ${
+        isOnReadlist ? classes.addedIcon : classes.addIcon
+      }`}
       onClick={addOrRemoveItem}
     >
-      bookmark_add
+      {isOnReadlist ? "bookmark_added" : "bookmark_add"}
     </span>
   );
 };

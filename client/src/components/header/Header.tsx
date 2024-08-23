@@ -6,10 +6,10 @@ const Header = () => {
   return (
     <div className={classes.menu}>
       <NavLink to="/home" className={classes.titleLink}>
-      <div>
-        <h1 className={classes.title}>MANGAZINE</h1>
-
-      </div>
+        <div className={classes.logoContainer}>
+          <h1 className={classes.title}>MANGAZINE</h1>
+          <h1 className={classes.symbol}>「心」が大事</h1>
+        </div>
       </NavLink>
       <div className={classes.links}>
         <SignedIn>

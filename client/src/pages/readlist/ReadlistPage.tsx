@@ -4,6 +4,7 @@ import ElementCard from "../../components/element-card/ElementCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
+import Footer from "../../components/footer/Footer";
 
 const Readlist = () => {
   const { isSignedIn, user } = useUser();
@@ -31,19 +32,22 @@ const Readlist = () => {
 
   return (
     <div className={classes.container}>
-        <Header />
+      <Header />
       <div className={classes.headline}>
         <p>READLIST</p>
       </div>
       <main className={classes.contentGrid}>
         {readList && readList.length > 0 ? (
           readList.map((element, index) => (
-            <ElementCard key={index} element={element} />
+            <ElementCard key={index} item={element} />
           ))
         ) : (
           <div className={classes.noReadlistMessage}>NO READLIST</div>
         )}
       </main>
+      <div className={classes.footerContainer}>
+        <Footer />
+      </div>
     </div>
   );
 };

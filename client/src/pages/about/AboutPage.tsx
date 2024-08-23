@@ -1,13 +1,16 @@
+import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import classes from "./style.module.css";
 
 const About = () => {
   return (
+    <>
+    
     <div className={classes.container}>
       <Header />
       <div className={classes.container2}>
         <main className={classes.text}>
-          <h1 className={classes.headline}>About Mangazine</h1>
+          <h1 className={classes.headline}>ABOUT MANGAZINE</h1>
           <p>
             Welcome to{" "}
             <stronger style={{ fontWeight: "bolder" }}>MANGAZINE</stronger>,
@@ -102,6 +105,11 @@ const About = () => {
         </main>
       </div>
     </div>
+    <div className={classes.footerContainer}>
+    <Footer />
+
+    </div>
+    </>
   );
 };
 

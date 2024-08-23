@@ -18,6 +18,7 @@ import ProtectedRoute from "./components/protected-route/ProtectedRoute.js";
 import About from "./pages/about/AboutPage.js";
 import AdminRoute from "./components/admin-route/AdminRoute.js";
 import ScrollbarTest from "./components/ScrollbarTest.js";
+import ContactPage from "./pages/contact/ContactPage.js";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/details/:titleId" element={<Details />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/scrollbar-test" element={<ScrollbarTest />} />
 
           <Route

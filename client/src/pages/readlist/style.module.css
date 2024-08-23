@@ -32,3 +32,8 @@
 .noReadlistMessage {
   color: white;
 }
+
+.footerContainer {
+  margin-top: 10%;
+  margin-bottom: 3%;
+}

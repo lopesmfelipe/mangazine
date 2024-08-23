@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import CreateListButton from "./components/create-button/CreateListButton";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 const AllListsPage = () => {
   const { user } = useUser();
@@ -56,6 +57,9 @@ const AllListsPage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className={classes.footerContainer}>
+        <Footer />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import Searchbar from "./components/searchbar/Searchbar";
 import axios from "axios";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   const { user } = useUser();
@@ -57,14 +58,16 @@ const Home = () => {
   return (
     <div>
       <Header />
-      
       <main>
         <h1 className={classes.name}>MANGAZINE</h1>
         <h2>Your favorite reads in one place!</h2>
         <div className={classes.searchBarContainer}>
-          <Searchbar placeholder="Search"/>
+          <Searchbar placeholder="Search" />
         </div>
       </main>
+      <div className={classes.footerContainer}>
+        <Footer />
+      </div>
     </div>
   );
 };

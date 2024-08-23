@@ -5,14 +5,10 @@
   background-color: #000; 
 }
 
-.container2 {
-  margin-bottom: 20%;
-}
-
 .text {
   margin-top: 180px;
-  width: 600px;
-  color: rgb(211, 211, 211);
+  width: 676px;
+  color: rgb(223, 223, 223);
   display: flex;
   line-height: 1.5;
 }
@@ -30,11 +26,16 @@
   display: inline;
   font-size: 20px;
   font-weight: 400;
-  color: #c2c2bc;
+  color: #fefefebc;
 }
 
 .box {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+}
+
+.footerContainer {
+  margin-top: 7%;
+  margin-bottom: 3%;
 }

@@ -49,12 +49,8 @@ const AllListsPage = () => {
       <div className={classes.grid}>
         {lists.map((list, index) => (
           <div className={classes.box} onClick={() => handleClick(list._id)}>
-            <div className={classes.listNameContainer}>
-              <p>{list.name}</p>
-            </div>
-            <div className={classes.itemQuantity}>
+              <h3 className={classes.name}>{list.name}</h3>
               <p>{list.titles.length} titles </p>
-            </div>
           </div>
         ))}
       </div>

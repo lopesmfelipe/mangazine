@@ -5,6 +5,7 @@ import ElementCard from "../../components/element-card/ElementCard";
 import { useParams } from "react-router-dom";
 import Searchbar from "../home/components/searchbar/Searchbar";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 const ListContent = () => {
   const { listId } = useParams(); // Get listId from URL
@@ -88,6 +89,9 @@ const ListContent = () => {
             ))}
           </main>
         )}
+      </div>
+      <div className={classes.footerContainer}>
+        <Footer />
       </div>
     </>
   );

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto; /* Enable scrolling if content overflows */
 }
 
 .promptWindow {
@@ -15,8 +16,8 @@
   width: 600px;
   border-radius: 10px;
   box-shadow: 0 1px 10px rgba(255, 255, 255, 0.762);
-  padding: 0;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  margin-top: 80px;
 }
 
 .header {
@@ -67,10 +68,10 @@
   position: relative;
 }
 
-.closeButton{
+.closeButton {
   position: absolute;
-  top: -10%;
-  right: 1%;
+  top: 17%;
+  right: 5%;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -114,7 +115,6 @@
   cursor: pointer;
   background-color: rgb(50, 47, 47);
 }
-
 
 .verticalLine {
   border: solid 0.1px;

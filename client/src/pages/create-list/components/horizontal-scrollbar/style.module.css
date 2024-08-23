@@ -9,7 +9,6 @@
   overflow-x: auto;
   white-space: nowrap;
   width: 90%;
-  border: 1px solid #0edf03;
   padding: 10px;
   gap: 20px;
 }
@@ -21,8 +20,8 @@
   height: 220px;
   position: relative;
   box-shadow: 
-    -5px -5px 10px rgba(0, 0, 0, 0.100), /* Left shadow */
-    5px 5px 10px rgba(0, 0, 0, 0.100);  /* Right shadow */
+    -5px -5px 10px rgba(255, 255, 255, 0.1), /* Left shadow */
+    5px 5px 10px rgba(255, 255, 255, 0.1);  /* Right shadow */
 }
 
 .item img {
@@ -34,6 +33,6 @@
 
 .nameContainer p {
   margin-top: 12%;
-  color: black;
-
+  color: rgb(255, 255, 255);
+  font-size: 16px;
 }

@@ -19,6 +19,7 @@ import About from "./pages/about/AboutPage.js";
 import AdminRoute from "./components/admin-route/AdminRoute.js";
 import ScrollbarTest from "./components/ScrollbarTest.js";
 import ContactPage from "./pages/contact/ContactPage.js";
+import TermsPage from "./pages/terms/TermsPage.js";
 
 function App() {
   return (
@@ -31,7 +32,6 @@ function App() {
           <Route path="/details/:titleId" element={<Details />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/scrollbar-test" element={<ScrollbarTest />} />
 
           <Route
             path="/readlist"

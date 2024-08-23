@@ -63,7 +63,7 @@
 .submitButton {
   font-family: var(--secondary-font);
   color: black;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: solid 2px black;
   border-radius: 5px;
   padding-top: 8px;

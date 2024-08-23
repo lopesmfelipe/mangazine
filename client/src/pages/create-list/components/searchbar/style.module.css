@@ -9,12 +9,12 @@
   color: rgb(0, 0, 0);
   font-size: 17px;
   font-family: Kanit;
-  width: 90%;
+  width: 70%;
   height: 40px;
   padding-left: 30px;
   border-radius: 20px;
   border: 0;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: solid 2.5px var(--main-color);
   outline: none;
 }
@@ -33,7 +33,7 @@
   margin-bottom: 30px;
   padding-top: 10px;
   padding-bottom: 40px;
-  background-color: rgba(130, 130, 130, 0.281);
+  background-color: rgb(28, 28, 28);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 0px;
@@ -44,31 +44,33 @@
 
 .gridItem {
   margin-top: 20px;
-  height: 90px;
+  height: 140px;
   width: 200px;
   display: flex;
-  padding: 10px;
   border-radius: 10px;
-  padding-right: 30px;
+  padding-right: 60px;
   margin-right: 10px;
-  margin-left: 10px;
-  background-color: white;
+  margin-left: 15px;
+  background-color: rgb(229, 227, 227);
   color: black;
   cursor: pointer;
 }
 
 .cover {
   height: 100%;
-  width: 100px;
-  border-radius: 10px;
+  width: 180px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   border: 1px solid transparent;
 }
 
 .informationContainer {
   margin-left: 20px;
-  width: 200px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .box2 {
@@ -81,9 +83,9 @@
   margin-bottom: 25px;
 }
 
-.box2, p {
-  font-size: 14px;
-  color: rgba(69, 69, 69, 0.841);
+.box2 p {
+  font-size: 15px;
+  color: rgba(40, 40, 40, 0.841);
 }
 
 .name {
@@ -103,9 +105,16 @@
 }
 
 .scrollbarContainer {
-  background-color: rgb(255, 255, 255);
   width: 100%;
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.headline p {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .scrollbarContainer p {
@@ -115,7 +124,6 @@
   color: white;
   font-size: 20px;
 }
-
 
 .text {
   display: flex;

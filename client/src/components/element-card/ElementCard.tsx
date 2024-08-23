@@ -65,7 +65,10 @@ const ElementCard = (props: any) => {
   return (
     <>
       <div className={classes.contentContainer}>
-        <div className={classes.coverContainer}>
+        <div
+          className={classes.coverContainer}
+          onClick={() => navigateToDetails(item._id)}
+        >
           <img src={item.cover} alt={item.name} />
         </div>
 

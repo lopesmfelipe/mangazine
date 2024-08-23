@@ -8,16 +8,10 @@ const Footer = () => {
     navigate("/contact");
   };
 
-  const handleTermsClick = () => {
-    navigate("/terms");
-  };
-
   return (
     <div className={classes.container}>
       <div>
         <p onClick={handleContactClick}>CONTACT</p>
-
-        <p onClick={handleTermsClick}>TERMS</p>
       </div>
     </div>
   );

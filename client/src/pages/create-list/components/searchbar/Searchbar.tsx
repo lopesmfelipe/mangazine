@@ -76,7 +76,9 @@ const Searchbar: React.FC<SearchbarProps> = ({
       {}
       {localSelectedItems.length > 0 && (
         <div className={classes.scrollbarContainer}>
-          <p>LIST ITEMS</p>
+          <div className={classes.headline}>
+            <p>LIST ITEMS</p>
+          </div>
           <HorizontalScrollbar
             items={localSelectedItems}
             itemsNumber={localSelectedItems.length}

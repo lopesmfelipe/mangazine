@@ -71,10 +71,10 @@ const RatingPrompt = ({ onClose, titleData, onRatingChange }) => {
 
         <div className={classes.buttonContainer}>
           <button className={classes.rateButton} onClick={createUpdateRating}>
-            Rate
+            RATE
           </button>
           <button className={classes.button2} onClick={deleteRating}>
-            Remove rating
+            REMOVE RATING
           </button>
         </div>
         <button onClick={onClose} className={classes.closeButton}>

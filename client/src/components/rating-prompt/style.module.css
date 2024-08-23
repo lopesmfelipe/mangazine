@@ -13,7 +13,7 @@
 
 .promptWindow {
   position: relative;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(6, 6, 6);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +44,8 @@
 
 .mainText {
   color: white;
+  margin-top: 5%;
+  margin-bottom: 10%;
 }
 
 .titleName {
@@ -110,30 +112,39 @@
   padding: 10px;
   padding-right: 110px;
   padding-left: 110px;
-  background-color: var(--main-color);
+  background-color: rgb(233, 233, 233);
   color: black;
+  font-family: var(--font1);
+  border: solid 2px transparent;
 }
 
 .rateButton:hover {
+  border: solid 2px white;
   color: white;
   cursor: pointer;
-  background-color: rgba(142, 138, 138, 0.561);
-  transition: 100ms;
+  background-color: rgba(0, 0, 0, 0.561);
+  transition: 150ms;
 }
 
 .button2 {
   background-color: transparent;
-  border: none;
-  color: var(--main-color);
-  border-radius: 3px;
+  border: solid 2px transparent;
+  color: white;
+  border-radius: 5px;
   padding: 10px;
   padding-right: 110px;
   padding-left: 110px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-family: var(--font1);
+  font-size: 15px;
 }
 
 .button2:hover {
-  background-color: rgba(142, 138, 138, 0.561);
-  transition: 100ms;
+  background-color: rgb(227, 227, 227);
+  color: black;
+  border: solid 2px rgb(227, 227, 227);
+  transition: 170ms;
   cursor: pointer;
 }
 
@@ -148,7 +159,7 @@
   padding: 20px;
   color: white;
   cursor: pointer;
-  top: -13%;
+  top: -16%;
   right: 1%;
   background-color: transparent;
   border: 0;
